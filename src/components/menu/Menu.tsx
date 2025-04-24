@@ -7,6 +7,7 @@ import { LoadingSkeleton } from "../LoadingSkeleton";
 
 import { TMenu, TDishes } from "../../types";
 import { fetchMenuPageData } from "../../api";
+import { onEntryChange } from "../../sdk/utils";
 
 const Menu: React.FC = () => {
   // COMMENT: Uncomment from line 14 to 96
@@ -19,7 +20,9 @@ const Menu: React.FC = () => {
     (state: RootState) => state.main.menuPageData
   );
   useEffect(() => {
-    fetchMenuPageData(dispatch, setLoading);
+    onEntryChange(() => {
+      fetchMenuPageData(dispatch, setLoading);
+    });
   }, [dispatch]);
 
   const memoizedMenuPageData = useMemo(() => menuPageData, [menuPageData]);
