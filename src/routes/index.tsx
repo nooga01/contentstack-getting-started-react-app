@@ -5,6 +5,8 @@ import Footer from "../components/footer/Footer";
 import Home from "../components/home/Home";
 // COMMENT: Uncomment below import statement
 import Menu from "../components/menu/Menu";
+// COMMENT: About us page
+import AboutUs from "../components/aboutus/AboutUs";
 import { fetchInitialData } from "../api";
 import { useDispatch } from "react-redux";
 import LoadingScreen from "../components/LoadingScreen";
@@ -34,6 +36,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="/" element={<Home />} />
                 {/* COMMENT: Replace below element from <NotFound /> to <Menu /> */}
                 <Route path="/menu" element={<Menu />} />
+                <Route path="/about-us" element={<AboutUs />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>

@@ -67,3 +67,11 @@ export type TMenu = {
   course_name: string;
   dishes: TDishes[];
 };
+
+export type TAboutusPageData = {
+  sections: {
+    about?: {
+      about?: string;
+    };
+  }[];
+};
