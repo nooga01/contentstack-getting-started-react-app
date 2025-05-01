@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // COMMENT: Add TMenu in below import statement
-import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData } from "../types";
+import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData, TPageData } from "../types";
 
 interface AppState {
   headerData: THeaderData;
@@ -9,6 +9,7 @@ interface AppState {
   // COMMENT: Uncomment below line
   menuPageData: TMenu[];
   aboutusPageData: TAboutusPageData;
+  pageData: TPageData;
 }
 
 const initialState: AppState = {
@@ -90,6 +91,16 @@ const initialState: AppState = {
       },
     ],
   }, 
+  // COMMENT: Page
+  pageData: {
+    sections: [
+      {
+        contact: {
+          contact: ""
+        },
+      },
+    ],
+  }, 
 };
 
 const mainSlice = createSlice({
@@ -112,7 +123,11 @@ const mainSlice = createSlice({
     // COMMENT: About us page 
     setAboutusPageData: (state, action: PayloadAction<TAboutusPageData>) => {
       state.aboutusPageData = action.payload;
-    },    
+    },
+    // COMMENT: Page
+    setPageData: (state, action: PayloadAction<TPageData>) => {
+      state.pageData = action.payload;
+    }, 
   },
 });
 
@@ -124,6 +139,8 @@ export const {
   setMenuPageData,
   // COMMENT: About us page
   setAboutusPageData,
+  // COMMENT: Page
+  setPageData,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

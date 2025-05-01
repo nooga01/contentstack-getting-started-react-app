@@ -75,3 +75,11 @@ export type TAboutusPageData = {
     };
   }[];
 };
+
+export type TPageData = {
+  sections: {
+    contact?: {
+      contact?: string;
+    };
+  }[];
+};

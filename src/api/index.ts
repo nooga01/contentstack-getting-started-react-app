@@ -8,6 +8,8 @@ import {
   setMenuPageData,
   // COMMENT: About us page
   setAboutusPageData,
+  // COMMENT: Page
+  setPageData,
 } from "../reducer";
 import { initializeContentstackSdk } from "../sdk/utils";
 import * as Utils from "@contentstack/utils";
@@ -102,6 +104,7 @@ export const fetchInitialData = async (
       fetchFooterData(dispatch),
       fetchHomePageData(dispatch),
       fetchAboutusPageData(dispatch),
+      fetchPageData(dispatch),
     ]);
     setLoading(false);
   } catch (error) {
@@ -135,4 +138,11 @@ export const fetchAboutusPageData = async (
     jsonRtePath: undefined,
   });
   dispatch(setAboutusPageData(data[0]));
+};
+
+export const fetchPageData = async (
+  dispatch: Dispatch<any>
+): Promise<void> => {
+  const data = await getEntry(CONTENT_TYPES.PAGE);
+  dispatch(setPageData(data[0]));
 };
