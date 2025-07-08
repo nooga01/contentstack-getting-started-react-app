@@ -12,12 +12,21 @@ const AboutUs: React.FC = () => {
 
   const memoizedAboutusPageData = useMemo(() => aboutusPageData, [aboutusPageData]);
 
-  const { about } = memoizedAboutusPageData.sections[0];
+  const { home } = memoizedAboutusPageData.sections[0];
+  const { about } = memoizedAboutusPageData.sections[1];
 
   return (
     <div className="home-page">
       <div className="hero-section">
         <div className="hero-content">
+        {home?.hero_section?.banner?.url && (
+          <div className="hero-banner">
+            <img src={home?.hero_section.banner.url} alt="Hero Banner" />
+          </div>
+        )}
+        {home?.hero_section?.heading && (
+          <h1>{home?.hero_section?.heading}</h1>
+        )}
         <p>{about?.about}</p>
         </div>
       </div>
