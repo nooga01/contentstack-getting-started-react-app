@@ -70,6 +70,16 @@ export type TMenu = {
 
 export type TAboutusPageData = {
   sections: {
+    home?: {
+      hero_section?: {
+        banner?: {
+          url: string;
+        };
+        heading?: string;
+        description?: string;
+        primary_cta?: string;
+      };
+    },    
     about?: {
       about?: string;
     };
