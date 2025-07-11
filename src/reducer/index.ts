@@ -85,6 +85,16 @@ const initialState: AppState = {
   aboutusPageData: {
     sections: [
       {
+        home: {
+          hero_section: {
+            banner: {
+              url: "",
+            },
+            heading: "",
+            description: "",
+            primary_cta: "",
+          },
+        },        
         about: {
           about: ""
         },
