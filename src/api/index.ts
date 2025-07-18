@@ -153,6 +153,11 @@ export const fetchPageData = async (
 export const fetchPageWithHeroBannerData = async (
   dispatch: Dispatch<any>
 ): Promise<void> => {
-  const data = await getEntry(CONTENT_TYPES.PAGEWITHHEROBANNER);
+  const data: any = await getEntryByUrl({
+    contentTypeUid: CONTENT_TYPES.PAGEWITHHEROBANNER,
+    entryUrl: "/contact-us",
+    referenceFieldPath: undefined,
+    jsonRtePath: undefined,
+  });
   dispatch(setPageWithHeroBannerData(data[0]));
 };
