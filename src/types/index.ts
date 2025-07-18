@@ -93,3 +93,18 @@ export type TPageData = {
     };
   }[];
 };
+
+export type TPageWithHeroBannerData = {
+    title: string;
+    description: string;
+    hero_banner: THeroBanner[];
+};
+
+export type THeroBanner = {
+  uid: string;
+  banner_title: string;
+  banner_image: {
+    url: string;
+  };
+  banner_description: string;
+};

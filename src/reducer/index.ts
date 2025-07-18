@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // COMMENT: Add TMenu in below import statement
-import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData, TPageData } from "../types";
+import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData, TPageData, TPageWithHeroBannerData } from "../types";
 
 interface AppState {
   headerData: THeaderData;
@@ -10,6 +10,7 @@ interface AppState {
   menuPageData: TMenu[];
   aboutusPageData: TAboutusPageData;
   pageData: TPageData;
+  pageWithHeroBannerData: TPageWithHeroBannerData;
 }
 
 const initialState: AppState = {
@@ -110,7 +111,22 @@ const initialState: AppState = {
         },
       },
     ],
-  }, 
+  },
+  // COMMENT: PageWithHeroBanner
+  pageWithHeroBannerData: {
+      title: "",
+      description: "",
+      hero_banner: [
+        {
+          uid: "",
+          banner_title: "",
+          banner_image: {
+            url: "",
+          },
+          banner_description: "",
+        },
+      ],
+  },
 };
 
 const mainSlice = createSlice({
@@ -138,6 +154,10 @@ const mainSlice = createSlice({
     setPageData: (state, action: PayloadAction<TPageData>) => {
       state.pageData = action.payload;
     }, 
+    // COMMENT: PageWithHeroBanner
+    setPageWithHeroBannerData: (state, action: PayloadAction<TPageWithHeroBannerData>) => {
+      state.pageWithHeroBannerData = action.payload;
+    },     
   },
 });
 
@@ -151,6 +171,8 @@ export const {
   setAboutusPageData,
   // COMMENT: Page
   setPageData,
+  // COMMENT: PageWithHeroBanner
+  setPageWithHeroBannerData,
 } = mainSlice.actions;
 
 export default mainSlice.reducer;

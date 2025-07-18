@@ -5,4 +5,5 @@ export const CONTENT_TYPES = {
   LUNCH: "lunch",
   DINNER: "dinner",
   PAGE: "page",
+  PAGEWITHHEROBANNER: "pagewithherobanner",
 };

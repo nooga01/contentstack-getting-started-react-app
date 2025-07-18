@@ -10,6 +10,8 @@ import {
   setAboutusPageData,
   // COMMENT: Page
   setPageData,
+  // COMMENT: PageWithHeroBanner
+  setPageWithHeroBannerData,
 } from "../reducer";
 import { initializeContentstackSdk } from "../sdk/utils";
 import * as Utils from "@contentstack/utils";
@@ -105,6 +107,7 @@ export const fetchInitialData = async (
       fetchHomePageData(dispatch),
       fetchAboutusPageData(dispatch),
       fetchPageData(dispatch),
+      fetchPageWithHeroBannerData(dispatch),
     ]);
     setLoading(false);
   } catch (error) {
@@ -145,4 +148,11 @@ export const fetchPageData = async (
 ): Promise<void> => {
   const data = await getEntry(CONTENT_TYPES.PAGE);
   dispatch(setPageData(data[0]));
+};
+
+export const fetchPageWithHeroBannerData = async (
+  dispatch: Dispatch<any>
+): Promise<void> => {
+  const data = await getEntry(CONTENT_TYPES.PAGEWITHHEROBANNER);
+  dispatch(setPageWithHeroBannerData(data[0]));
 };

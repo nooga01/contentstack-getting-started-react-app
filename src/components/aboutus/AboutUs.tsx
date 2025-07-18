@@ -12,6 +12,8 @@ const AboutUs: React.FC = () => {
 
   const memoizedAboutusPageData = useMemo(() => aboutusPageData, [aboutusPageData]);
 
+  console.log("memoizedAboutusPageData", memoizedAboutusPageData);
+
   const { home } = memoizedAboutusPageData.sections[0];
   const { about } = memoizedAboutusPageData.sections[1];
 
