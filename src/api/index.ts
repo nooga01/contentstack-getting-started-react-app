@@ -25,6 +25,13 @@ type GetEntryByUrl = {
   jsonRtePath: string[] | undefined;
 };
 
+type GetEntryById = {
+  uid: string | undefined;
+  contentTypeUid: string;
+  referenceFieldPath: string[] | undefined;
+  jsonRtePath: string[] | undefined;
+};
+
 const renderOption = {
   span: (node: any, next: any) => next(node.children),
 };
@@ -160,4 +167,42 @@ export const fetchPageWithHeroBannerData = async (
     jsonRtePath: undefined,
   });
   dispatch(setPageWithHeroBannerData(data[0]));
+};
+
+/**
+ *fetches specific entry from a content-type
+ *
+ * @param {* content-type uid} contentTypeUid
+ * @param {* uuid for uuid to be fetched} entryId
+ * @param {* reference field name} referenceFieldPath
+ * @param {* Json RTE path} jsonRtePath
+ * @returns
+ */
+export const getEntryById = ({
+  contentTypeUid,
+  uid,
+  referenceFieldPath,
+  jsonRtePath,
+}: GetEntryById) => {
+  return new Promise((resolve, reject) => {
+    const entryQuery = Stack.ContentType(contentTypeUid).Query();
+    if (referenceFieldPath) entryQuery.includeReference(referenceFieldPath);
+    entryQuery.toJSON();
+    const data = entryQuery.where("uid", `${uid}`).find();
+    data.then(
+      (result) => {
+        jsonRtePath &&
+          Utils.jsonToHTML({
+            entry: result,
+            paths: jsonRtePath,
+            renderOption,
+          });
+        resolve(result[0]);
+      },
+      (error) => {
+        console.error(error);
+        reject(error);
+      }
+    );
+  });
 };

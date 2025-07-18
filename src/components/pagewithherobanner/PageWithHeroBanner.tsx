@@ -4,6 +4,7 @@ import { RootState } from "../../store";
 import { Button } from "@contentstack/venus-components";
 import { useNavigate } from "react-router-dom";
 import { TPageWithHeroBannerData } from "../../types";
+import { getHeroBannerById } from "../../helper"
 import HeroBanner from "../herobanner/HeroBanner";
 
 const PageWithHeroBanner: React.FC = () => {
@@ -11,9 +12,12 @@ const PageWithHeroBanner: React.FC = () => {
     (state: RootState) => state.main.pageWithHeroBannerData
   );
 
+  console.log("pageWithHeroBannerData", pageWithHeroBannerData);
+
   const navigate = useNavigate();
-  
-  const [heroBannerData, setHeroBannerData] = useState(null);
+
+  const herobanner = getHeroBannerById(pageWithHeroBannerData.hero_banner[0].uid);
+  console.log(herobanner);
 
   const title = pageWithHeroBannerData.title ?? "Default Title";
   const description = pageWithHeroBannerData.description ?? "Default Description";
