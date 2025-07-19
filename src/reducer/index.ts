@@ -120,10 +120,20 @@ const initialState: AppState = {
         {
           uid: "",
           title: "",
+          background_color: {
+            hex: "",
+          },
+          banner_description: "", 
           banner_image: {
             url: "",
           },
-          banner_description: "",
+          banner_image_alignment: "",
+          call_to_action: {
+            title: "",
+            href: "",
+          },
+          content_title_alignment: "",
+          is_banner_image_full_width: true,
         },
       ],
   },

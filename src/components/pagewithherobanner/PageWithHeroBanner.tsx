@@ -12,7 +12,8 @@ const PageWithHeroBanner: React.FC = () => {
     (state: RootState) => state.main.pageWithHeroBannerData
   );
   
-  //console.log("pageWithHeroBannerData", pageWithHeroBannerData);
+  console.log("page", page);
+  console.log("uid", page.hero_banner[0].uid);
 
   const navigate = useNavigate();
 
@@ -34,16 +35,21 @@ const PageWithHeroBanner: React.FC = () => {
     fetchData();
   }, [error]);
 
-  // console.log(hero_banner);
+  console.log("error", error);  
+  console.log("hero_banner", hero_banner);
 
+  // console.log(hero_banner);
+  //          <HeroBanner
+  //            hero_banner={ hero_banner }
+  //          />
   return (
     <div className="home-page">
       <div className="hero-section">
         <div className="hero-content">
 
-            <HeroBanner
-              hero_banner={ hero_banner }
-            />
+          <HeroBanner
+            hero_banner={ hero_banner }
+          />
 
           <p>{ page.title }</p>
           <p>{ page.description }</p>
