@@ -3,24 +3,38 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { Button } from "@contentstack/venus-components";
 import { useNavigate } from "react-router-dom";
-import { TPageWithHeroBannerData } from "../../types";
+import { THeroBanner } from "../../types";
 import { getHeroBannerById } from "../../helper"
 import HeroBanner from "../herobanner/HeroBanner";
 
 const PageWithHeroBanner: React.FC = () => {
-  const pageWithHeroBannerData = useSelector(
+  const page = useSelector(
     (state: RootState) => state.main.pageWithHeroBannerData
   );
-
-  console.log("pageWithHeroBannerData", pageWithHeroBannerData);
+  
+  //console.log("pageWithHeroBannerData", pageWithHeroBannerData);
 
   const navigate = useNavigate();
 
-  const herobanner = getHeroBannerById(pageWithHeroBannerData.hero_banner[0].uid);
-  console.log(herobanner);
+  const [error, setError] = useState(false);
+  const [hero_banner, setEntry] = useState({} as THeroBanner);
 
-  const title = pageWithHeroBannerData.title ?? "Default Title";
-  const description = pageWithHeroBannerData.description ?? "Default Description";
+  async function fetchData() {
+    try {
+      const herobanner = await getHeroBannerById(page.hero_banner[0].uid);
+      setEntry(herobanner);
+    } 
+    catch (error) {
+      console.error(error);
+      setError(true);
+    }
+  } 
+
+  useEffect(() => {
+    fetchData();
+  }, [error]);
+
+  // console.log(hero_banner);
 
   return (
     <div className="home-page">
@@ -28,11 +42,11 @@ const PageWithHeroBanner: React.FC = () => {
         <div className="hero-content">
 
             <HeroBanner
+              hero_banner={ hero_banner }
             />
 
-          { title }
-          { description }
-          { pageWithHeroBannerData.hero_banner[0].uid }
+          <p>{ page.title }</p>
+          <p>{ page.description }</p>
 
         </div>
       </div>

@@ -102,9 +102,13 @@ export type TPageWithHeroBannerData = {
 
 export type THeroBanner = {
   uid: string;
-  banner_title: string;
+  title: string;
   banner_image: {
     url: string;
   };
   banner_description: string;
+};
+
+export type THeroBannerProps = {
+  hero_banner: THeroBanner;
 };

@@ -119,7 +119,7 @@ const initialState: AppState = {
       hero_banner: [
         {
           uid: "",
-          banner_title: "",
+          title: "",
           banner_image: {
             url: "",
           },

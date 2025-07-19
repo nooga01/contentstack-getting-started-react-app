@@ -9,6 +9,6 @@ export const getHeroBannerById = async (
     uid,
     referenceFieldPath: undefined,
     jsonRtePath: undefined,
-  })) as THeroBanner;
-  return response;
+  })) as THeroBanner[];
+  return response[0];
 };
