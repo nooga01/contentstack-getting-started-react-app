@@ -12,6 +12,8 @@ import {
   setPageData,
   // COMMENT: PageWithHeroBanner
   setPageWithHeroBannerData,
+  // COMMENT: HeroBanner
+  setHeroBannerData,
 } from "../reducer";
 import { initializeContentstackSdk } from "../sdk/utils";
 import * as Utils from "@contentstack/utils";
@@ -77,6 +79,35 @@ export const getEntryByUrl = ({
   });
 };
 
+export const getEntryById = ({
+  contentTypeUid,
+  uid,
+  referenceFieldPath,
+  jsonRtePath,
+}: GetEntryById) => {
+  return new Promise((resolve, reject) => {
+    const entryQuery = Stack.ContentType(contentTypeUid).Query();
+    if (referenceFieldPath) entryQuery.includeReference(referenceFieldPath);
+    entryQuery.toJSON();
+    const data = entryQuery.where("uid", `${uid}`).find();
+    data.then(
+      (result) => {
+        jsonRtePath &&
+          Utils.jsonToHTML({
+            entry: result,
+            paths: jsonRtePath,
+            renderOption,
+          });
+        resolve(result[0]);
+      },
+      (error) => {
+        console.error(error);
+        reject(error);
+      }
+    );
+  });
+};
+
 export const fetchHeaderData = async (
   dispatch: Dispatch<any>
 ): Promise<void> => {
@@ -115,6 +146,7 @@ export const fetchInitialData = async (
       fetchAboutusPageData(dispatch),
       fetchPageData(dispatch),
       fetchPageWithHeroBannerData(dispatch),
+      fetchHeroBannerData(dispatch),
     ]);
     setLoading(false);
   } catch (error) {
@@ -169,40 +201,9 @@ export const fetchPageWithHeroBannerData = async (
   dispatch(setPageWithHeroBannerData(data[0]));
 };
 
-/**
- *fetches specific entry from a content-type
- *
- * @param {* content-type uid} contentTypeUid
- * @param {* uuid for uuid to be fetched} entryId
- * @param {* reference field name} referenceFieldPath
- * @param {* Json RTE path} jsonRtePath
- * @returns
- */
-export const getEntryById = ({
-  contentTypeUid,
-  uid,
-  referenceFieldPath,
-  jsonRtePath,
-}: GetEntryById) => {
-  return new Promise((resolve, reject) => {
-    const entryQuery = Stack.ContentType(contentTypeUid).Query();
-    if (referenceFieldPath) entryQuery.includeReference(referenceFieldPath);
-    entryQuery.toJSON();
-    const data = entryQuery.where("uid", `${uid}`).find();
-    data.then(
-      (result) => {
-        jsonRtePath &&
-          Utils.jsonToHTML({
-            entry: result,
-            paths: jsonRtePath,
-            renderOption,
-          });
-        resolve(result[0]);
-      },
-      (error) => {
-        console.error(error);
-        reject(error);
-      }
-    );
-  });
+export const fetchHeroBannerData = async (
+  dispatch: Dispatch<any>
+): Promise<void> => {
+  const data = await getEntry(CONTENT_TYPES.HEROBANNER);
+  dispatch(setHeroBannerData(data[0]));
 };

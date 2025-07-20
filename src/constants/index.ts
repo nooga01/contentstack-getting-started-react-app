@@ -6,4 +6,5 @@ export const CONTENT_TYPES = {
   DINNER: "dinner",
   PAGE: "page",
   PAGEWITHHEROBANNER: "pagewithherobanner",
+  HEROBANNER: "hero_banner",
 };

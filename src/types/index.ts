@@ -120,5 +120,5 @@ export type THeroBanner = {
 };
 
 export type THeroBannerProps = {
-  hero_banner: THeroBanner;
+  uid: string;
 };
