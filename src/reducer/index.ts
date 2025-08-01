@@ -124,6 +124,9 @@ const initialState: AppState = {
           background_color: {
             hex: "",
           },
+          text_color: {
+            hex: "",
+          },
           banner_description: "", 
           banner_image: {
             url: "",
@@ -143,6 +146,9 @@ const initialState: AppState = {
       uid: "",
       title: "",
       background_color: {
+        hex: "",
+      },
+      text_color: {
         hex: "",
       },
       banner_description: "", 

@@ -11,7 +11,7 @@ const PageWithHeroBanner: React.FC = () => {
   );
   
   console.log("page", page);
-  console.log("uid", page.hero_banner[0].uid);
+  console.log("uid", page.hero_banner[0]?.uid);
 
   const navigate = useNavigate();
 
@@ -20,12 +20,19 @@ const PageWithHeroBanner: React.FC = () => {
       <div className="hero-section">
         <div className="hero-content">
 
-          <HeroBanner
-            uid={ page.hero_banner[0].uid }
-          />
+          { page.hero_banner[0]?.uid && (
+            <HeroBanner
+              uid={ page.hero_banner[0]?.uid }
+            />
+          )}
 
-          <p>{ page.title }</p>
-          <p>{ page.description }</p>
+          { page.title && (
+            <h1>{ page.title }</h1>
+          )}
+
+          { page.description && (
+            <p>{ page.description }</p>
+          )}
 
         </div>
       </div>

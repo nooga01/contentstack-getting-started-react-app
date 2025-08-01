@@ -106,6 +106,9 @@ export type THeroBanner = {
   background_color: {
     hex: string;
   };
+  text_color: {
+    hex: string,
+  }  
   banner_description: string;  
   banner_image: {
     url: string;

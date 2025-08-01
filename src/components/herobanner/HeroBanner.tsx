@@ -14,16 +14,29 @@ const HeroBanner: React.FC<THeroBannerProps> = ({ uid }) => {
   console.log("uid", uid);
 
   return (
-    <div className="hero-banner">
-        <p>{ heroBannerData?.title }</p>
-        <p>{ heroBannerData?.banner_description }</p>
-        <p>{ heroBannerData?.background_color.hex }</p>
-        <p>{ heroBannerData?.banner_image.url }</p>
-        <p>{ heroBannerData?.call_to_action.title }</p>
-        <p>{ heroBannerData?.call_to_action.href }</p>
-        <p>{ heroBannerData?.content_title_alignment }</p>
-        <p>{ heroBannerData?.is_banner_image_full_width }</p>
-    </div>
+      <a href="#0" className="banner" aria-label="Shop now">
+        <div className="banner__grid">
+          <div aria-hidden="true">
+            <figure className="banner__figure" style={{ backgroundImage: heroBannerData?.banner_image.url ? `url(${heroBannerData?.banner_image.url})` : '' }}></figure>
+          </div>
+
+          <div className="banner__text">
+            { heroBannerData?.title && (
+               <h2 style={{ color: heroBannerData?.text_color?.hex ? heroBannerData?.text_color?.hex : "#000000" }}>{ heroBannerData?.title }</h2>
+            )}
+
+            { heroBannerData?.banner_description && (
+              <p style={{ color: heroBannerData?.text_color?.hex ? heroBannerData?.text_color?.hex : "#e2e2e2" }}>{heroBannerData?.banner_description}</p>
+            )}
+
+            { heroBannerData?.call_to_action?.title && (
+              <p className="banner__link-wrapper">
+                <span className="banner__link"><i>{ heroBannerData?.call_to_action.title }</i></span>
+              </p>
+            )}
+          </div>
+        </div>
+      </a>
    );   
   };
 
