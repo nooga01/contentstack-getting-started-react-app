@@ -1,0 +1,43 @@
+.slick-slider {
+    .slick-list {
+        width: 100%;
+        overflow: hidden;
+        .slick-track {
+            display: flex;
+            .slick-slide {
+                height: unset;
+                margin-right: 15px;
+                > div {
+                    height: 100%;
+                    > * {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .slick-arrow {
+        width: 32px;
+        height: 32px;
+        border: 1px solid brand-color(aemo-text-grey);
+        margin-top: map-get($map: $spacing, $key: small);
+        cursor: pointer;
+
+        @include breakpoint(large) {
+            margin-top: 48px;
+        }
+        &.slick-next {
+            margin-left: 44px;
+        }
+        &.slick-prev {
+            transform: rotate(180deg);
+            margin: 0px;
+            position: absolute;
+            bottom: 0px;
+        }
+        &.slick-disabled {
+            border-color: brand-color(aemo-dark-grey);
+            color: brand-color(aemo-dark-grey);
+        }
+    }
+}

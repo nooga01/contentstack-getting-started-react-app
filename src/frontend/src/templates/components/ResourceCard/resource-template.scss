@@ -1,0 +1,35 @@
+// for News cards /Resource cards
+.resource-cards-section {
+    padding-top: 0;
+    .section-title.larger {
+        margin-top: map-get($map: $spacing, $key: xlarge);
+        margin-bottom: 0;
+        @include breakpoint(medium down) {
+            @include headingXLarge; // 36px
+        }
+        @include breakpoint(small down) {
+            @include headingLarge; // 28px
+        }
+    }
+    select {
+        width: fit-content;
+        float: right;
+        border: none;
+        margin-bottom: 0;
+        margin-top: map-get($map: $spacing, $key: small2);
+        background-position-x: calc(100% + 32px); // overide default value calc(100% + 16px) in foundation-settings to make the icon right alignment
+    }
+    .card-list-wrapper {
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: map-get($map: $spacing, $key: medium);
+        margin-bottom: map-get($map: $spacing, $key: medium);
+        @include breakpoint(medium down) {
+            margin-top: map-get($map: $spacing, $key: small2);
+        }
+    }
+}
+.card-list-wrapper {
+    @extend .content-wrapper;
+    @extend .smaller-padding;
+}

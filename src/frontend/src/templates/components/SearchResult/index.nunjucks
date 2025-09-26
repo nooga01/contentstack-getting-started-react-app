@@ -1,0 +1,12 @@
+{% import '../CardItem/index.nunjucks' as CardItem %}
+
+
+<div class="SearchResult">
+    <div class="grid-container no-padding-if-inside-grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            {% for item in searchResults %}
+                {{ CardItem.render(item) }}
+            {% endfor %}
+        </div>
+    </div>
+</div>

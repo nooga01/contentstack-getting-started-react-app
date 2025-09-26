@@ -1,0 +1,28 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+
+{% macro render(item) %}
+    <a class="FeatureInfoCard cell {{item.class or 'medium-6'}}" href="{{item.linkUrl}}" data-scheme="{{'CIS' if item.SchemeTag == 'Capacity Investment Scheme'}}" {% if item.videoId %} data-channel="{{item.videoChannel}}" data-video-id="{{item.videoId}}" {% endif %}>
+        {% if item.imageSrc %}
+            <div class="card-image" style="background-image: url({{item.imageSrc}})"></div>
+        {% endif %}        
+        <div class="card-content">
+            {% if item.contentTag %}
+                <div class="content-tag">
+                    {{item.contentTag}}
+                </div>        
+            {% endif %}
+            <div class="content-title">
+                {{item.title}}
+            </div>
+            {% if item.descriptionRichText %}
+                <div class="content-description">
+                    {{item.descriptionRichText | safe}}
+                </div>     
+            {% endif %}
+            {% if item.btnText %}
+                {{Button.render(btnText = item.btnText, btnClass = 'text-primary', btnElem = 'button', tabindex = '-1')}}
+            {% endif %}
+        </div>
+    </a>
+{% endmacro %}

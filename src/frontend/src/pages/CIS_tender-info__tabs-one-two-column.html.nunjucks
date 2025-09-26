@@ -1,0 +1,335 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/Button/index.nunjucks" as Button %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+{% import "../templates/components/ResourceCard/index.nunjucks" as ResourceCards %}
+{% import "../templates/components/TenderListing/tender-timeline.nunjucks" as TenderTimeline %}
+{% import "../templates/components/FeaturePanel/index.nunjucks" as FeaturePanel %}
+{% import "../templates/components/FeaturePanel/timeline.nunjucks" as Timeline %}
+{% import "../templates/components/ImageCTAbanner/index.nunjucks" as ImageCTAbanner %}
+
+{% set pageTitle = 'Tender info' %}
+{% set bodyClass = 'two-column-page' %}
+{% set wrapperClass = 'CIS' %}
+{% set banner = {
+    bannerClass: 'tender-page',
+    title: 'Capacity Investment Scheme South Australia-Victoria',
+    subTitle: 'Firming Infrastructure',
+    tenderCTA: {
+        btnText: 'open',
+        statusClass: 'closed',
+        btnLink: '#'
+    }
+} %}
+{% set pageTabs = {
+    pageTabsID: "two-column-page-tab",
+    pageTabTitle1: "two column tab 1",
+    pageTabTitle2: "two column tab 2",
+    ContentColumnClass: {
+        panel1: "two-column",
+        panel2: "one-column"
+    }
+} %}
+{% set lastUpdatedTime = '14/08/2023' %}
+{% set resouceCardList = [
+    {
+        contentTag: 'Resource',
+        date: '22 Aug 2022',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        PDFsize: '1mb',
+        ctaText: 'View the PDF',
+        resourceType: 'pdf card',
+        link: '#'
+    }, {
+        contentTag: 'Resource',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        ctaText: 'Find out more',
+        resourceType: 'text card',
+        SchemeTag: 'Capacity Investment Scheme',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Jun 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        SchemeTag: 'NSW Energy Infrastructure Roadmap',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#'
+    }
+] %}
+{% set imageCTAbanner = {
+    title: 'This is Tender funded by the Commonwealth under the Capacity Investment Scheme',
+    richText: '
+        <p>The Capacity Investment Scheme is the national framework needed to drive new renewable dispatchable capacity and ensure reliability in Australia’s rapidly changing energy market over the next decade and beyond. By accelerating new investment, this scheme will encourage the ideal mix of storage and renewable technologies needed in the system over the coming decade.</p>
+    ',
+    CTA: {
+        text: 'Some button text',
+        link: '#'
+    },
+    image: {
+        src: '/static/img/SchemeLogo/aus-gov-logo.svg',
+        title: 'Australia Gov Logo'
+    }
+} %}
+
+
+{% extends "TabbedLayout_One-TwoColumn.nunjucks" %}
+
+{% block page_banner %}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+
+{% block above_tabs_content %}
+    {{TenderTimeline.render('tender-details-page', [
+        {
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '23 Mar 2023',
+            title: 'Project Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        }
+    ])}}
+{% endblock %}
+
+{# Page Tab 1 content -- Two columns  #}
+{# left(main) column #}
+{% block structure_content_main_panel1 %}
+
+    {{Timeline.render('tender-details-page', [
+        {
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '23 Mar 2023',
+            title: 'Project Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        }
+    ])}}
+
+    {{ImageCTAbanner.render(imageCTAbanner)}}
+
+    {{RichText.render(
+        '
+            <h4>About this tender</h4>
+            <p>AEMO Services, acting as the NSW Consumer Trustee, has been directed to conduct a competitive tender for long-term energy services agreements for firming infrastructure. AEMO Services will open Tender Round 2 Firming Infrastructure on April 3, proponents will be able to register and submit Project Bids in the online portal accessed via our website.</p>
+            <ul>
+                <li>List item #1</li>
+                <li>List item #2</li>
+                <li>List item #3</li>
+            </ul>
+        '
+    )}}
+
+    {% include "../templates/components/CTAbanner/index.nunjucks" %}
+
+    {{RichText.render(
+        '
+            <h5>Ready to prepare or submit your bid?</h5>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Content Goes Here</td>
+                            <td style="width:400px;">This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+                            <td >Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                        </tr>
+                        <tr>
+                            <td>Content Goes Here</td>
+                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                        </tr>
+                        <tr>
+                            <td>Content Goes Here</td>
+                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4>About this tender</h4>
+            <p>AEMO Services, acting as the NSW Consumer Trustee, has been directed to conduct a competitive tender for long-term energy services agreements for firming infrastructure. AEMO Services will open Tender Round 2 Firming Infrastructure on April 3, proponents will be able to register and submit Project Bids in the online portal accessed via our website.</p>
+        '
+    )}}
+
+    {{ResourceCards.render(resouceCardList)}}
+{% endblock %}
+{# right column #}
+{% block structure_content_right_panel1 %}
+    {{RichText.render(
+        '
+            <h5>Ready to prepare or submit your bid?</h5>
+            <p>AEMO Services, acting as the NSW Consumer Trustee, has been directed to conduct a competitive tender for long-term energy services agreements for firming infrastructure. AEMO Services will open Tender Round 2 Firming Infrastructure on April 3, proponents will be able to register and submit Project Bids in the online portal accessed via our website.</p>
+        '
+    )}}
+    {{Button.render(btnText='Log in to the portal', btnType='a', btnLink='', btnIcon='arrow')}}
+    <div class="spacing-l"></div>
+
+    {{RichText.render(
+        '
+            <p>Find additional guidance for the process</p>
+        '
+    )}}
+    {{Button.render(btnText='SUPPORT AND RESOURCES', btnType='a', btnLink='', btnIcon='arrow', btnClass='text-primary')}}
+{% endblock %}
+
+{# =========================================== #}
+{# Page Tab 2 content -- One column  #}
+
+{% block tab_content_panel2 %}
+
+    {{Timeline.render('tender-details-page', [
+        {
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'upcoming',
+            isPastDate: 'is-past',
+            date: '14 Mar 2023',
+            title: 'Commencement date'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '23 Mar 2023',
+            title: 'Project Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'open',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '16 Apr 2023',
+            title: 'Financial Value Bid'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        },{
+            statusClass: 'closed',
+            isPastDate: '',
+            date: '17 May 2023',
+            title: 'Award announcement'
+        }
+    ])}}
+
+    {{ImageCTAbanner.render(imageCTAbanner)}}
+    {% include "../templates/components/CTAbanner/index.nunjucks" %}
+    {{FeaturePanel.render({
+        themeColor: '',
+        featurePanelList: [
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+    {{ResourceCards.render(resouceCardList)}}
+{% endblock %}
+

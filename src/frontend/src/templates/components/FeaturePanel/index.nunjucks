@@ -1,0 +1,19 @@
+
+{# set themeColor = 'dark' to make component dark version  #}
+{# {{FeaturePanel.featurePanelList.length}} #}
+{% macro render(FeaturePanel) %}
+<div class="FeaturePanel content-wrapper {{FeaturePanel.themeColor}}" data-item-num="{{FeaturePanel.featurePanelList.length}}">
+    <div class="grid-container">
+        <div class="FeaturePanel-inner">
+            <div class="FeaturePanel-slide">
+            {% for item in FeaturePanel.featurePanelList %}
+                <div class="FeatureTile">
+                    <span class="icon icon-tick"></span>
+                    <p class="description">{{item}}</p>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}

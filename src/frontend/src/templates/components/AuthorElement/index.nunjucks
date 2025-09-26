@@ -1,0 +1,9 @@
+<div class="AuthorCard">
+
+        <div class="author-image" style="background-image: url(/static/img/StaffListing/Paul_Moy.png)"></div>
+        <div class="text-wrapper">
+            <h6 class="author">Dr Paul Moy</h6>
+            <p class="author-title">AEMO Services Chair</p>
+        </div>     
+
+</div>

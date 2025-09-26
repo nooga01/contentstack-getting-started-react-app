@@ -1,0 +1,67 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/FeatureInfoCard/index.nunjucks" as FeatureInfoCard %}
+
+{% set pageTitle = 'Feature Info Cards' %}
+{% set banner = {
+    bannerClass: 'banner-single-line-text',
+    title: 'Feature Info Cards'
+} %}
+
+
+{% extends "layout.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+{% block content %}
+    {# resource section template #}
+    <div class="FeatureInfoCards">
+        <div class="grid-container">
+            <h2 class="section-title">How to - Guides and Data</h2>
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {{ FeatureInfoCard.render({
+                    title: 'How to grow within your career ',
+                    contentTag: 'Guide',
+                    descriptionRichText: '<ul><li>A guide on how to grow within your career at AEMO services.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>',
+                    imageSrc: '/static/img/what-to-do-1.jpg',
+                    linkUrl: 'https://www.google.com',                    
+                    btnText: 'Learn more'
+                }) }}
+                {{ FeatureInfoCard.render({
+                    title: 'Career growth opportunities at AEMO Services',
+                    contentTag: 'Data',
+                    descriptionRichText: '<ul><li>Information anf infographics representing career pathways and growth within AEMO services.</li></ul>',
+                    imageSrc: '/static/img/productpage-img.jpg',
+                    linkUrl: 'https://www.google.com',       
+                    btnText: 'View more'
+                }) }}                                
+                {{ FeatureInfoCard.render({
+                    title: 'Item title for a blogpost related to working at AEMO Services',
+                    contentTag: 'Blog',
+                    descriptionRichText: '<ul><li>Brief introductory text about the post lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>',
+                    imageSrc: '',
+                    linkUrl: 'https://www.google.com',       
+                    btnText: 'Read more'
+                }) }}
+                {{ FeatureInfoCard.render({
+                    title: 'Item title for a guide related to working at AEMO Services',
+                    contentTag: '',
+                    descriptionRichText: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis pulvinar sapien. Etiam condimentum sit amet diam in iaculis. Ut interdum augue ac justo iaculis malesuada.</p><ul><li>Brief introductory text about the post lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>',
+                    imageSrc: '',
+                    linkUrl: 'https://www.google.com',       
+                    btnText: 'Read more'
+                }) }} 
+                {{ FeatureInfoCard.render({
+                    title: 'CIS Card How to grow within your career ',
+                    contentTag: 'Guide',
+                    descriptionRichText: '<ul><li>A guide on how to grow within your career at AEMO services.</li><li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li></ul>',
+                    imageSrc: '/static/img/what-to-do-1.jpg',
+                    linkUrl: 'https://www.google.com',                    
+                    btnText: 'Learn more',
+                    SchemeTag: 'Capacity Investment Scheme'
+                }) }}                                                                              
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

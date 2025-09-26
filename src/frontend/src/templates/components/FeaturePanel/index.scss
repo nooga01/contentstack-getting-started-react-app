@@ -1,0 +1,58 @@
+.FeaturePanel {
+    background-color: brand-color(aemo-light-grey);
+    color: brand-color(aemo-text-grey);
+    &.dark {
+        background-color: brand-color(aemo-darkest-blackblue);
+        color: #fff;
+        .FeatureTile {
+            border-left: 1px solid brand-color(primary);
+            #wrapper.CIS & {
+                border-left: 1px solid brand-color(CIS-highlight-green);
+            }
+        }
+        .FeaturePanel-slide {
+            &.slick-slider {
+                // position: relative;
+                // .slick-list {
+                //     position: absolute;
+                //     left: -32px;
+                // }
+                .slick-arrow {
+                    border: 1px solid #fff;
+                    color: #fff;
+                    &.slick-disabled {
+                        border-color: brand-color(aemo-dark-grey);
+                        color: brand-color(aemo-dark-grey);
+                    }
+                }
+            }
+        }
+        #wrapper.CIS & {
+            background-color: brand-color(CIS-dark-green);
+        }
+    }
+    .FeatureTile {
+        border-left: 1px solid brand-color(aemo-mid-grey);
+        padding-left: map-get($map: $spacing, $key: small2);
+        color: inherit;
+        .icon {
+            color: #000;
+            background-color: brand-color(primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: map-get($map: $spacing, $key: xxsmall);
+            #wrapper.CIS & {
+                color: brand-color(CIS-dark-green);
+                background-color: brand-color(CIS-highlight-green);
+            }
+        }
+        .description {
+            margin-bottom: 0;
+            color: inherit;
+        }
+    }
+}

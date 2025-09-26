@@ -1,0 +1,18 @@
+$layers: (
+    main-content: 10,
+    back-to-top: 11,
+    navigation-blocker: 20,
+    alert: 30,
+    header: 40,
+    blocker: 59,
+    side-panel: 60,
+    video-modal: 70
+);
+
+@function layer($name) {
+    @if map-has-key($layers, $name) {
+      @return map-get($layers, $name);  
+    }
+    @warn "The key #{$name} is not in the map ’$layers’";
+    @return null;
+};

@@ -1,0 +1,52 @@
+{% macro render(menulist) %}
+
+    <ul>
+        {% for item in menulist %}
+            <li>
+                {# if PrimaryNav DOES have submenu #}
+                {% if item.submenuList.length %}
+                    {# We need to keep <button>...</button>(for mobile) and <a>...</a>(for desktop) #}
+                    {# Mobile Primary Nav Button #}
+                    <button class="show-for-small-only primary-nav-item" aria-label="Toggle {{item.primaryNav}} Sub Menu" type="button">
+                        <span class="primary-nav-item-title">{{item.primaryNav}}</span>
+                        {% if item.submenuList.length %}
+                            <span class="icon icon-chevron"></span>
+                        {% endif %}
+                    </button>
+
+                    {# Desktop Primary Nav Link Button #}
+                    <a href="{{item.primaryNavLink}}" class="show-for-medium primary-nav-item">
+                        <span class="primary-nav-item-title">{{item.primaryNav}}</span>
+                        {% if item.submenuList.length %}
+                            <span class="icon icon-chevron"></span>
+                        {% endif %}
+                    </a>
+                {% else %}
+                    {# if PrimaryNav DOES NOT have submenu #}
+                    <a class="primary-nav-item" href="{{item.primaryNavLink}}">
+                        <span class="primary-nav-item-title">{{item.primaryNav}}</span>
+                    </a>
+                {% endif %}
+
+                {% if item.submenuList.length %}
+                    <div class="SubMenu">
+                        <ul>
+                            {# Primary Nav #}
+                            <li class="primary-nav-link">
+                                <a href="{{item.primaryNavLink}}">{{item.primaryNav}}</a>
+                            </li>
+                            {# Sub Menu list #}
+                            {% for submenu in item.submenuList %}
+                                <li>
+                                    <a href="{{submenu.link}}">{{submenu.text}}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+    </ul>
+
+{% endmacro %}

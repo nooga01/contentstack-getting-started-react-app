@@ -1,0 +1,24 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+{% macro render(imageCTAbanner) %}
+<div class="ImageCTAbanner grid-container no-padding-if-inside-grid-container">
+    <div class="ImageCTAbanner-inner">
+        <div class="image-wrap">
+            <img src="{{imageCTAbanner.image.src}}" alt="{{imageCTAbanner.image.title}}">
+        </div>
+
+        <div class="text-wrap">
+        
+            <h5>{{imageCTAbanner.title}}</h5>
+            
+            {{RichText.render(imageCTAbanner.richText)}}
+
+            <div class="btn-wrap">
+                {{Button.render(btnText = imageCTAbanner.CTA.text, btnClass = '', btnLink=imageCTAbanner.CTA.link, btnIcon = 'arrow', btnElem = 'a')}}
+            </div>
+        
+        </div>
+    </div>
+</div>
+{% endmacro %}

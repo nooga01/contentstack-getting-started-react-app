@@ -1,0 +1,18 @@
+<div class="header">
+    <div class="logo-menu">
+        <a href="/">
+            <img src="https://images.contentstack.io/v3/assets/blt18fcc602e3a0f02c/blt2f6bd4d4c18db93d/6807460c76159a99c314022b/Header_Logo.png" alt="Logo">
+        </a>
+    </div>
+    <nav class="nav">
+        <a class="" href="/">Home</a>
+        <a class="" href="/menu">Menu</a>
+        <a class="" href="/about-us">About us</a>
+        <a class="" href="/contact-us">Contact</a>
+    </nav>
+    <div class="menu-toggle">
+        <div class"icon-bar"></div>
+        <div class="icon-bar"></div>
+        <div class="icon-bar"></div>
+    </div>
+</div>

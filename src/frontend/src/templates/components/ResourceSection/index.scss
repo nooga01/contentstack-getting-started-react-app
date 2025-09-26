@@ -1,0 +1,29 @@
+.ResourceSection {
+    padding-top: map-get($map: $spacing, $key: xxxlarge);
+    @include breakpoint(medium down) {
+        padding-top: map-get($map: $spacing, $key: large);
+    }
+    .section-title-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 48px;
+        @include breakpoint(medium down) {
+            flex-direction: column;
+            gap: map-get($map: $spacing, $key: small2);
+            align-items: flex-start;
+            margin-bottom: map-get($map: $spacing, $key: medium);
+        }
+        .section-title {
+            margin-bottom: 0;
+            @include breakpoint(medium down) {
+                line-height: 44px;
+            }
+        }
+    }
+    .ResourceSection-slide {
+        .slick-track {
+            padding: 10px 0;    // for card dropshadow
+        }
+    }
+}

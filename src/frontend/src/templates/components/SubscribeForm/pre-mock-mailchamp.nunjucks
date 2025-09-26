@@ -1,0 +1,40 @@
+<div class="mailchimp-form-container">
+
+    {# mock standard Mailchimp form's html for styling #}
+    {# the form need to be configured by client #}
+    {# then either replace the below code #}
+    {# or using iframe #}
+
+    <!-- Begin Mailchimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup {
+            background: #fff;
+            clear: left;
+            font: 14px Helvetica,Arial,sans-serif;
+        }
+        /*  Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+	                We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+        <form action="https://your-mailchimp-list-url.us1.list-manage.com/subscribe/post?u=your-mailchimp-unique-id&amp;id=[your-mailchimp-list-id]" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+            <div id="mc_embed_signup_scroll">
+                <div class="mc-field-group">
+                    <input type="text" value="" name="FNAME" class="required" id="mce-FNAME" placeholder="Your first name">
+                </div>
+                <div class="mc-field-group">
+                    <input type="text" value="" name="LNAME" class="required" id="mce-LNAME" placeholder="Your last name">
+                </div>
+                <div class="mc-field-group">
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Your email address">
+                </div>
+                <div class="mc-field-group">
+                    <input type="text" value="" name="ORG" class="" id="mce-ORG" placeholder="Your organization">
+                </div>
+                <div class="clear"><input type="submit" value="Sign up to our newsletter" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+    </div>
+    <!--End mc_embed_signup-->
+
+</div>

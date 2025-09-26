@@ -1,0 +1,19 @@
+<!-- START : Alert Component //-->
+<!--
+    Optional CSS Classes: 'orange-bg', 'purple-bg'
+    - data-refid: Is the ID from the alert from the backend.
+    - Icon is optional, and provided by client as an image
+//-->
+<div id="alert" class="purple-bg" data-refid="refid-1111" role="alert">
+    <div class="grid-container inner">        
+        <span class="icon-alert" style="background-image: url(/static/img/alert_triangle_icon.svg)"></span>
+        <div class="text-wrapper">
+            <p><b style="text-transform: uppercase">Head up! </b><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, augue ut suscipit dapibus, sapien dui porta lorem.</a></p>
+        </div>
+        <button type="button" class="btn-close" aria-label="Dismiss">
+            <span class="btn-close-txt">Close</span>
+            <span class="icon icon-close"></span>
+        </button>        
+    </div>
+</div>
+<!-- END : Alert Component //-->

@@ -1,0 +1,35 @@
+<div class="ContactForm content-wrapper">
+    <div class="grid-container">
+        <div class="ContactForm-inner">
+            <h1 class="section-title">Contact Us</h1>
+
+            <div class="form-container">
+
+                <form action="" method="post">
+
+                        <div class="form-field-wrapper form-field-type-SingleLineText">
+                            <input type="text" value="" name="FNAME" class="required" id="FNAME" placeholder="Your first name">
+                        </div>
+                        <div class="form-field-wrapper form-field-type-SingleLineText">
+                            <input type="text" value="" name="LNAME" class="required" id="LNAME" placeholder="Your last name">
+                        </div>
+                        <div class="form-field-wrapper form-field-type-Email">
+                            <input type="email" value="" name="EMAIL" class="required email" id="EMAIL" placeholder="Your email address">
+                        </div>
+                        <div class="form-field-wrapper form-field-type-SingleLineText">
+                            <input type="text" value="" name="ORG" class="" id="ORG" placeholder="Your organization">
+                        </div>
+                        <div class="form-field-wrapper form-field-type-MultipleLineText">
+                            <textarea value="" name="MES" class="" id="MES" placeholder="Write a message" rows="5" maxlength="512"></textarea>
+                        </div>
+                        <div class="form-button-wrapper">
+                            <input type="submit" value="Send your enquiry" name="submit" class="button">
+                        </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>

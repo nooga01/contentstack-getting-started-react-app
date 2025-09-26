@@ -1,0 +1,270 @@
+// Homepage banner
+body.home-page {
+    .HeroBanner {
+        background: url("../static/img/ASL_Pattern_Header3.svg") no-repeat;
+        background-color: brand-color(primary);
+        background-size: 130%;
+        background-blend-mode: soft-light;
+        background-position: 40% 60%;
+        @include breakpoint(medium down) {
+            background-position: initial;
+        }
+
+        padding-top: map-get($spacing, "xlarge");
+        @include breakpoint(medium down) {
+            padding-top: map-get($spacing, "medium");
+        }
+        .Headings-inner {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1000px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .title {
+                color: brand-color(primary-dark);
+                margin-bottom: map-get($spacing, "medium");
+            }
+            .summary {
+                @include headingMedium("regular");
+                @include breakpoint(medium down) {
+                    @include headingSmall("regular");
+                }
+                // max-width: 784px;
+                margin-bottom: map-get($spacing, "medium");
+            }
+        }
+    }
+}
+
+// Other page banners
+.HeroBanner {
+    position: relative;
+    isolation: isolate;
+    background-repeat: no-repeat;
+    background-color: brand-color(aemo-darkest-blue);
+    #wrapper.CIS & {
+        background-color: brand-color(CIS-green);
+    }
+
+    .HeroBanner-wrapper {
+        position: relative;
+        z-index: 1;
+
+        .HeroBanner-content {
+            padding-top: 64px;
+            padding-bottom: 64px;
+            @include breakpoint(medium) {
+                min-height: 576px;
+            }
+
+            .Headings {
+                .Headings-inner {
+                    color: #fff;
+
+                    .title {
+                        color: brand-color(primary);
+                        #wrapper.CIS & {
+                            color: #fff;
+                        }
+                    }
+                    .summary {
+                        @include textLarge;
+                    }
+                    ul {
+                        @include unlist();
+                        @include textMedium;
+                        @include breakpoint(medium) {
+                            @include textLarge;
+                        }
+
+                        .icon {
+                            font-size: 8px;
+                            padding: 6px;
+                            margin-right: 5px;
+                            color: brand-color(primary);
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            // vertical-align: text-bottom;
+                            #wrapper.CIS & {
+                                color: brand-color(CIS-highlight-green);
+                            }
+                        }
+                        li {
+                            margin-bottom: 1rem;
+                            display: flex;
+                            align-items: flex-start;
+                        }
+                    }
+                }
+                .inner-wrapper {
+                    padding-top: 32px;
+                    &:first-child {
+                        @include breakpoint(small only) {
+                            padding-top: 0;
+                        }
+                    }
+                    @include breakpoint(medium) {
+                        padding-top: 40px;
+                    }
+                }
+            }
+        }
+
+        .HeroBanner-image {
+        }
+    }
+
+    // ==== background patten applying place ===
+    &.banner-with-image {
+        .HeroBanner-wrapper {
+            padding-bottom: 0;
+            .Headings-inner {
+                .title {
+                    @extend .h2;
+                    @include breakpoint(small down) {
+                        font-size: 36px;
+                    }
+                }
+            }
+            .HeroBanner-image {
+                background-color: brand-color(aemo-darkest-blue);
+                width: 100%;
+                height: auto;
+                img {
+                    object-fit: contain;
+                }
+            }
+
+            @include breakpoint(medium) {
+                .Headings-inner {
+                    width: var(--grid-container-internal-elem-65perc-of-outer);
+                    padding-right: 88px;
+                }
+                .HeroBanner-image {
+                    position: absolute;
+                    width: unset;
+                    height: unset;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: calc(var(--grid-container-left-of-outer) + var(--grid-container-outer-width) * .65);
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+    &.tender-page {
+        background-image: url("../static/img/ASL_Pattern_Header.svg");
+        background-size: 2000px;
+        background-position: 20% 20%; //center;
+
+        .HeroBanner-image {
+            display: none; // double confirm not display the image
+        }
+        .HeroBanner-content {
+            min-height: auto;
+            .Headings-inner {
+                .title {
+                    @extend .h2;
+                    @include breakpoint(small only) {
+                        font-size: 36px; // to replace default responsive h2 font size in foundation-settings
+                    }
+                    margin-bottom: 24px;
+                }
+                .subtitle {
+                    @include headingLarge("regular");
+                    margin-bottom: 0;
+                }
+                .TenderCTA {
+                    // dark mode
+                    background-color: brand-color(aemo-darkest-blue);
+                    border: 1px solid #fff;
+                    margin-bottom: 24px;
+                    .tender-cta-text {
+                        color: #fff;
+                        &:after {
+                            background-color: transparent;
+                        }
+                    }
+
+                    #wrapper.CIS & {
+                        background-color: brand-color(CIS-green);
+                    }
+                }
+            }
+        }
+    }
+    &.banner-no-image {
+        @include breakpoint(medium) {
+            background-image: url("../static/img/ASL_Pattern_Header2.svg");
+            background-size: 2400px;
+            background-position: 15% 50%;
+        }
+        @include breakpoint(xxlarge) {
+            background-size: cover;
+        }
+
+        .HeroBanner-image {
+            display: none; // double confirm not display the image
+        }
+        .HeroBanner-content {
+            @include breakpoint(medium) {
+                min-height: 536px;
+            }
+            .title {
+                @include breakpoint(large) {
+                    line-height: 1;
+                }
+            }
+        }
+    }
+    &.banner-single-line-text {
+        background-image: url("../static/img/ASL_Pattern_Header.svg");
+        background-size: 2000px;
+        background-position: 20% 20%; //center;
+        .HeroBanner-content {
+            @include breakpoint(medium) {
+                min-height: 404px;
+            }
+        }
+    }
+
+    // ==== CIS (green color) background pattern ====
+    &.tender-page,
+    &.banner-no-image,
+    &.banner-single-line-text {
+        #wrapper.CIS & {
+            @include breakpoint(medium) {
+                background-image: url("../static/img/ASL_Pattern_Header02_Green.svg");
+                background-size: 2400px;
+                background-position: 40% 40%;
+            }
+            @include breakpoint(large) {
+                background-size: 160%;
+                background-position: 40% 50%;
+            }
+            .HeroBanner-wrapper {
+                @include breakpoint(medium) {
+                    height: 410px;
+                }
+            }
+        }
+    }
+    &.banner-no-image {
+        #wrapper.CIS & {
+            .HeroBanner-wrapper {
+                @include breakpoint(medium) {
+                    height: 536px; // for multiple line text
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+{% set tagTabs = [
+    { tagTxt: 'For consumers', tabVal: 'consumers', id: '2' }, 
+    { tagTxt: 'For organisations', tabVal: 'organisations', id: '3' }, 
+    { tagTxt: 'For investors', tabVal: 'investors', id: '4' },
+    { tagTxt: 'For government', tabVal: 'government', id: '5' }
+]%}
+
+{# {% macro render(tagTabs) %} #}
+
+<div class="TagTabs">
+    {# Tag tab #}
+    <div class="tag-tab" tabindex=0>
+        <input type="radio" id="1" name="resource_category" value="all" checked>
+        <label for="1">All resources</label>
+    </div>
+    {% for item in tagTabs %}
+    <div class="tag-tab" tabindex=0>
+        <input type="radio" id="{{item.id}}" name="resource_category" value="{{item.tabVal}}">
+        <label for="{{item.id}}">{{item.tagTxt}}</label>
+    </div>
+    {% endfor %}
+</div>
+
+{# {% endmacro %} #}

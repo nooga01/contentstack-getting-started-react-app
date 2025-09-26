@@ -1,0 +1,20 @@
+{# 
+Bare minimum needed for a SidePanel
+- id
+- SidePanel-Content 
+
+<div id="XXXXXXXX" class="SidePanel" role="dialog" aria-hidden="true">
+    <div class="SidePanel-Blocker"></div>
+    <div class="SidePanel-Container">
+        <div class="SidePanel-Header">
+            <button class="btn-close icon icon-close" aria-label="Close XXXXXX"></button>
+        </div>
+        <div class="SidePanel-Content">
+            <!-- START CONTENT -->
+            
+            <!-- END CONTENT  -->
+        </div>
+    </div>
+</div>
+
+#}

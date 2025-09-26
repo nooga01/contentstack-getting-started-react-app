@@ -1,0 +1,69 @@
+.page-wrapper {
+    &.one-column {
+        display: block;
+        // @extend .content-wrapper;
+        // @extend .smaller-padding;
+    }
+    &.two-column {
+        display: flex;
+        flex-direction: column;
+        @include breakpoint(medium) {
+            flex-direction: row;
+        }
+
+        .left-column-content {
+            flex-shrink: 0;
+            @include breakpoint(medium) {
+                width: 65%;
+            }
+            @include breakpoint($grid-container-max-width) {
+                margin-left: var(--grid-container-left-of-outer);
+                width: calc((var(--grid-container-outer-width) * 0.65));
+            }
+            .inner {
+                padding-left: var(--grid-container-padding-single-side);
+                padding-right: var(--grid-container-padding-single-side);
+            }
+        }
+
+        .right-column-content {
+            flex-grow: 1;
+            position: relative;
+            background: brand-color(aemo-light-grey);
+            .inner {
+                padding-left: var(--grid-container-padding-single-side);
+                padding-right: var(--grid-container-padding-single-side);
+                @include breakpoint($grid-container-max-width) {
+                    width: calc((var(--grid-container-outer-width) * 0.35));
+                }
+                .LastUpdateTime {
+                    margin-top: map-get($map: $spacing, $key: medium);
+                    @include breakpoint(medium){
+                        position: absolute;
+                        bottom: 0;
+                    }
+                }
+            }
+        }        
+    }
+
+    .inner {
+        height: 100%;
+        > :first-child {
+            margin-top: 0;
+        }
+        .rte-content {
+            .grid-container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+.tabs-title-wrapper {
+    border-bottom: 1px solid brand-color(aemo-mid-grey);
+    .tabs {
+        padding: 0;
+    }
+}

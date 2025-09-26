@@ -1,0 +1,119 @@
+#SideMenu,
+footer {
+    nav {
+        > ul {
+            display: flex;
+            flex-direction: column;
+            margin-top: 25px;
+
+            > li {
+                width: 100%;
+                &:not(:last-child) {
+                    border-bottom: 1px solid rgba(brand-color(primary), 0.5);
+                }
+                .primary-nav-item {
+                    padding: 16px 0;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0px 18px 0px 0;
+                    width: 100%;
+                    .primary-nav-item-title {
+                        color: #fff;
+                        flex: 1;
+                        text-align: left;
+                        padding: 20px 2px 16px 0;
+                        @include textLargeBoldUpper;
+                        // @include linkHoverEffect();
+                    }
+                    &[aria-expanded="true"] {
+                        .icon {
+                            transform: rotate(180deg);
+                        }
+                    }
+                    &[aria-expanded="false"] {
+                        .icon {
+                            transform: rotate(0deg);
+                        }
+                    }
+                    .icon {
+                        color: #fff;
+                        position: relative;
+                        width: 8px;
+                        display: flex;
+                        align-items: center;
+                        height: 50px;
+                        font-size: 8px;
+                        transition: var(--timing) ease-in-out;
+                        &::before {
+                            position: absolute;
+                            right: 0;
+                            top: auto;
+                        }
+                    }
+                }
+                .SubMenu {
+                    display: none;
+                    &.open {
+                        display: block;
+                    }
+                    margin: 8px 0 16px;
+                    ul {
+                        li {
+                            padding: 6px 0;
+                            width: 100%;
+                            a {
+                                display: block;
+                                width: 100%;
+                                color: brand-color(primary);
+                                @include textLargeBold;
+                                @include breakpoint(small only) {
+                                    &:hover {
+                                        text-decoration: underline;
+                                        text-underline-offset: 3px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#SideMenu {
+    nav {
+        > ul {
+            > li {
+                .primary-nav-item {
+                    .primary-nav-item-title {
+                        @include textMediumBold();
+                    }
+                }
+                .SubMenu {
+                    ul {
+                        li {
+                            a {
+                                @include textMedium();
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+footer .MainNavigations {
+    nav {
+        .SubMenu {
+            ul {
+                .primary-nav-link {
+                    @include hide-for(medium);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+.InfoPanels {
+    padding: 40px 0px 0px;
+
+    // variables to control children elements.
+    --maxColsToShow: 1;
+    --itemMaxWidth: 581px;
+    --itemTitleHeight: 60px;
+    --itemTitleFontSize: 20px;
+    --itemContentPadding: 20px; 
+    --titleBackgroundColor: #{brand-color(aemo-darkest-blue)};
+
+    @media (min-width: 801px) and (max-width: 1200px) {
+        --itemContentPadding: 30px;
+        --itemTitleHeight: 65px;
+        --itemTitleFontSize: 22px;
+        --maxColsToShow: 2;
+    }
+    @media (min-width: 1201px) {
+        --itemContentPadding: 30px;
+        --itemTitleHeight: 70px;
+        --itemTitleFontSize: 25px;
+        --maxColsToShow: 3;
+    }   
+
+    &[data-num-items='1'] {
+        --gridJustifyItems: start;
+        --num-items: 1;
+    }
+    &[data-num-items='2'] {
+        --gridJustifyItems: center;
+        --num-items: 2;
+    }
+    &[data-num-items='3'] {
+        --gridJustifyItems: center;
+        --num-items: 3;
+    }
+
+    .InfoPanelsItems {
+        padding: 28px 0px;
+
+        > .grid-container {
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(min(var(--num-items), var(--maxColsToShow)), 1fr);
+            justify-items: var(--gridJustifyItems);
+        }
+    }
+
+    .InfoPanelItem {
+        width: 100%;
+        max-width: var(--itemMaxWidth);        
+        display: flex;
+        flex-direction: column;
+
+        .InfoPanelItem-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            line-height: 1;
+            border-radius: 100px;
+            color: #fff;
+            background-color: var(--titleBackgroundColor);
+            margin-bottom: 40px;
+
+            height: var(--itemTitleHeight);
+            font-size: var(--itemTitleFontSize);
+
+            img {
+                width: 42px;
+                height: 42px;
+            }
+            span {
+                margin-top: 4px;
+            }
+        }
+        .InfoPanelItem-content {
+            margin: 0px auto;
+            padding: 0 var(--itemContentPadding);
+        }
+    }
+
+    #wrapper.CIS & {
+        --titleBackgroundColor: #{brand-color(CIS-dark-green)};
+    }
+}
+

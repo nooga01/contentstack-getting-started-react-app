@@ -1,0 +1,88 @@
+.TabsContent-container {
+    .tabs {
+        @include unlist();
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: map-get($map: $spacing, $key: small);
+
+        body.home-page & {
+            justify-content: center;
+        }
+        @include breakpoint(medium down) {
+            justify-content: flex-start;
+            overflow-x: scroll;
+            padding: 0 24px;
+        }
+        @include breakpoint(small down) {
+            padding: 0 16px;
+        }
+        .tabs-title {
+            height: 66px;
+            @include breakpoint(large) {
+                height: 88px;
+            }
+            position: relative;
+            &.is-active {
+                &::after {
+                    content: "";
+                    height: 4px;
+                    width: 100%;
+                    background-color: brand-color(primary);
+                    position: absolute;
+                    bottom: 0px; //-8px;
+                    left: 0;
+
+                    #wrapper.CIS & {
+                        background-color: brand-color(CIS-green);
+                    }
+                }
+            }
+            a,
+            button,
+            .tabs-btn {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding-bottom: 2px;
+                cursor: pointer;
+                white-space: nowrap;
+                @include breakpoint(large) {
+                    font-size: 18px;
+                }
+            }
+            button,
+            .tabs-btn {
+                color: brand-color(body) !important;
+            }
+        }
+    }
+    .tabs-content {
+        overflow-x: hidden;
+        .tabs-panel {
+            display: none;
+            animation: fadeOut 1s ease-in-out;
+            &.is-active {
+                display: block;
+				height: auto;
+                animation: fadeIn 1s ease-in-out;
+            }
+        }
+    }
+
+    // For page template tabs
+    .tabs-title-wrapper {
+        @include breakpoint(small only) {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        @media screen and (min-width: 768px) {
+            width: 100%;
+            overflow: hidden;
+        }
+        .tabs {
+            padding: 0;
+            overflow: unset;
+        }
+    }
+}

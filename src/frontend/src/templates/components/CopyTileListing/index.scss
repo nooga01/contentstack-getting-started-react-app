@@ -1,0 +1,45 @@
+.CopyTileListing {
+    background-color: brand-color(aemo-light-grey);
+    // > .grid-container {
+    //     .page-wrapper.two-column & {
+    //         padding-left: 0;
+    //         padding-right: 0;
+    //     }
+    // }
+
+    .section-title {
+        color: brand-color(body) !important;
+        @media screen and (min-width: 1024px) {
+            margin-bottom: 56px;
+        }
+        @include breakpoint(large) {
+            font-size: 40px;
+        }
+    }
+    .title {
+        color: brand-color(body);
+        margin-bottom: 24px;
+        @extend .text-large-bold;
+        @include breakpoint(large) {
+            font-size: 20px;
+        }
+    }
+    .CopyTile {
+        padding-left: 24px;
+        padding-right: 16px;
+        border-left: 1px solid brand-color(aemo-dark-grey);
+        margin-bottom: 40px;
+        .desciption-wrapper {
+            :last-child {
+                margin-bottom: 0;
+            }
+            .rte-content {
+                > div {
+                    :last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,115 @@
+@import "../SideMenu/accordion-nav.scss";
+
+.SidePanel {
+    z-index: layer(side-panel);
+    isolation: isolate;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    .SidePanel-Blocker {
+        --visibilityDelay: var(--timing);
+
+        display: block;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+        height: 100vh;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--timing) ease-in-out, visibility 0s linear var(--visibilityDelay);
+    }
+
+    .SidePanel-Container {
+        transition: right var(--timing) ease-in-out;
+        background: brand-color(aemo-darkest-blue);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0px;
+        height: 100vh;
+        right: calc(0px - var(--sidePanelWidth));
+        width: var(--sidePanelWidth);
+
+        .SidePanel-Header {
+            height: 80px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            background: brand-color(aemo-darkest-blue);
+            color: #fff;
+            padding: 0px var(--sidePanel-ContentPadding);
+
+            .SidePanel-Title {
+                text-transform: uppercase;
+                @include textMediumBoldUpper;
+            }
+
+            .btn-close {
+                transition: var(--timing) ease-in-out;
+                color: #fff;
+                font-size: 26px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                margin-left: auto;
+                border-radius: 50%;
+
+                cursor: pointer;
+                &:hover,
+                &:focus {
+                    color: brand-color(aemo-hover);
+                }                
+            }
+        }
+
+        .SidePanel-Content {
+            flex-grow: 1;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 0px var(--sidePanel-ContentPadding);
+        }
+
+        .SidePanel-Footer {
+            padding: var(--sidePanel-ContentPadding);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background: brand-color(aemo-darkest-blue);
+        }
+    }
+
+    &.open {
+        .SidePanel-Blocker {
+            --visibilityDelay: 0s;
+            opacity: 1;
+            visibility: visible;
+        }
+        .SidePanel-Container {
+            right: 0px;
+        }
+    }
+}
+
+.SidePanel::-webkit-scrollbar,
+.SidePanel-Content::-webkit-scrollbar {
+    width: 8px;
+}
+.SidePanel::-webkit-scrollbar-track,
+.SidePanel-Content::-webkit-scrollbar-track {
+    background: brand-color(aemo-darkest-blue);
+}
+.SidePanel::-webkit-scrollbar-thumb,
+.SidePanel-Content::-webkit-scrollbar-thumb {
+    background-color: brand-color(primary);
+    border-radius: 5px;
+}
+
+BODY.SidePanel-Open {
+    overflow-y: hidden;
+}

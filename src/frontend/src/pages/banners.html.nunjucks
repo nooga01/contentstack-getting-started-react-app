@@ -1,0 +1,96 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+
+{% extends "layout.nunjucks" %}
+{% set pageTitle = 'Banners' %}
+{% set bodyClass = 'one-column-page default-device' %}
+
+{% block page_banner%}
+
+    {{HeroBanner.render({
+        bannerClass: 'banner-single-line-text',
+        title: 'Banner single line text'
+    })}}
+
+    <p>&nbsp;</p>
+    {{HeroBanner.render({
+        bannerClass: 'tender-page',
+        title: 'Capacity Investment Scheme South Australia-Victoria',
+        subTitle: 'Firming Infrastructure',
+        tenderCTA: {
+            btnText: 'open',
+            statusClass: 'closed',
+            btnLink: '#'
+        }
+    })}}
+
+    <p>&nbsp;</p>
+    {{HeroBanner.render({
+        bannerClass: 'banner-no-image',
+        title: 'Banner no image'
+    })}}
+
+    <p>&nbsp;</p>
+    {{HeroBanner.render({
+        bannerClass: 'banner-no-image',
+        title: 'Upcoming Tenders',
+        featureTiles: [
+            {
+                categoryTitle: 'Subscribe',
+                title: 'Receive updates about upcoming tenders',
+                button: {
+                    btnText: 'SUBSCRIBE NOW',
+                    linkUrl: '#'
+                }
+            },
+            {
+                categoryTitle: 'Learn more',
+                title: 'Read2 about our plan for  future investment',
+                button: {
+                    btnText: 'READ THE IIO REPORT',
+                    linkUrl: '#'
+                },
+                scheme: "CIS"
+            },
+            {
+                categoryTitle: 'RESOURCES',
+                title: 'Find guidance for the tender process',
+                button: {
+                    btnText: 'SUPPORT AND RESOURCES',
+                    linkUrl: '#'
+                }
+            }
+        ]
+    })}}
+    <p>&nbsp;</p>
+    {{HeroBanner.render({
+        bannerClass: 'banner-with-image',
+        title: 'This is a test page hero banner title',
+        summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ",
+        list: [
+            "summary list",
+            "summary list",
+            "summary list"
+        ],
+        image:{
+            imageSrc: "/static/img/iStock-1284336798.jpg",
+            imageAlt: "Electricity Line"
+        }
+    })}}
+
+{% endblock %}
+
+{% block content %}
+
+    {{ RichText.render(
+        '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>
+            <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</strong>
+        </p>
+        <p>
+            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</em>
+            <em></em>
+        </p>
+       ', 
+       true, true, true) }}
+{% endblock %}

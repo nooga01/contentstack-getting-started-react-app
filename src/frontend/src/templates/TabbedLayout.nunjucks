@@ -1,0 +1,47 @@
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+    {% block above_tabs_content %}{% endblock %}
+    <div class="TabsContent-container">
+        {# Tab list #}
+        <div class="tabs-title-wrapper">
+            <div class="grid-container">
+                <ul class="tabs" data-tabs id="{{pageTabs.pageTabsID}}" aria-label="page tabs">
+                    <li class="tabs-title is-active">
+                        <button class="tabs-btn" data-tabs-target="panel1" aria-controls="panel1">{{pageTabs.pageTabTitle1}}</button>
+                    </li>
+                    <li class="tabs-title">
+                        <button class="tabs-btn" data-tabs-target="panel2" aria-controls="panel2">{{pageTabs.pageTabTitle2}}</button>
+                    </li>
+                    {% if pageTabs.pageTabTitle3 %}
+                        <li class="tabs-title">
+                            <button class="tabs-btn" data-tabs-target="panel3" aria-controls="panel3">{{pageTabs.pageTabTitle3}}</button>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {# Tab content #}
+        <div class="tabs-content" data-tabs-content="{{pageTabsID}}">
+            <div role="tabpanel" class="tabs-panel is-active" data-tabs-panel="panel1">
+                {# ContentColumnClass is either one-column or two-column #}
+                {# to control the page content layout #}
+                <div class="page-wrapper {{pageTabs.ContentColumnClass.panel1}}">
+                    {% block tab_content_panel1 %}{% endblock %}
+                </div>
+            </div>
+            <div role="tabpanel" class="tabs-panel" data-tabs-panel="panel2">
+                <div class="page-wrapper {{pageTabs.ContentColumnClass.panel2}}">
+                    {% block tab_content_panel2 %}{% endblock %}
+                </div>
+            </div>
+            {% if pageTabs.ContentColumnClass.panel3 %}
+                <div role="tabpanel" class="tabs-panel" data-tabs-panel="panel3">
+                    <div class="page-wrapper {{pageTabs.ContentColumnClass.panel3}}">
+                        {% block tab_content_panel3 %}{% endblock %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

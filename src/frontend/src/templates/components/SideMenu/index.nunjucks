@@ -1,0 +1,129 @@
+{% import '../Button/tender-cta.nunjucks' as TenderCTA %}
+{% import './accordion-nav.nunjucks' as AccordionNav %}
+
+{% set menulist = [
+    {
+        primaryNav: "About us",
+        primaryNavLink: "/about-us",
+        submenuList: [
+            {
+                text: "What we do",
+                link: ""
+            },
+            {
+                text: "Our role on the Roadmap",
+                link: ""
+            },
+            {
+                text: "Our vision on the IIO report",
+                link: ""
+            },
+            {
+                text: "Leadership team",
+                link: ""
+            }
+        ]
+    },
+    {
+        primaryNav: "Products",
+        primaryNavLink: "",
+        submenuList: [
+            {
+                text: "What we do",
+                link: ""
+            },
+            {
+                text: "Our role on the Roadmap",
+                link: ""
+            },
+            {
+                text: "Our vision on the IIO report",
+                link: ""
+            },
+            {
+                text: "Leadership team",
+                link: ""
+            }
+        ]
+    },
+    {
+        primaryNav: "Tenders",
+        primaryNavLink: "",
+        submenuList: [
+            {
+                text: "NSW Roadmap Tenders",
+                isHeading: true
+            },
+            {
+                text: "NSW Tender 1 - Generation and Long Duration Storage",
+                link: ""
+            },
+            {
+                text: "NSW Tender 2 - Firming Infrastructure",
+                link: ""
+            },
+            {
+                text: "NSW Tender 3 - Generation and Long Duration Storage",
+                link: ""
+            },
+            {
+                text: "NSW Tender 4 - Generation",
+                link: ""
+            },
+            {
+                text: "Capacity Investment Scheme(CIS) Tenders",
+                isHeading: true
+            },
+            {
+                text: "CIS South Australia-Victoria Tender",
+                link: ""
+            },
+            {
+                text: "CIS Tender 1 - NEM Generation",
+                link: ""
+            },
+            {
+                text: "CIS Tender 2 - WEM Dispatchable",
+                link: ""
+            },
+            {
+                text: "CIS Tender 3 - NEM Dispatchable",
+                link: ""
+            }            
+        ]
+    },
+    {
+        primaryNav: "News",
+        primaryNavLink: "",
+        submenuList: []
+    },
+    {
+        primaryNav: "Support and resources",
+        primaryNavLink: "",
+        submenuList: []
+    },
+    {
+        primaryNav: "Contact",
+        primaryNavLink: "",
+        submenuList: []
+    }
+] %}
+
+<div id="SideMenu" class="SidePanel" role="dialog" aria-hidden="true">
+    <div class="SidePanel-Blocker"></div>
+    <div class="SidePanel-Container">
+        <div class="SidePanel-Header">
+            <form action="/search" method="get" class="search-input-wrap">
+                <input name="q" type="text" placeholder="Search" aria-label="Enter Search Terms" autocomplete="off">
+                <button type="button" class="icon icon-close btn-clear"></button>
+                <button type="submit" class="icon icon-search btn-search"></button>
+            </form>
+            <button class="btn-close icon icon-close-solid" aria-label="Close Side Menu"></button>
+        </div>
+        <div class="SidePanel-Content">
+            <nav role="navigation">
+                {{AccordionNav.render(menulist)}}
+            </nav>
+        </div>
+    </div>
+</div>

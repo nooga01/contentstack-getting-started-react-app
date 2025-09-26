@@ -1,0 +1,58 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+{% set Accordion = {
+    title: 'Frequently asked questions',
+    accordionList: [
+        {
+            tabTitle: 'First accordion (Long text has ... in the end) iste natus error sit voluptatem natus error sit voluptatem iste natus error sit voluptatem natus error sit voluptatem voluptatem natus error sit voluptatem',
+            tabContent: '
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.Neque porro quisquam est,ui dolorem ipsum quia dolor sit amet, consectetur.</p>',
+            panelName: 'panel1'
+        },
+        {
+            tabTitle: 'Accordion item 2',
+            tabContent: '
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <ol>
+                    <li>tortor aliquam nulla facilisi cras fermentum</li>
+                    <li>odio eu feugiat pretium nibh ipsum consequat nisl v</li>
+                    <li>el pretium lectus quam id leo in vitae turpis massa sed</li>
+                </ol>',
+                panelName: 'panel2'
+        },
+        {
+            tabTitle: 'Last accordion',
+            tabContent: '
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.Neque porro quisquam est,ui dolorem ipsum quia dolor sit amet, consectetur.</p>',
+            panelName: 'panel3'
+        }
+    ]
+} %}
+
+<div class="Accordion content-wrapper">
+    <div class="grid-container">
+        {% if Accordion.title %}
+            <div class="section-title">{{Accordion.title}}</div>
+        {% endif %}
+        <ul class="accordion-panels">
+
+            {% for item in Accordion.accordionList %}
+                <li class="accordion-item" data-panel="{{item.panelName}}">
+                    <button class="accordion-tab" aria-expanded="false">
+                        <div class="accordion-title">{{item.tabTitle}}</div>
+                        <span class="icon icon-chevron"></span>
+                    </button>
+                    <div class="accordion-content">
+                        {{RichText.render(item.tabContent)}}
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+        {{Button.render(btnText="MORE support and RESOURCES", btnEle="a", btnLink="#", btnIcon="arrow")}}
+    </div>
+</div>

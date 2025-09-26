@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "NeuzeitGroteskBold";
+  src: url('#{$font-base-path}NeuzeitGroteskBold.woff2') format('woff2'), 
+       url('#{$font-base-path}NeuzeitGroteskBold.woff') format('woff');
+}
+@font-face {
+  font-family: "NeuzeitSLTStdBook";
+  src: url('#{$font-base-path}NeuzeitSLTStdBook.woff2') format('woff2'), 
+       url('#{$font-base-path}NeuzeitSLTStdBook.woff') format('woff');
+}

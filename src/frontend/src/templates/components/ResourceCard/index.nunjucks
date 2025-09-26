@@ -1,0 +1,17 @@
+{% import '../CardItem/index.nunjucks' as CardItem %}
+
+{# Resource card list #}
+{% macro render(cardList, title, asListitems) %}
+    <div class="ResourceCard card-list-wrapper {{ 'as-item-list' if asListitems }}">
+        <div class="grid-container no-padding-if-inside-grid-container">
+            {% if title %}<h2 class="section-title">{{title}}</h2>{% endif %}
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {% for item in cardList %}
+                    {# Resource Card #}
+                    {{ CardItem.render(item) }}
+                {% endfor %}
+            </div>
+            {% include "../Pagination/index.nunjucks" %}
+        </div>
+    </div>
+{% endmacro %}

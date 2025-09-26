@@ -1,0 +1,50 @@
+.BreakoutQuote {
+    blockquote {
+        border-left: 1px solid brand-color(primary);
+        padding: 0 0 0 16px;       
+        margin: 16px 0px 16px 30px;
+
+        @include breakpoint(medium) {
+            padding: 0 0 0 20px;
+            margin: 30px 0px 30px 55px;
+            
+        }
+        @include breakpoint(large) {
+            padding: 0 0 0 32px;
+            margin: 48px 0px 48px 112px;
+            
+        }  
+        
+        .blockquote-content {
+            @extend .heading-L-regular;
+            color: brand-color(body);
+            margin-bottom: 32px;
+            font-size: 20px;
+            line-height: 28px;
+            @include breakpoint(medium) {
+                font-size: 24px;
+                line-height: calc(28/20);
+            }
+            @include breakpoint(large) {
+                font-size: 28px;
+                line-height: 37px;
+            }
+        }
+
+        .author {
+            @extend .h6;
+            margin-bottom: 0;
+        }
+
+        p {
+            line-height: inherit;
+            &:last-child {
+                margin-bottom: 0px;
+            }
+
+            &.author-title {
+                font-size: 18px;
+            }
+        }
+    }
+}

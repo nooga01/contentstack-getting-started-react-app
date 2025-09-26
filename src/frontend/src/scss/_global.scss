@@ -1,0 +1,250 @@
+:root {
+    --headerSearchWidth: 130px;
+    --timing: 0.25s;
+    --sidePanel-ContentPadding: #{$sidePanel-ContentPadding};
+    @include mapPropertyForEachBreakpoint(
+        (
+            --grid-margin-gutters: $grid-margin-gutters,
+            --grid-padding-gutters: $grid-padding-gutters,
+            --grid-container-padding: $grid-container-padding,
+            --headerHeight: $headerHeight,
+            --stickyHeaderHeight: $stickyHeaderHeight,
+            --corpHeaderHeight: $corpHeaderHeight,
+            --sidePanelWidth: $sidePanel-Widths,
+        )
+    );
+    --grid-container-max-width: #{$grid-container-max-width};
+    --grid-container-padding-single-side: calc(var(--grid-container-padding) / 2);
+
+    --grid-container-outer-width: 100%;
+    --grid-container-internal-elem-65perc-of-outer: calc((100% + var(--grid-container-padding)) * 0.65 - var(--grid-container-padding-single-side));
+    --grid-container-left-of-outer: calc(((100% - var(--grid-container-outer-width)) / 2));
+    --grid-container-left-of-inner: calc(var(--grid-container-left-of-outer) + var(--grid-container-padding-single-side));
+    --grid-container-internal-width: calc(var(--grid-container-outer-width) - var(--grid-container-padding));
+
+    @include breakpoint($grid-container-max-width) {
+        --grid-container-outer-width: var(--grid-container-max-width);
+    }
+
+    --schemeTagBgColor: #{brand-color(primary)};
+    --schemeTagFgColor: #{brand-color(body)};
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+.skip-to-content-link {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-top: 0;
+    outline: 0;
+    transition: transform var(--timing) ease-in-out;
+    transform: translate(-50%, -100%);
+    &:focus {
+        transform: translate(-50%, 0px);
+    }
+}
+
+// Component wrapper paddings
+.content-wrapper {
+    padding-top: map-get($spacing, medium); // medium 40px //15px;
+    padding-bottom: map-get($spacing, medium); // medium 40px
+    @include breakpoint(medium) {
+        padding-top: map-get($spacing, large); // large 64px //23px;
+        padding-bottom: map-get($spacing, large);
+    }
+    @include breakpoint(large) {
+        padding-top: map-get($spacing, xlarge); // xlarge 88px //30px;
+        padding-bottom: map-get($spacing, xlarge);
+    }
+    &.smaller-padding {
+        @include breakpoint(large) {
+            padding-top: map-get($spacing, large); // large 64px
+            padding-bottom: map-get($spacing, large);
+        }
+    }
+    &.no-padding {
+        padding: 0px;
+    }
+    &.no-bottom-padding {
+        padding-bottom: 0;
+    }
+    &.no-top-padding {
+        padding-top: 0;
+    }
+}
+// Title wrapper margins
+.title-wrapper {
+    &.top-margin {
+        margin-top: map-get($spacing, medium); // medium 40px //15px;
+    }
+    &.bottom-margin {
+        margin-bottom: map-get($spacing, medium); // medium 40px
+    }
+    @include breakpoint(medium) {
+        &.top-margin {
+            margin-top: map-get($spacing, large); // large 64px //23px;
+        }
+        &.bottom-margin {
+            margin-bottom: map-get($spacing, large); // medium 40px
+        }
+    }
+    @include breakpoint(large) {
+        &.top-margin {
+            margin-top: map-get($spacing, xlarge); // large 64px //23px;
+        }
+        &.bottom-margin {
+            margin-bottom: map-get($spacing, xlarge); // medium 40px
+        }
+    }
+    .page-wrapper.two-column & {
+        > .grid-container {
+            @include breakpoint(medium) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+}
+// Title styles
+.section-title {    
+    @include font_NeuzeitGroW03Bold;
+    color: brand-color(aemo-dark-blue);
+    margin-bottom: map-get($map: $spacing, $key: small);
+    margin-top: 0;    
+    font-size: 25px;
+    line-height: 1.2;
+    @include breakpoint(medium) {
+        font-size: 30px;
+    }
+    @include breakpoint(large) {
+        font-size: 35px;
+    }
+    &.larger {
+        font-size: 40px;
+        @include breakpoint(medium) {
+            font-size: 50px;
+        }
+        @include breakpoint(large) {
+            font-size: 62px;
+        }
+    }
+    &.smaller {
+        margin-bottom: map-get($map: $spacing, $key: small2);
+        font-size: 20px;
+        @include breakpoint(medium) {
+            font-sizE: 28px;
+        }
+    }
+    #wrapper.CIS & {
+        color: brand-color(CIS-green);
+    }
+}
+.content-title {
+    margin-bottom: map-get($map: $spacing, $key: small2);
+    @include headingSmall("regular");
+    @include breakpoint(large) {
+        @include headingLarge("regular");
+    }
+    &.smaller {
+        @include headingSmall("regular");
+        @include breakpoint(large) {
+            @include headingMedium("regular");
+        }
+    }
+    &.larger {
+        @include headingLarge("regular");
+        @include breakpoint(large) {
+            @include headingXLarge("regular");
+        }
+    }
+}
+
+.content-scheme-tag {
+    max-width: fit-content; 
+    text-transform: uppercase;
+    background-color: var(--schemeTagBgColor);
+    color: var(--schemeTagFgColor);
+    border-radius: 100px;
+    padding: 12px 12px 9px 12px;
+    line-height: 1;
+    font-size: 12px;
+    span {
+        font-size: inherit;
+    }
+}
+
+#wrapper.CIS, [data-scheme='CIS'] {
+    --schemeTagBgColor: #{brand-color(CIS-dark-green)};
+    --schemeTagFgColor: #fff;
+}
+
+
+.category-title {
+    margin-bottom: map-get($map: $spacing, $key: xsmall);
+    @include textMediumBoldUpper;
+    @include breakpoint(large) {
+        @include textLargeBoldUpper;
+    }
+}
+
+.grey-bg {
+    background-color: brand-color(light-grey);
+}
+
+.heading-space {
+    // margin-top: map-get($map: $spacing, $key: medium);
+    margin-bottom: map-get($map: $spacing, $key: xsmall);
+    @include breakpoint(large) {
+        // margin-top: map-get($map: $spacing, $key: large);
+        margin-bottom: map-get($map: $spacing, $key: small2);
+    }
+}
+
+// Pending to use
+.spacing-xs {
+    padding-bottom: map-get($map: $spacing, $key: xsmall);
+}
+.spacing-s {
+    padding-bottom: map-get($map: $spacing, $key: small);
+}
+.spacing-m {
+    padding-bottom: map-get($map: $spacing, $key: medium);
+}
+.spacing-l {
+    padding-bottom: map-get($map: $spacing, $key: large);
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.fade-in {
+    animation: fadeIn forwards var(--timing) ease;
+}
+.fade-out {
+    animation: fadeIn forwards var(--timing) ease;
+}
+

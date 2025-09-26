@@ -1,0 +1,13 @@
+{% macro render(className = "", name, multi, triggerLabel = "Select", items = []) %}
+
+    <div class="FilterDropdown {{ className }}">
+        <button type="button" class="FilterDropdown-Trigger">
+            {{ triggerLabel }}
+            <span class="icon icon-chevron"></span>
+        </button>
+        <div class="FilterDropdown-ItemsContainer">
+            <ul></ul>
+        </div>
+    </div>
+
+{% endmacro %}

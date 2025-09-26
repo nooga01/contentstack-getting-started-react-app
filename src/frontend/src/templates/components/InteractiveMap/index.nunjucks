@@ -1,0 +1,194 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+<!-- START INTERACTIVE MAP COMPONENT -->
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.js'></script>
+<script src="https://unpkg.com/supercluster@7.1.4/dist/supercluster.min.js"></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v3.12.0/mapbox-gl.css' rel='stylesheet'/>
+
+<div class="InteractiveMap" data-mapbox-access-token="pk.eyJ1IjoibmJpbGxpbmd0b24iLCJhIjoiY21idDJ4eWMzMHFvZTJ0b2d5ZGVreDAxMiJ9.0ke67Uf-lsEqvvfoki6iyA" data-mapbox-style="mapbox://styles/nbillington/cmcefj9mq00sw01sr3c6l28fa" data-projects-data-api-url="/pages/ajax/interactive-map-data.json" data-page-size="6">
+    <div class="grid-container">
+        <div class="InteractiveMap-Filters">
+            <div class="FilterDropdown ddl-schemes">
+                <button type="button" class="FilterDropdown-Trigger" disabled="disabled">
+                    Scheme
+                    <span class="count hide"></span>
+                    <span class="icon icon-chevron"></span>
+                </button>
+                <div class="FilterDropdown-ItemsContainer">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="FilterDropdown ddl-energyGenerationTypes">
+                <button type="button" class="FilterDropdown-Trigger" disabled="disabled">
+                    Energy Generation Type
+                    <span class="count hide"></span>
+                    <span class="icon icon-chevron"></span>
+                </button>
+                <div class="FilterDropdown-ItemsContainer">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="FilterDropdown ddl-projectStages">
+                <button type="button" class="FilterDropdown-Trigger" disabled="disabled">
+                    Project Development Stages
+                    <span class="count hide"></span>
+                    <span class="icon icon-chevron"></span>
+                </button>
+                <div class="FilterDropdown-ItemsContainer">
+                    <ul></ul>
+                </div>
+            </div>
+            {{Button.render(btnText='Clear Filters', btnClass = 'text-primary btn-clear-filters hide', btnElem='button', btnIcon = '')}}
+        </div>
+        <div class="InteractiveMap-MapEmbed-Container" data-fullscreen-element="true">
+            <div class="InteractiveMap-MapEmbed-Map"></div>
+            <div class="InteractiveMap-MapEmbed-Controls">
+                <div class="InteractiveMap-MapEmbed-Controls-SearchByLocation hide" data-status="">
+                    <input type="text" class="txt-search" name="search-by-location" placeholder="Search by location..."/>
+                    <button type="button" class="btn-clear icon-close-solid"></button>
+                    <button type="button" class="btn-use-location icon-location"></button>
+                    <div class="LoaderAni"></div>
+                    <div class="InteractiveMap-MapEmbed-Controls-SearchByLocation-Suggestions">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="InteractiveMap-MapEmbed-Controls-MapControls">
+                    <button type="button" class="btn-map-control btn-fullscreen hide">
+                        <span class="icon-fullscreen"></span>
+                        <span class="icon-close"></span>
+                    </button>
+                    <button type="button" class="btn-map-control btn-home hide">
+                        <span class="icon-home"></span>
+                    </button>
+                    <div class="map-controls-zoom">
+                        <button type="button" class="btn-map-control btn-zoom-in hide">
+                            <span class="icon-plus"></span>
+                        </button>
+                        <button type="button" class="btn-map-control btn-zoom-out hide">
+                            <span class="icon-minus"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="InteractiveMap-MapEmbed-Controls-LegendDisclaimer">
+                    <button type="button" class="btn-map-control btn-disclaimer hide">Disclaimer</button>
+                    <button type="button" class="btn-map-control btn-legend hide">Pin Legend</button>
+                </div>
+            </div>
+            <div class="InteractiveMap-MapEmbed-CurrentItemCard hide">
+                <div class="InteractiveMap-WelcomeCard fade-in">
+                    <button type="button" class="btn-close icon-close-solid" data-mode="destroy"></button>
+                    <div class="Card-Image responsive-embed widescreen">
+                        <img src="/static/img/productpage-img.jpg"/>
+                    </div>
+                    <div class="Card-PrimaryInfo">
+                        <div class="Card-Title">Australia's Energy Transition</div>
+                        {{ RichText.render(
+                            '
+                            <p>AEMO\'s 2024 Integrated System Plan (ISP) has identified $142 billion in upfront capital investment is needed in new energy infrastructure by 2050, and governments across the country are seeking to engage private capital in new builds for transmission, generation, firming and long-duration storage capacity to ensure the new system meets our energy needs.</p>
+                            <p>This map of Australia provides information about AEMO Services\' energy projects - Current, Proposed, Ongoing and Completed.</p>
+                            '
+                        )}}
+                    </div>
+                </div>
+                <div class="InteractiveMap-ErrorCard hide fade-in">
+                    <button type="button" class="btn-close icon-close-solid" data-mode="hide"></button>
+                    <div class="Card-Image responsive-embed widescreen">
+                        <img src="/static/img/shutterstock_2090537983.jpg"/>
+                    </div>
+                    <div class="Card-PrimaryInfo">
+                        <div class="Card-Title">There were no projects which match your filters</div>
+                        {{ RichText.render(
+                            '
+                            <p>Try changing your filters or clearing them to see all projects.</p>
+                            <p>If you think this is an error, please contact us</p>
+                            '
+                        ) }}
+                    </div>
+                </div>
+            </div>
+            <div class="InteractiveMap-MapEmbed-Legend">
+                <div class="hdr">Energy Generation</div>
+                <button type="button" class="btn-close icon-close-solid"></button>
+                <ul>
+                    <!-- This is populated with Javascript //-->
+                </ul>
+                <div class="rez-zones">
+                    <div class="hdr">Renewable Energy Zones</div>
+                    <div class="rez">
+                        <div></div>
+                        <span>Renewable Energy Zones (REZs) are lorem ipsum dolor sit amet lorem ipsum</span>
+                    </div>
+                </div>
+            </div>
+            <div class="InteractiveMap-MapEmbed-Disclaimer">
+                <div class="hdr">Disclaimer</div>
+                <button type="button" class="btn-close icon-close-solid"></button>
+                {{ RichText.render(
+                    'The information provided on this map is for general informational purposes only. The data is sourced from various public and private entities and may not be complete or up-to-date. The map does not constitute an endorsement of any project or entity. Users are advised to verify the information independently before making any decisions based on it.'
+                )}}
+            </div>
+            <div class="LoaderAni isLoading"></div>
+        </div>
+        <div class="InteractiveMap-ProjectCards-Container">
+            <div class="InteractiveMap-ProjectCards-TitleSortBy">
+                <h2 class="section-title">
+                    Projects
+                    <div class="LoaderAni isLoading"></div>
+                </h2>
+                <div>
+                    <select class="InteractiveMap-ProjectCards-SortBy" disabled="disabled">
+                        <option value="default">Sort by</option>
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                        <option value="energyGenerationType">Energy Generation Type</option>
+                    </select>
+                </div>
+            </div>
+            <div class="InteractiveMap-ProjectCardsGrid"></div>
+        </div>
+
+        <div class="InteractiveMap-ProjectCard" data-scheme="" data-template="true" data-id="">
+            <button type="button" class="btn-close icon-close-solid hide" data-mode="hide"></button>
+            <div class="EnergyGenerationTypeIcon" data-type=""></div>
+            <div class="Card-PrimaryInfo">
+                <div class="Card-ProjectType"></div>
+                <div class="Card-Title"></div>
+                <div class="Card-SchemeTag content-scheme-tag"></div>
+            </div>
+            <ul class="Card-ProjectInfoTable">
+                <li class="energy">
+                    <b>Energy:</b>
+                    <span></span>
+                </li>
+                <li class="status">
+                    <b>Status:</b>
+                    <span></span>
+                </li>
+                <li class="location">
+                    <b>Location:</b>
+                    <span></span>
+                </li>
+                <li class="rez">
+                    <b>REZ:</b>
+                    <span></span>
+                </li>
+                <li class="contractor">
+                    <b>Contractor:</b>
+                    <span></span>
+                </li>
+                <li class="stage">
+                    <b>Stage:</b>
+                    <span></span>
+                </li>
+            </ul>
+            <div class="Card-CTA">
+                {{Button.render(btnText = "Learn More", btnClass = 'text-primary', btnLink = '#', btnElem = 'a')}}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- END INTERACTIVE MAP COMPONENT -->

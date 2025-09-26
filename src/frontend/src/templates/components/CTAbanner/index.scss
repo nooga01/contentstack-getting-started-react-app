@@ -1,0 +1,57 @@
+.CTAbanner {
+    margin-top: map-get($map: $spacing, $key: medium);
+    margin-bottom: map-get($map: $spacing, $key: medium);
+    @include breakpoint(medium) {
+        margin-top: map-get($map: $spacing, $key: large);
+        margin-bottom: map-get($map: $spacing, $key: large);
+    }
+    .TabsContent-container .page-wrapper.two-column & {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .TabsContent-container & {
+        margin-bottom: 0;
+    }
+    .CTAbanner-inner {
+        background-color: brand-color(aemo-surface);
+        width: 100%;
+        padding: map-get($map: $spacing, $key: small);
+        padding-bottom: map-get($map: $spacing, $key: small2);
+
+        #wrapper.CIS & {
+            background-color: brand-color(CIS-light-green);
+        }
+    }
+    .text-wrap {
+        padding-bottom: map-get($map: $spacing, $key: small);
+        border-bottom: 1.5px solid brand-color(primary);
+        #wrapper.CIS & {
+            border-bottom: 1.5px solid brand-color(aemo-mid-grey);
+        }
+        .content-title {
+            @extend .section-title;
+            @extend .smaller;
+            margin-bottom: map-get($map: $spacing, $key: xsmall);
+        }
+        .section-title.smaller {
+            margin-bottom: map-get($map: $spacing, $key: xsmall);
+        }
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .btn-wrap {
+        padding-top: map-get($map: $spacing, $key: small2);
+        .button {
+            span {
+                &::after {
+                    #wrapper.CIS & {
+                        background-color: brand-color(CIS-highlight-green);
+                    }
+                }
+            }
+        }
+    }
+}

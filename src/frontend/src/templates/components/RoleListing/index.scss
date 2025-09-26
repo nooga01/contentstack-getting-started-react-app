@@ -1,0 +1,45 @@
+.RoleListingCards {
+    > .grid-container {
+        width: 100%;
+    }
+}
+
+
+.RoleListingCard {
+    background-color: brand-color(light-grey);
+    transition: $hoverTransition;
+
+    &:hover,
+    &:focus {
+        color: brand-color(body);
+        @include cardHoverEffect_grey;
+    }
+
+    .card-content {
+        display: grid;
+        gap: 16px;
+        padding: 22px 30px;
+
+        .content-title {
+            @include headingSmall;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            color: brand-color(primary-dark);
+            margin: 0px;
+        }
+        .content-description {
+            display: grid;
+            @include breakpoint(medium) {
+                display: flex;
+                flex-wrap: wrap;
+                span:not(:last-child) {
+                    padding-right: 15px;
+                    margin-right: 15px;
+                    border-right: 1px solid currentColor;
+                }
+            }
+        }
+    }
+
+
+}

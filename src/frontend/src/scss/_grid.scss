@@ -1,0 +1,45 @@
+@use "sass:math";
+
+// grid override bug
+.grid-container:not(.full) > .grid-padding-x:not(.grid-margin-x) {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.grid-container {
+    &.narrow {
+        max-width: 960px + map-get($grid-container-padding, xxlarge); // so total inner width is 960px
+    }
+
+    .no-padding-if-inside-grid-container {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+@mixin full-width-cell($bp, $padded: false) {
+    @if map-has-key($grid-container-padding, $bp) {
+        $margin: map-get($grid-container-padding, $bp);
+        margin-left: math.div((0 - $margin), 2);
+        margin-right: math.div((0 - $margin), 2);
+        width: calc(100% + #{$margin});
+
+        @if ($padded) {
+            padding-left: math.div($margin, 2);
+            padding-right: math.div($margin, 2);
+        }
+    }
+}
+
+@mixin pull-cell-right($bp) {
+    @if map-has-key($grid-container-padding, $bp) {
+        $margin: map-get($grid-container-padding, $bp);
+        margin-right: math.div((0 - $margin), 2);
+    }
+}
+@mixin pull-cell-left($bp) {
+    @if map-has-key($grid-container-padding, $bp) {
+        $margin: map-get($grid-container-padding, $bp);
+        margin-left: math.div((0 - $margin), 2);
+    }
+}

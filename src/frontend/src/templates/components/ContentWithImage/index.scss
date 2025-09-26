@@ -1,0 +1,102 @@
+.ContentWithImage {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+    padding: 0px;   // remove grid-container padding
+
+    @include breakpoint(medium) {
+        min-height: 684px;
+        position: relative;
+        flex-direction: row;
+        // gap: var(--grid-container-padding-single-side);
+
+        .ContentWithImage-content,
+        .ContentWithImage-image {
+            flex-basis: 50%;
+        }
+        .ContentWithImage-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;            
+        }
+    }
+
+    .ContentWithImage-content {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        transition: all 0.25s ease;
+
+        // @include breakpoint(small only) {
+        //     padding-left: 0px;
+        //     padding-right: 0px;
+        // }
+        .description + .button {
+            margin-top: map-get($map: $spacing, $key: medium);
+        }
+    }
+
+    .ContentWithImage-image {
+        transition: all 0.25s ease;
+        background-size: cover;
+        background-position: center;
+        
+        @include breakpoint(small only) {
+            height: 320px;
+            // margin: 0px calc(var(--grid-container-padding-single-side) * -1); // make the image bleed to edges
+        }
+    }
+
+    @include breakpoint($grid-container-max-width) {
+        --contentEdgePadding: 0px;
+        padding: 0px var(--grid-container-padding-single-side); // add the grid-container padding back
+    }
+
+    &.left-image {
+        flex-direction: column-reverse;
+        @include breakpoint(medium) {
+            flex-direction: row-reverse;
+        }
+        @include breakpoint($grid-container-max-width) {
+            .ContentWithImage-content {
+                padding-right: var(--contentEdgePadding);
+            }
+        }        
+    }
+    &:not(.left-image) {
+        @include breakpoint($grid-container-max-width) {
+            .ContentWithImage-content {
+                padding-left: var(--contentEdgePadding);
+            }
+        }
+    }
+}
+
+body.home-page .ContentWithImage {
+    .ContentWithImage-content {
+        background-color: brand-color(primary);
+        .content-title {
+            @extend .larger;
+        }
+        .button {
+            background-color: brand-color(aemo-dark-blue);
+            color: #fff;
+            &:hover {
+                background-color: brand-color(aemo-darker-blue);
+                color: #fff;
+            }
+            &:focus {
+                box-shadow: $button-focused;
+                outline: none;
+                color: #fff;
+            }
+            .icon {
+                color: brand-color(aemo-border-hover);
+            }
+        }
+    }
+
+    @include breakpoint($grid-container-max-width) {
+        --contentEdgePadding: var(--grid-container-padding-single-side);
+    }
+}

@@ -1,0 +1,894 @@
+// !! TODO: Replace all colors/breakpoints etc with mixins
+
+.InteractiveMap {
+    padding: 0 0 40px;
+    --cardPadding: 20px;
+
+    .InteractiveMap-Filters {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        padding: 20px 0;
+        gap: 10px 15px;
+
+        @include breakpoint(small only) {
+            .btn-clear-filters {
+                margin-left: auto;
+            }
+        }
+
+        .ddl-schemes {
+            width: 340px;
+        }
+
+        .FilterDropdown {
+            position: relative;
+            max-width: 100%;
+            --arrowRotation: 0;
+            --itemsContainerDisplay: none;
+
+            @include breakpoint(small only) {
+                width: 100%;
+            }
+
+            .FilterDropdown-Trigger {
+                width: 100%;
+                cursor: pointer;
+                position: relative;
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                justify-content: flex-start;
+                height: 60px;
+                padding: 0 15px;
+                border: 1px solid brand-color(primary);
+                background-color: #fff;
+                box-shadow: none;
+                color: brand-color(body);
+                transition: all var(--timing) ease;
+                -webkit-appearance: none;
+                appearance: none;
+                font-size: 18px;
+                line-height: 26px;
+                &:not([disabled]) {
+                    &:hover {
+                        border-color: brand-color(aemo-border-hover);
+                    }
+                    &:focus {
+                        box-shadow: 0 0 0 4px brand-color(aemo-focus);
+                        outline: none;
+                        border: 1px solid brand-color(aemo-border-hover);
+                    }
+                }
+
+                span.count {
+                    font-size: 0.75em;
+                    margin: 0 0 0 -10px;
+                    color: brand-color(aemo-darker-blue);
+                    background: brand-color(primary);
+                    padding: 5px 9px 2px;
+                    border-radius: 20px;
+                    line-height: 1;
+                }
+
+                span.icon {
+                    transition: all var(--timing) ease;
+                    transform: rotate(var(--arrowRotation));
+                    margin-left: auto;
+                }
+
+                &[disabled] {
+                    cursor: not-allowed;
+                    background-color: #f0f0f0;
+                    color: #a0a0a0;
+                    border-color: #d0d0d0;
+                }
+            }
+            .FilterDropdown-ItemsContainer {
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                display: var(--itemsContainerDisplay);
+                grid-template-rows: auto 1fr;
+                background: #fff;
+                padding: 5px 0;
+                z-index: 1000;
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    display: grid;
+                    overflow-y: auto;
+
+                    li {
+                        button {
+                            cursor: pointer;
+                            padding: 10px 15px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            width: 100%;
+                            gap: 10px;
+                            outline: none;
+                            text-align: left;
+
+                            span {
+                                border: 1px solid brand-color(aemo-darker-blue);
+                                font-size: 14px;
+                                padding: 3px;
+                                border-radius: 4px;
+                                color: #fff;
+                                margin-top: -3px;
+                                transition: all var(--timing) ease;
+                            }
+
+                            &:focus-visible {
+                                span {
+                                    box-shadow: 0 0 0 4px brand-color(aemo-focus);
+                                }
+                            }
+
+                            &[data-selected="true"] {
+                                span {
+                                    background-color: brand-color(aemo-darker-blue);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.open {
+                --arrowRotation: 180deg;
+                --itemsContainerDisplay: grid;
+            }
+        }
+    }
+    .InteractiveMap-MapEmbed-Container {
+        isolation: isolate;
+        --backgroundColor: #e9e9e9;
+        --borderRadius: 2px;
+        --edgePadding: 20px;
+        --currentCardWidth: 100%;
+        --btnControlSize: 44px;
+        --mapHeight: calc(100vh - var(--stickyHeaderHeight));
+
+        background: var(--backgroundColor);
+        position: relative;
+
+        @include breakpoint(small only) {
+            margin-left: calc(var(--grid-container-padding-single-side) * -1);
+            margin-right: calc(var(--grid-container-padding-single-side) * -1);
+            --btnControlSize: 31px;
+            --edgePadding: 16px; // same as grid-container-padding-single-side
+        }
+
+        @include breakpoint(medium) {
+            --currentCardWidth: 375px;
+            --mapHeight: 680px;
+        }
+        @include breakpoint(1024px) {
+            --currentCardWidth: 425px;
+            --mapHeight: 730px;
+        }
+
+        .InteractiveMap-MapEmbed-Controls-LegendDisclaimer,
+        .InteractiveMap-MapEmbed-Controls-MapControls,
+        .InteractiveMap-MapEmbed-Controls-SearchByLocation,
+        .InteractiveMap-MapEmbed-CurrentItemCard,
+        .InteractiveMap-MapEmbed-Disclaimer,
+        .InteractiveMap-MapEmbed-Legend,
+        > .LoaderAni {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .InteractiveMap-MapEmbed-Controls {
+            button.btn-map-control {
+                transition: all 0.3s ease;
+                background: #fff;
+                border-radius: var(--borderRadius);
+                cursor: pointer;
+                color: brand-color(secondary);
+                span {
+                    display: block;
+                }
+
+                &[disabled] {
+                    color: #ccc;
+                    cursor: not-allowed;
+                }
+                &:not([disabled]) {
+                    &:hover {
+                        background: brand-color(secondary);
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .InteractiveMap-MapEmbed-Controls-MapControls {
+            top: var(--edgePadding);
+            right: var(--edgePadding);
+            display: grid;
+            gap: 5px;
+
+            @include breakpoint(small only) {
+                top: unset;
+                bottom: var(--edgePadding);
+            }
+
+            .btn-map-control {
+                font-size: calc(var(--btnControlSize) * (16 / 44)); // when it's 44px wide, font size = 16px
+                width: var(--btnControlSize);
+                height: var(--btnControlSize);
+            }
+
+            .map-controls-zoom {
+                display: grid;
+                box-shadow: 0 2px 8px 0 rgba(26, 26, 26, 0.16);
+                .btn-zoom-in {
+                    border-bottom-left-radius: 0;
+                    border-bottom-right-radius: 0;
+                }
+                .btn-zoom-out {
+                    border-top-left-radius: 0;
+                    border-top-right-radius: 0;
+                }
+            }
+            .btn-fullscreen {
+                @include breakpoint(medium down) {
+                    display: none;
+                }
+                .icon-close {
+                    display: none;
+                }
+            }
+        }
+
+        .InteractiveMap-MapEmbed-Controls-LegendDisclaimer {
+            bottom: var(--edgePadding);
+            right: var(--edgePadding);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .btn-map-control {
+                font-size: 14px;
+                padding: 0.6em 1.5em;
+                @include breakpoint(medium) {
+                    font-size: 16px;
+                }
+                @include breakpoint(1042px) {
+                    font-size: 18px;
+                }
+            }
+
+            .mapboxgl-ctrl-attrib {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                flex-direction: row-reverse;
+                white-space: nowrap;
+
+                .mapboxgl-ctrl-attrib-button {
+                    position: unset;
+                    right: unset;
+                    top: unset;
+                    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' fill='%23005D84' fill-rule='evenodd'%3E%3Cpath d='M4 10a6 6 0 1 0 12 0 6 6 0 1 0-12 0m5-3a1 1 0 1 0 2 0 1 1 0 1 0-2 0m0 3a1 1 0 1 1 2 0v3a1 1 0 1 1-2 0'/%3E%3C/svg%3E");
+                }
+                .mapboxgl-ctrl-attrib-inner {
+                    font-size: 12px;
+                    padding: 0px 5px 0px 8px;
+                }
+
+                .mapbox-improve-map {
+                    display: none;
+                }
+            }
+            .mapboxgl-ctrl-logo {
+                margin: 0;
+            }
+
+            @include breakpoint(small only) {
+                right: unset;
+                left: var(--edgePadding);
+                .mapboxgl-ctrl-attrib,
+                .mapboxgl-ctrl-logo {
+                    position: absolute;
+                    bottom: 45px;
+                    left: 0px;
+                }
+                .mapboxgl-ctrl-attrib {
+                    left: 95px;
+                    flex-direction: row;
+                }
+            }
+
+            @include breakpoint(medium only) {
+                .mapboxgl-ctrl-attrib,
+                .mapboxgl-ctrl-logo {
+                    position: absolute;
+                    bottom: 45px;
+                    right: 0px;
+                }
+                .mapboxgl-ctrl-attrib {
+                    right: 95px;
+                }
+            }
+        }
+
+        .InteractiveMap-MapEmbed-CurrentItemCard {
+            bottom: var(--edgePadding);
+            left: var(--edgePadding);
+            border-radius: var(--borderRadius);
+            overflow: hidden;
+            width: var(--currentCardWidth);
+            // width/max-width are on the card not the parent, so if there is nothing visible, the parent will be 0px wide.. Used in map padding calculations.
+            max-width: calc(100% - (var(--edgePadding) * 2));
+
+            @include breakpoint(1024px down) {
+                bottom: 50%;
+                left: 50%;
+                transform: translate(-50%, 50%);
+                max-width: calc(100% - (var(--edgePadding) * 4));
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            .InteractiveMap-ErrorCard,
+            .InteractiveMap-WelcomeCard {
+                background: #fff;
+                padding: var(--cardPadding);
+
+                .Card-Image {
+                    border-radius: var(--borderRadius);
+                    overflow: hidden;
+                    margin: calc(var(--cardPadding) * -0.5);
+                    margin-bottom: var(--cardPadding);
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .Card-PrimaryInfo {
+                    display: grid;
+                    gap: 20px;
+                    font-size: 14px;
+
+                    .Card-Title {
+                        color: brand-color(secondary);
+                        font-size: 20px;
+                        line-height: 1.1;
+                        @include font_NeuzeitGroW03Bold;
+                    }
+                    .rte-content {
+                        padding-right: 20px;
+
+                        p:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            .InteractiveMap-ErrorCard {
+                .Card-PrimaryInfo {
+                    font-size: 18px;
+                    .Card-Title {
+                        font-size: 35px;
+                        color: #9b2242;
+                    }
+                }
+            }
+            .InteractiveMap-ProjectCard {
+                box-shadow: none;
+            }
+
+            .InteractiveMap-ErrorCard,
+            .InteractiveMap-WelcomeCard,
+            .InteractiveMap-ProjectCard {
+                position: relative;
+                isolation: isolate;
+                .btn-close {
+                    position: absolute;
+                    top: var(--edgePadding);
+                    right: var(--edgePadding);
+                    font-size: 18px;
+                    cursor: pointer;
+                    color: #003e58;
+                    transition: color 0.3s ease;
+                    border-radius: 50%;
+                    background: #fff;
+                    z-index: 1;
+                    &:hover {
+                        color: brand-color(secondary);
+                    }
+                }
+            }
+        }
+
+        .InteractiveMap-MapEmbed-Controls-SearchByLocation {
+            top: var(--edgePadding);
+            left: var(--edgePadding);
+            background: #fff;
+            border-radius: var(--borderRadius);
+            width: 100%;
+            max-width: calc(100% - (var(--edgePadding) * 2));
+            height: 32px;
+            font-size: 14px;
+            padding: 0 50px 0 20px;
+            z-index: 11;
+
+            @include breakpoint(768px) {
+                width: var(--currentCardWidth);
+                height: 41px;
+                font-size: 16px;
+            }
+            @include breakpoint(1024px) {
+                height: 54px;
+                font-size: 18px;
+            }
+
+            .txt-search {
+                border: none;
+                padding: 0;
+                margin: 0;
+                background: transparent;
+                height: 100%;
+                font-size: inherit;
+
+                &:focus {
+                    box-shadow: none;
+                }
+
+                &::placeholder {
+                    color: brand-color(secondary);
+                }
+            }
+
+            .LoaderAni,
+            button.btn-clear,
+            button.btn-use-location {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 10px;
+                background: transparent;
+                border: none;
+                outline: none;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            button.btn-use-location {
+                border-radius: 50%;
+                color: brand-color(secondary);
+                outline: none;
+                padding: 5px;
+                border-radius: 50%;
+                &:hover {
+                    background: brand-color(secondary);
+                    color: #fff;
+                }
+                @include breakpoint(1024px) {
+                    font-size: 20px;
+                }
+            }
+            button.btn-clear {
+                display: none;
+                color: #ccc;
+                right: 15px;
+                &:hover {
+                    color: #666;
+                }
+            }
+            .InteractiveMap-MapEmbed-Controls-SearchByLocation-Suggestions {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                max-height: 300px;
+                overflow-y: auto;
+                background: #fff;
+                box-shadow: 0 2px 8px 0 rgba(26, 26, 26, 0.16);
+                display: none;
+
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    border-radius: var(--borderRadius);
+                    li {
+                        border-top: 1px solid #000;
+                        button {
+                            font-size: 14px;
+                            text-align: left;
+                            width: 100%;
+                            padding: 10px 20px;
+                            color: brand-color(body);
+                            cursor: pointer;
+                            &:hover {
+                                background-color: #f5f5f5;
+                            }
+                            span {
+                                margin-top: 3px;
+                                display: block;
+                                font-size: 0.8em;
+                                opacity: 0.75;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .LoaderAni {
+                color: brand-color(secondary);
+                right: 15px;
+                font-size: 20px;
+            }
+
+            &[data-status="has-results"] {
+                .btn-clear {
+                    display: none;
+                }
+                &:focus-within {
+                    .InteractiveMap-MapEmbed-Controls-SearchByLocation-Suggestions {
+                        display: block;
+                    }
+                }
+            }
+            &[data-status="loading"],
+            &[data-status="getting-user-location"] {
+                .InteractiveMap-MapEmbed-Controls-SearchByLocation-Suggestions,
+                .btn-clear,
+                .btn-use-location {
+                    display: none;
+                }
+                .LoaderAni {
+                    transition: opacity 0.15s linear, visibility 0s linear;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+
+            &[data-status="result-selected"],
+            &[data-status="user-location-found"] {
+                .InteractiveMap-MapEmbed-Controls-SearchByLocation-Suggestions,
+                .btn-use-location {
+                    display: none;
+                }
+                .btn-clear {
+                    display: block;
+                }
+            }
+        }
+
+        .InteractiveMap-MapEmbed-Disclaimer,
+        .InteractiveMap-MapEmbed-Legend {
+            right: var(--edgePadding);
+            bottom: 80px;
+            background: #fff;
+            padding: 20px 25px 25px;
+            width: calc(100% - (var(--edgePadding) * 2));
+            max-width: 530px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s ease 0.3s;
+            font-size: 12px;
+
+            @include breakpoint(small only) {
+                bottom: 50%;
+                right: 50%;
+                transform: translate(50%, 50%);
+                box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+            }
+
+            @include breakpoint(medium) {
+                bottom: 63px;
+            }
+            @include breakpoint(1024px) {
+                bottom: 70px;
+            }
+
+            .hdr {
+                color: brand-color(secondary);
+                font-size: 14px;
+                @include font_NeuzeitGroW03Bold;
+                margin: 0 0 10px;
+            }
+
+            .btn-close {
+                position: absolute;
+                top: var(--edgePadding);
+                right: var(--edgePadding);
+                font-size: 14px;
+                cursor: pointer;
+                color: brand-color(aemo-darkest-blue);
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: brand-color(secondary);
+                }
+            }
+            &.visible {
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 0.3s ease, visibility 0s ease;
+            }
+        }
+
+        .InteractiveMap-MapEmbed-Legend {
+            ul {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                margin: 30px 0 0px;
+                gap: 20px;
+                li {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    line-height: 0;
+                    .EnergyGenerationTypeIcon {
+                        width: 25px;
+                        height: 25px;
+                    }
+                    span {
+                        margin-top: 3px;
+                    }
+                }
+            }
+            .rez-zones {
+                margin-top: 40px;
+                .rez {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    max-width: 270px;
+
+                    div {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 50%;
+                        border: 1px dashed brand-color(secondary);
+                        flex-shrink: 0;
+                    }
+                }
+            }
+        }
+
+        > .LoaderAni {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 80px;
+            color: brand-color(secondary);
+        }
+
+        .InteractiveMap-MapEmbed-Map {
+            height: var(--mapHeight);
+
+            .MarkerProject {
+                width: 50px;
+                height: 50px;
+                cursor: pointer;
+            }
+
+            .MarkerCluster {
+                --timing: 0.15s;
+                width: var(--size);
+                height: var(--size);
+                cursor: pointer;
+                background-color: var(--markerBgColor);
+                border-radius: 50%;
+                color: #fff;
+                outline: 1px solid var(--markerBgColor);
+                outline-offset: 0;
+                transition: box-shadow var(--timing) ease, outline-offset var(--timing) ease;
+                box-shadow: 0 0 0 4px var(--markerBgColorShadow);
+
+                &:focus-visible,
+                &:hover {
+                    box-shadow: none;
+                    outline-offset: 2px;
+                }
+
+                &[data-cluster-size="smallest"] {
+                    --size: 50px;
+                    --markerBgColor: #{brand-color(aemo-dark-blue)};
+                    --markerBgColorShadow: #{rgba(brand-color(aemo-dark-blue), 0.3)};
+                }
+                &[data-cluster-size="small"] {
+                    --size: 55px;
+                    --markerBgColor: #{brand-color(aemo-darker-blue)};
+                    --markerBgColorShadow: #{rgba(brand-color(aemo-darker-blue),0.3)};
+                }
+                &[data-cluster-size="medium"] {
+                    --size: 60px;
+                    --markerBgColor: #{brand-color(aemo-darkest-blue)};
+                    --markerBgColorShadow: #{rgba(brand-color(aemo-darkest-blue), 0.3)};
+                }
+                &[data-cluster-size="large"] {
+                    --size: 65px;
+                    --markerBgColor: #{brand-color(aemo-darkest-blackblue)};
+                    --markerBgColorShadow: #{rgba(brand-color(aemo-darkest-blackblue), 0.3)};
+                }
+            }
+
+            // so any control added via MapBox will be padded from edge
+            .mapboxgl-control-container {
+                display: none;
+            }
+        }
+
+        &:fullscreen {
+            .InteractiveMap-MapEmbed-Controls-MapControls {
+                .btn-fullscreen {
+                    .icon-fullscreen {
+                        display: none;
+                    }
+                    .icon-close {
+                        display: block;
+                    }
+                }
+            }
+
+            .InteractiveMap-MapEmbed-Map {
+                height: 100%;
+            }
+        }
+    }
+    .InteractiveMap-ProjectCards-Container {
+        .InteractiveMap-ProjectCards-TitleSortBy {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+            padding: 30px 0;
+            .section-title {
+                margin: 0;
+                .LoaderAni {
+                    display: inline-block;
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
+            }
+            .InteractiveMap-ProjectCards-SortBy {
+                border: none;
+                &[disabled] {
+                    background-color: transparent;
+                    opacity: 0.5;
+                }
+            }
+        }
+        .InteractiveMap-ProjectCardsGrid {
+            --numCols: 1;
+            display: grid;
+            grid-template-columns: repeat(var(--numCols), 1fr);
+            gap: 25px;
+
+            @include breakpoint(medium) {
+                --numCols: 2;
+            }
+            @include breakpoint(large) {
+                --numCols: 3;
+            }
+        }
+    }
+    .InteractiveMap-ProjectCard {
+        display: grid;
+        gap: 25px;
+        background-color: brand-color(aemo-light-grey);
+        padding: var(--cardPadding);
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+        --titleColor: #{brand-color(secondary)};
+
+        &[data-template="true"] {
+            display: none;
+        }
+
+        &[data-scheme="CIS"] {
+            --titleColor: brand-color(CIS-dark-green);
+        }
+
+        .EnergyGenerationTypeIcon {
+            @include breakpoint(large) {
+                width: 85px;
+                height: 85px;
+            }
+        }
+
+        .Card-PrimaryInfo {
+            display: grid;
+            gap: 5px;
+            .Card-ProjectType {
+                text-transform: uppercase;
+                font-size: 14px;
+                @include font_NeuzeitGroW03Bold;
+            }
+            .Card-Title {
+                color: var(--titleColor);
+                @include font_NeuzeitGroW03Bold;
+                font-size: 22px;
+                line-height: 1.2;
+                @include breakpoint(large) {
+                    font-size: 25px;
+                }
+            }
+            .Card-SchemeTag {
+            }
+        }
+        ul.Card-ProjectInfoTable {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 8px;
+            line-height: 1.2;
+
+            b {
+                @include font_NeuzeitGroW03Bold;
+            }
+        }
+        .Card-CTA {
+            .button {
+                padding: 0;
+            }
+        }
+    }
+}
+
+.EnergyGenerationTypeIcon {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &[data-type="battery"] {
+        background-image: url("/static/img/InteractiveMap-Icons/battery.svg");
+    }
+    &[data-type="biomass"] {
+        background-image: url("/static/img/InteractiveMap-Icons/biomass.svg");
+    }
+    &[data-type="black-coal"] {
+        background-image: url("/static/img/InteractiveMap-Icons/black-coal.svg");
+    }
+    &[data-type="brown-coal"] {
+        background-image: url("/static/img/InteractiveMap-Icons/brown-coal.svg");
+    }
+    &[data-type="demand"] {
+        background-image: url("/static/img/InteractiveMap-Icons/demand.svg");
+    }
+    &[data-type="electricity"] {
+        background-image: url("/static/img/InteractiveMap-Icons/electricity.svg");
+    }
+    &[data-type="gas"] {
+        background-image: url("/static/img/InteractiveMap-Icons/gas.svg");
+    }
+    &[data-type="hydro"] {
+        background-image: url("/static/img/InteractiveMap-Icons/hydro.svg");
+    }
+    &[data-type="liquid-fuel"] {
+        background-image: url("/static/img/InteractiveMap-Icons/liquid-fuel.svg");
+    }
+    &[data-type="renewables"] {
+        background-image: url("/static/img/InteractiveMap-Icons/renewables.svg");
+    }
+    &[data-type="solar"] {
+        background-image: url("/static/img/InteractiveMap-Icons/solar.svg");
+    }
+    &[data-type="wind"] {
+        background-image: url("/static/img/InteractiveMap-Icons/wind.svg");
+    }
+}
+

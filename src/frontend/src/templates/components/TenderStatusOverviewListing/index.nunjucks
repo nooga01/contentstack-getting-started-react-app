@@ -1,0 +1,60 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{%
+    set TenderStatusListing = {
+        sectionTitle: 'Tender history',
+        statusTable: [
+            {
+                tender: 'Tender Round 1',
+                status: 'Closed',
+                statusClass: 'closed',
+                phase: 'Award announcement',
+                size: '45 GW',
+                tenderPageLink: '/tender-info.html.nunjucks'
+            },{
+                tender: 'Tender Round 2',
+                status: 'Open',
+                statusClass: 'open',
+                phase: 'Financial Bid',
+                size: '45 GW',
+                tenderPageLink: '/tender-info.html.nunjucks'
+            },{
+                tender: 'Tender Round 3',
+                status: 'Upcoming',
+                statusClass: 'upcoming',
+                phase: 'Starting Q3 2023',
+                size: '45 GW',
+                tenderPageLink: '/tender-info.html.nunjucks'
+            }
+        ]
+    }
+%}
+
+<div class="TenderStatusListing">
+    <div class="section-title smaller">{{TenderStatusListing.sectionTitle}}</div>
+    <div class="TenderStatusListing-table">
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tender</th>
+                        <th>Status</th>
+                        <th>Phase</th>
+                        <th>Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in TenderStatusListing.statusTable %}
+                    <tr>
+                        <td><a href="{{item.tenderPageLink}}" class="tender-title">{{item.tender}}</a></td>
+                        <td><span class="tender-status-dot {{item.statusClass}}"></span>{{item.status}}</td>
+                        <td>{{item.phase}}</td>
+                        <td>{{item.size}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{Button.render(btnText = 'View all upcoming tenders', btnLink = '/tender-listing.html.nunjucks', btnElem = 'a', btnIcon = 'arrow')}}
+</div>

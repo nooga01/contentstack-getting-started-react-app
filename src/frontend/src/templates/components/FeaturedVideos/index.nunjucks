@@ -1,0 +1,24 @@
+{% import "../RichText/index.nunjucks" as RichText %}
+
+{% macro render(data) %}
+    <div class="FeaturedVideos">
+        <div class="grid-container">
+            {% if data.title %}<h2 class="section-title">{{data.title}}</h2>{% endif %}
+
+            <div class="FeaturedVideos-Grid grid-x grid-margin-x grid-margin-y align-center">
+                {% for videoItem in data.videos %}
+                    <div class="FeaturedVideo-card cell medium-6">
+                        <div class="FeaturedVideo-embed responsive-embed widescreen">
+                            <iframe width="100%" height="100%" src="{{videoItem.embedUrl}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"></iframe>
+                        </div>
+                        <div class="FeaturedVideo-Details">
+                            {% if videoItem.summary %}<div class="FeaturedVideo-summary">{{ RichText.render(videoItem.summary) }}</div>{% endif %}
+                            {% if videoItem.author %}<div class="FeaturedVideo-author text-medium-bold">{{ videoItem.author }}</div>{% endif %}
+                            {% if videoItem.title %}<div class="FeaturedVideo-title text-medium-bold">{{ videoItem.title }}</div>{% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

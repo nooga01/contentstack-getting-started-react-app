@@ -1,0 +1,17 @@
+.TenderStatusListing {
+    .TenderStatusListing-table {
+        .table-scroll {
+            margin-bottom: map-get($map: $spacing, $key: small);
+        }
+        table {
+            a.tender-title {
+                text-decoration: underline;
+                text-underline-position: under;
+                &:hover {
+                    text-decoration: none;
+                    color: brand-color(aemo-dark-blue);
+                }
+            }
+        }
+    }
+}

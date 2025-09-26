@@ -1,0 +1,16 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{# {% macro render() %} #}
+<div class="CTAbanner grid-container no-padding-if-inside-grid-container">
+<div class="CTAbanner-inner">
+    <div class="text-wrap">
+        <h5 class="section-title smaller">Download the tender pack</h5>
+        {# <h5 class="content-title">Download the tender pack</h5> #}
+        <p>All the information you need to submit a bid in this Tender round</p>
+    </div>
+    <div class="btn-wrap">
+        {{Button.render(btnText = 'Download the ZIP FILE', btnClass = 'button text-primary', btnLink='', btnIcon = '', btnElem = 'button')}}
+    </div>
+</div>
+</div>
+{# {% endmacro %} #}

@@ -1,0 +1,85 @@
+// For news card and resource card
+.card-item {
+    --cardContentPadding: 25px;
+    background-color: brand-color(light-grey);
+    // min-height: 283px;
+    display: flex !important;   // slick slider adds attribute;
+    flex-direction: column;
+    transition: $hoverTransition;
+
+    &:hover,
+    &:focus {
+        color: brand-color(body);
+        @include cardHoverEffect_grey;
+    }
+    .card-content {
+        padding: var(--cardContentPadding);
+        display: grid;
+        gap: 20px;
+
+        .content-header {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            @include textMedium;
+        }
+        .content-title {
+            @include headingMedium;
+            margin: 0px;
+        }
+
+        .content-description {
+            p:last-child {
+                margin-bottom: 0px;
+            }
+        }
+
+        .resource-type-date {
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-start;
+            flex-wrap: nowrap;
+            height: 20px;
+            @include textMedium();
+
+            .resource-type + .content-date {
+                border-left: 1px solid currentColor;
+                padding-left: 20px;
+                margin-left: 20px;
+
+            }
+        }
+    }
+    .card-image {
+        margin-top: auto;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 172px;
+        @include breakpoint(large) {
+            height: 192px;
+        }
+    }
+    .card-cta {
+        margin-top: auto;
+        padding: var(--cardContentPadding);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            padding: 0px;
+        }
+    }
+
+    &.as-list-item {
+        background: none;
+        border-bottom: 1px solid rgba(#BDBEBF, 0.8);
+        --cardContentPadding: 0px 0px 25px;
+        &:hover, &:focus-visible {
+            border-bottom-color: brand-color(body);
+            box-shadow: none;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+$(document).ready(function () {
+    // Resource tag tabs
+    const $tagTab = $(".TagTabs .tag-tab");
+    $tagTab.each(function () {
+        $(this).on("click", function () {
+            let resourceCategory = this.value;
+            // make up the url query string here
+            location.href = `?category=${resourceCategory}`;
+        });
+    });
+
+    // Tender Listing tag tabs
+    const $tenderListingTagTab = $(".TenderListing .TagTabs .tag-tab");
+    $tenderListingTagTab.each(function () {
+        $(this).on("click", function () {
+            let renderStatus = this.value;
+            // make up the url query string here
+            location.href = `?tender-status=${renderStatus}`;
+        });
+    });
+});

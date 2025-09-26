@@ -1,0 +1,166 @@
+.Pagination {
+    margin-top: 56px;
+    .Pagination-Inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    .Pagination-buttons {
+        width: 100%;
+
+        .pagination-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: inherit;
+        }
+    }
+
+    .Pagination-result {
+        font-size: 18px;
+        @include breakpoint(small only) {
+            font-size: 16px;
+        }
+    }
+
+    ul {
+        @include unlist();
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px auto;
+        width: inherit;
+        @include breakpoint(small only) {
+            padding-right: 3px; // adding this to push the whole pagination left a bit to fix its postion issue
+        }
+
+        li {
+            // border: 2px solid #fff;
+            a,
+            span {
+                font-size: 18px;
+                height: 40px;
+                width: 40px;
+                display: block;
+                text-align: center;
+                margin: 0px;
+                padding: 8px 10px;
+                border: 2px solid #fff;
+                @include breakpoint(small only) {
+                    font-size: 16px;
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+            &.active {
+                a,
+                span {
+                    border-color: brand-color(aemo-dark-blue);
+                    background-color: brand-color(aemo-dark-blue);
+                    color: #fff;
+                }
+            }
+            &.more-pages-dots-placeholder {
+                opacity: 0;
+                visibility: hidden;
+                width: 50px;
+            }
+            // Pre button
+            &.PagedList-skipToPrevious:first-child {
+                margin-left: 0;
+                margin-right: auto;
+                .icon {
+                    margin-right: 10px;
+                    &::before {
+                        transform: rotate(180deg);
+                        left: 0;
+                    }
+                }
+                a {
+                    @include breakpoint(small only) {
+                        padding-left: 0;
+                        .icon {
+                            margin-right: 5px;
+                            &::before {
+                                // left: 3px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Next button
+            &.PagedList-skipToNext:last-child {
+                margin-right: 0;
+                margin-left: auto;
+                .icon {
+                    margin-left: 10px;
+                }
+                a {
+                    @include breakpoint(small only) {
+                        padding-right: 0;
+                        .icon {
+                            margin-left: 0px;
+                            &::before {
+                                // left: -3px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.PagedList-skipToPrevious,
+            &.PagedList-skipToNext {
+                a {
+                    height: 40px;
+                    padding: 15px 16px 8px;
+                    color: brand-color(body);
+                    width: auto;
+                    display: inline-flex;
+                    align-items: center;
+                    border: 2px solid #fff;
+                    .icon {
+                        width: 18px;
+                        height: 18px;
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            top: -3px;
+                        }
+                    }
+                    @include breakpoint(small only) {
+                        height: 35px;
+                        padding: 15px 8px 8px;
+                    }
+                }
+                &.disabled {
+                    a {
+                        cursor: default;
+                        pointer-events: none;
+                        opacity: 0.5;
+                        &:hover,
+                        &:focus {
+                            border: 2px solid #fff;
+                        }
+                    }
+                }
+            }
+            a {
+                &:hover,
+                &:focus {
+                    border: 2px solid brand-color(aemo-dark-blue);
+                    background-color: #fff;
+                    color: brand-color(body);
+                }
+            }
+        }
+    }
+
+    // extra DIV when using JS pagination.
+    .paginationjs-pages {
+        width: 100%;
+    }
+}

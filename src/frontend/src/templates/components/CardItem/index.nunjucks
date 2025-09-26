@@ -1,0 +1,65 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{% macro render(item) %}
+    <a class="card-item cell {{item.class or 'medium-6'}}" href="{{item.link}}" {% if 'pdf card' == item.resourceType | lower or 'video card' == item.resourceType | lower %} target="_blank" {% endif %}  data-scheme="{{'CIS' if item.SchemeTag == 'Capacity Investment Scheme'}}" {% if item.videoId %} data-channel="{{item.videoChannel}}" data-video-id="{{item.videoId}}" {% endif %}>
+        <div class="card-content">
+            {% if item.SchemeTag %}
+                <div class="content-header">
+                    <div class="content-scheme-tag">
+                        {{item.SchemeTag}}
+                    </div>
+                </div>
+            {% endif %}
+            <div class="content-title">
+                {{item.title}}
+            </div>
+            {% if item.contentTag or item.date %}
+            <div class="resource-type-date">
+                {% if item.contentTag %}
+                    <div class="resource-type">
+                        {{item.contentTag}}
+                    </div>
+                {% endif %}
+                {% if item.date %}
+                    <div class="content-date">
+                        {{item.date}}
+                    </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            {% if item.desc %}
+                <div class="content-description">
+                    <p>{{item.desc}}</p>
+                </div>     
+            {% endif %}       
+        </div>
+        {% if 'image card' == item.resourceType | lower %}
+            {# image card #}
+            {% if item.imageSrc %}
+                <div class="card-image" style="background-image: url(/static/img/{{item.imageSrc}})"></div>
+            {% endif %}
+        {% elif 'pdf card' == item.resourceType | lower %}
+            {# PDF card #}
+            <div class="card-cta">
+                {{Button.render(btnText = item.ctaText, btnClass = 'text-secondary', btnLink = '#', btnElem = 'button', tabindex = '-1')}}
+                <span>{{item.PDFsize}}</span>
+            </div>
+        {% elif 'doc card' == item.resourceType | lower %}
+            {# DOC card #}
+            <div class="card-cta">
+                {{Button.render(btnText = 'Download doc', btnClass = 'text-secondary', btnElem = 'button', tabindex = '-1')}}
+                <span>{{item.filesize}}</span>
+            </div>
+        {% elif 'text card' == item.resourceType | lower %}
+            {# Text card #}
+            <div class="card-cta">
+                {{Button.render(btnText = item.ctaText, btnClass = 'text-secondary', btnIcon = 'arrow', btnLink = '#', btnElem = 'button', tabindex = '-1')}}
+            </div>
+        {% elif 'video card' == item.resourceType | lower %}
+            {# Text card #}
+            <div class="card-cta">
+                {{Button.render(btnText = "Watch Video", btnClass = 'text-secondary', btnLink = '#', btnElem = 'button', tabindex = '-1')}}
+            </div>            
+        {% endif %}
+    </a>
+{% endmacro %}

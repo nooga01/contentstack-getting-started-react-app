@@ -1,0 +1,98 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/Button/index.nunjucks" as Button %}
+
+{% set pageTitle = 'News page' %}
+{% set banner = {
+    bannerClass: 'banner-single-line-text',
+    title: 'Search'
+} %}
+{% set searchResults = [
+    {
+        type: 'Article',
+        date: '16 Apr 2023',
+        title: 'AEMO Services nation leading tender and contract design delivers for NSW',
+        desc: 'This document outlines how we will award the Long-Term Energy Service Agreement and the increasing or granting of Access Rights.',
+        link: '#',
+        class: "medium-12"
+    },{
+        contentTag: 'Article',
+        date: '16 Apr 2023',
+        SchemeTag: 'Capacity Investment Scheme',
+        title: 'A new way to deliver the energy transition',
+        desc: 'This document outlines how we will award the LTESA and the increasing or granting of Access Rights.',
+        link: '#',
+        class: "medium-12"
+    },{
+        contentTag: 'Article',
+        date: '16 Apr 2023',
+        SchemeTag: 'Some other scheme',
+        title: 'Strong response to inaugural electricity generation and storage tender',
+        desc: 'The portfolio of projects bidding in the inaugural tender of the New South Wales Electricity Infrastructure Roadmap has been finalised...',
+        link: '#',
+        class: "medium-12"
+    },{
+        contentTag: 'Article',
+        date: '16 Apr 2023',
+        title: 'AEMO Services nation leading tender and contract design delivers for NSW',
+        desc: 'This document outlines how we will award the Long-Term Energy Service Agreement and the increasing or granting of Access Rights.',
+        link: '#',
+        class: "medium-12"
+    },{
+        contentTag: 'Article',
+        date: '16 Apr 2023',
+        title: 'AEMO Services nation leading tender and contract design delivers for NSW',
+        desc: 'This document outlines how we will award the Long-Term Energy Service Agreement and the increasing or granting of Access Rights.',
+        link: '#',
+        class: "medium-12"
+    }
+] %}
+
+{% extends "layout.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+{% block content %}
+    
+    {# news cards section template #}
+    <div class="search-result-section content-wrapper">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {# search input #}
+                <div class="cell small-12 large-8">
+                    <div class="search-bar">
+                        <input class="search-input" type="text" placeholder="Search...">
+                        {{Button.render(btnText='Search', btnElem='button', btnClass='text-primary')}}
+                    </div>
+                </div>
+
+                {# Dropdown sorting #}
+                <div class="cell small-12">
+                    <div class="sorting-wrapper">
+                        <div class="search-result-total-num"><p>38 search results</p></div>
+                        <select class="hide-for-small-only" title="Search results sorting">
+                            <option value="new to old">Sort by newest</option>
+                            <option value="old to new">Sort by oldest</option>
+                            <option value="a to z">A - Z</option>
+                            <option value="z to a">Z - A</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="cell small-12 ResourceFilter-Container">
+                    {% include "../templates/components/Filters/index.nunjucks" %}
+
+                
+                    <div class="card-list-wrapper">
+                        {# result list #}
+                        {% include "../templates/components/SearchResult/index.nunjucks" %}
+                        {# Pagination component #}
+                        {% include "../templates/components/Pagination/index.nunjucks" %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,75 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{# {% macro render(productCategory) %} #}
+
+<div class="ProductCategory content-wrapper">
+
+    <div class="session-heading-wrapper">
+        <div class="grid-container">
+            <div class="session-heading-inner">
+                <p class="category-title">{{productCategory.categoryTitle}}</p>
+                <p class="heading heading-L-regular">{{productCategory.sessionHeading}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="ProductCategory-tiles">
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {% for tileItem in productCategory.tiles %}
+                    <div class="ProductCategory-tileItem cell small-12 medium-6">
+                        <div class="tileItem-image">
+                            <a href="{{tileItem.CTA.btnLink}}" tabindex="-1">
+                                <img src="{{tileItem.image.imageSrc}}" alt="{{tileItem.image.imageTitle}}">
+                            </a>
+                        </div>
+
+                        <div class="tileItem-content">
+                            {% if tileItem.iconLogo %}
+                                <div class="icon-logo" style="background-image: url({{tileItem.iconLogo}})">
+                                </div>
+                            {% endif %}
+                            <a href="{{tileItem.CTA.btnLink}}"  tabindex="-1">
+                                <h3 class="title">
+                                    {{tileItem.tileTitle}}
+                                    <span class="underline" aria-hidden="true">{{tileItem.tileTitle}}</span>
+                                </h3>
+                            </a>
+
+                            {% if tileItem.tags.tagTitle %}
+                            <div class="tags-wrapper">
+                                <p class="tags-title">{{tileItem.tags.tagTitle}}</p>
+
+                                <div class="tags">
+                                    {% for tag in tileItem.tags.taglist %}
+                                        <div class="tag-item">{{tag}}</div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="description-wrapper">
+                                <p class="summary">{{tileItem.summary}}</p>
+
+                                <div class="description-list">
+                                    {% for description in tileItem.descriptionList %}
+                                        <div class="description-item">
+                                            <span class="icon icon-tick"></span>
+                                            <span>{{description}}</span>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+
+                            {{Button.render(btnText=tileItem.CTA.btnText, btnElem='a', btnLink=tileItem.CTA.btnLink)}}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{# {% endmacro%} #}

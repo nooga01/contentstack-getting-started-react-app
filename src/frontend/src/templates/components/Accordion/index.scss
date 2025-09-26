@@ -1,0 +1,110 @@
+.Accordion {
+    position: relative;
+    .left-column-content & {
+        > .grid-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    .grid-container ul.accordion-panels {
+        @include unlist();
+        margin-bottom: map-get($map: $spacing, $key: small);
+        li.accordion-item {
+            border-bottom: 2px solid brand-color(aemo-mid-grey);
+
+            &:last-child {
+                border-bottom: 0px;
+            }
+
+            &.open {
+                > .accordion-tab {
+                    .icon {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+
+    // .hdr,
+    .accordion-tab {
+        position: relative;
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 5px 40px 5px 0px;
+        cursor: pointer;
+        transition: color var(--timing) ease-in-out, background-color var(--timing) ease-in-out;
+
+        @include textMedium;
+        // text-overflow: ellipsis;
+        // white-space: nowrap;
+        // overflow: hidden;
+        line-height: 1.3;
+        height: 58px;
+
+        @include breakpoint(large) {
+            @include headingLarge("regular");
+            font-size: 22px;
+            line-height: 1.3;
+            height: 85px;
+            padding: 6px 64px 6px 0px;
+            .icon {
+                right: 0;
+            }
+        }
+
+        .accordion-title {
+            font-size: inherit;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            color: brand-color(body) !important;
+        }
+
+        .icon {
+            color: inherit;
+            font-size: 10px;
+            position: absolute;
+            right: calc((32px - 10px) / 2);
+            top: 0;
+            transition: var(--timing) ease-in-out;
+            transform: rotate(0deg);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: calc((32px - 10px) / 2);
+            border-radius: 32px;
+        }
+
+        &:hover {
+            .icon {
+                // transform: rotate(180deg);
+                // background-color: brand-color(light-grey);
+            }
+        }
+    }
+
+    // .content,
+    .accordion-content {
+        padding-right: 40px;
+        padding-bottom: 16px;
+
+        ul,
+        ol {
+            margin-bottom: 1em;
+        }
+
+        @include breakpoint(large) {
+            font-size: 18px;
+            padding-right: 64px;
+            padding-bottom: 24px;
+        }
+
+        p:last-child {
+            margin-bottom: 0px;
+        }
+    }
+}

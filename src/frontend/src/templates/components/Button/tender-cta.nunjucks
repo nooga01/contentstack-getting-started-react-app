@@ -1,0 +1,19 @@
+{# 
+    The statusClass controls the dot's color
+    'open': green (for open and in progress status)
+    'closed': red
+    'upcoming': yellow 
+
+    The themeMode controls the button color
+    '' is white background, blue text
+    'dark' is blue background, white text (e.g. Tender info page - Hero banner)
+#}
+
+{% macro render(btnText = 'tender round 3 open', statusClass = 'open', btnLink = '#', themeMode = '') %}
+    <a href="{{btnLink}}" class="TenderCTA {{themeMode}}" title="Go to Tender Page">
+        {% if statusClass %}
+        <span class="tender-status-dot {{statusClass}}"></span>
+        {% endif %}
+        <span class="tender-cta-text">{{btnText}}</span>
+    </a>
+{% endmacro %}

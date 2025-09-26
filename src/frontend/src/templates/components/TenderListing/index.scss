@@ -1,0 +1,570 @@
+$tenderDetailsOutterPadding: map-get(
+    $map: $spacing,
+    $key: small,
+);
+$tenderDetailsOutterPaddingMoible: map-get(
+    $map: $spacing,
+    $key: small2,
+);
+
+$upcoming-lightblue: brand-color(primary);
+$open-green: #74dc9a;
+$closed-purple: #a865ec;
+
+.TenderDetailsTile {
+    background-color: brand-color(aemo-light-grey);
+    .tender-details {
+        background-color: brand-color(aemo-darkest-blue);
+        color: #fff;
+        padding: $tenderDetailsOutterPadding;
+        @include breakpoint(small only) {
+            padding: $tenderDetailsOutterPaddingMoible;
+        }
+
+        .tender-tag-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .tender-status-tag {
+            margin-bottom: 16px;
+        }
+        .tender-tag {
+            color: inherit;
+            @include breakpoint(small down) {
+                margin-bottom: 24px;
+            }
+            + .TenderTimeline {
+                margin-top: 32px;
+            }
+            margin-bottom: 16px;
+            .tender-type {
+                color: inherit;
+                margin: 0;
+            }
+        }
+        .infrastructure-type {
+            color: inherit;
+            margin-bottom: map-get($map: $spacing, $key: small);
+            font-weight: normal;
+            opacity: 0.75;
+            @include textMedium();
+            @include breakpoint(large) {
+                @include headingSmall("regular"); // 20px
+            }
+        }
+        .tender-blur {
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .tender-scheme-jurisdiction {
+        padding: $tenderDetailsOutterPaddingMoible map-get($map: $spacing, $key: xsmall);
+        padding-bottom: 0;
+        @include breakpoint(medium) {
+            padding: $tenderDetailsOutterPadding;
+            padding-bottom: 0;
+        }
+        .tender-scheme-jurisdiction-inner {
+            border-bottom: 2px solid #e9eaf0;
+            padding-bottom: $tenderDetailsOutterPaddingMoible;
+            @include breakpoint(large) {
+                display: flex;
+                align-items: center;
+                padding-bottom: $tenderDetailsOutterPadding;
+            }
+        }
+        p {
+            margin-bottom: 0;
+        }
+        .tender-scheme {
+            flex: 1;
+            margin-bottom: map-get($map: $spacing, $key: small2);
+            @include breakpoint(large) {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin-bottom: 0;
+            }
+            .scheme-logo {
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                height: 39px;
+                width: 55px;
+                margin-right: map-get($map: $spacing, $key: xsmall);
+                margin-bottom: map-get($map: $spacing, $key: xxsmall);
+                @include breakpoint(large) {
+                    margin-bottom: 0;
+                }
+            }
+        }
+        .tender-jurisdiction {
+            flex: 1;
+        }
+    }
+    .related-products {
+        background-color: brand-color(aemo-light-grey);
+        padding: $tenderDetailsOutterPadding $tenderDetailsOutterPadding 0;
+        @include breakpoint(small only) {
+            padding: $tenderDetailsOutterPaddingMoible;
+            padding-bottom: 0;
+        }
+        .product-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding-bottom: $tenderDetailsOutterPadding;
+            border-bottom: 2px solid brand-color(aemo-mid-grey);
+            @include breakpoint(small only) {
+                gap: 8px;
+                padding-bottom: $tenderDetailsOutterPaddingMoible;
+            }
+            .product-item {
+                background-color: #fff;
+                padding: 12px 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @include breakpoint(medium) {
+                    padding: 16px 24px;
+                }
+                transition: $hoverTransition;
+                &:hover {
+                    @include cardHoverEffect_grey;
+                    color: brand-color(body);
+                }
+                p {
+                    margin-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                }
+                .product-category {
+                    &:before {
+                        content: "\A";
+                        width: 1px;
+                        height: 38px;
+                        background: brand-color(aemo-mid-grey);
+                        display: inline-block;
+                        margin: 0 16px;
+                    }
+                }
+            }
+        }
+    }
+    .tender-cta {
+        padding: $tenderDetailsOutterPaddingMoible $tenderDetailsOutterPadding;
+        @include breakpoint(small only) {
+            padding: $tenderDetailsOutterPaddingMoible;
+        }
+    }
+}
+.TenderListing {
+    // padding-bottom: 64px;
+    .btn-loadmore {
+        display: flex;
+        justify-content: center;
+        .icon-plus {
+            &::before {
+                content: "\002B";
+                font-size: 30px;
+            }
+        }
+    }
+    .tender-count {
+        margin-bottom: 24px;
+        @media screen and (min-width: 999px) {
+            margin-bottom: 40px;
+        }
+    }
+    .TenderListing-outter {
+        display: flex;
+        flex-direction: column;
+        margin-top: 24px;
+        @media screen and (min-width: 999px) {
+            flex-direction: row;
+            margin-top: 32px;
+        }
+        .Filters {
+            width: 100%;
+            @media screen and (min-width: 999px) {
+                width: 25%;
+                padding-right: 15px;
+                padding-top: 40px;
+            }
+        }
+        .TenderListing-inner {
+            width: 100%;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            @media screen and (min-width: 999px) {
+                width: 75%;
+                padding-left: 15px;
+            }
+            @include breakpoint(medium) {
+                padding-bottom: 64px;
+            }
+
+            .TenderDetailsTile {
+                margin-bottom: 32px;
+                @include breakpoint(medium) {
+                    margin-bottom: 56px;
+                }
+            }
+        }
+    }
+}
+.TenderTimeline {
+    background: brand-color(aemo-darkest-blackblue);
+
+    @media screen and (min-width: 120em) {
+        .grid-container {
+            padding-right: 4rem;
+            padding-left: 4rem;
+        }
+    }
+
+    .TenderDetailsTile & {
+        padding-top: 0;
+        @include breakpoint(medium) {
+            padding-bottom: 0;
+        }
+        background: brand-color(aemo-darkest-blue);
+        .slick-arrow {
+            &.slick-next {
+                @include breakpoint(medium) {
+                    position: absolute;
+                    right: 0;
+                    &::after {
+                        content: "";
+                        height: 100%;
+                        width: 150px;
+                        background: linear-gradient(to right, transparent, #002b49 80%);
+                        position: absolute;
+                        right: 0;
+                    }
+                    &::before {
+                        position: absolute;
+                        z-index: 1;
+                        top: 3px;
+                        left: 0;
+                    }
+                }
+            }
+            &.slick-prev {
+                @include breakpoint(medium) {
+                    position: absolute;
+                    left: 0;
+                    &::after {
+                        content: "";
+                        height: 100%;
+                        width: 150px;
+                        background: linear-gradient(to left, #002b49 20%, transparent);
+                        position: absolute;
+                        right: 0;
+                    }
+                    &::before {
+                        position: absolute;
+                        right: 0;
+                        z-index: 1;
+                        bottom: 3px;
+                    }
+                }
+            }
+        }
+    }
+    .TimelineSummary {
+        color: #fff;
+        margin-bottom: map-get($map: $spacing, $key: small);
+        font-weight: normal;
+        opacity: 0.75;
+        @include textMedium();
+        @include breakpoint(large) {
+            @include headingSmall("regular"); // 20px
+        }
+    }	
+    .TenderTimeline-inner {
+        padding-top: 64px;
+        padding-bottom: 64px;
+        .TenderDetailsTile & {
+            padding-top: 0;
+            @include breakpoint(medium) {
+                padding-bottom: 0;
+            }
+        }
+        width: 100%;
+        background: inherit;
+        @include breakpoint(small only) {
+            padding-top: 32px;
+            padding-bottom: 42px;
+        }
+        .milestones-wrapper {
+            width: 100%;
+
+            // timeline carousel track
+            .slick-list {
+                .slick-track {
+                    margin-left: 0;
+                    // timeline carsouel each item
+                    .slick-slide {
+                        margin-right: 0;
+                        &:last-child {
+                            .milestone-icon {
+                                &::after {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .milestone-item {
+                .milestone-item-inner {
+                    flex: 1 1 0;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 20px;
+                    display: inline-flex;
+                    width: 100%;
+
+                    .milestone-icon {
+                        align-self: stretch;
+                        justify-content: flex-start;
+                        align-items: center;
+                        display: inline-flex;
+                        position: relative;
+                        // after is the line
+                        &::after {
+                            width: calc(100% - 20px); // 2px is filling a bit gap
+                            height: 1.5px;
+                            content: "";
+                            position: absolute;
+                            left: 20px; //calc(20px - 100% - 2px);
+                            background-color: #fff;
+                        }
+                        .icon {
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 20px;
+                            background-color: brand-color(aemo-darkest-blue);
+                            color: brand-color(aemo-darkest-blue);
+                            font-size: 12px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 2px solid #fff;
+                        }
+                    }
+                    .milestone-info {
+                        align-self: stretch;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        gap: 3px;
+                        display: flex;
+                        padding-right: 20px;
+                        .date {
+                            color: white;
+                            font-size: 16px;
+                            line-height: 20px;
+                            word-wrap: break-word;
+                            @include textMediumBold;
+                        }
+                        .title {
+                            align-self: stretch;
+                            color: white;
+                            font-size: 16px;
+                            word-wrap: break-word;
+                            @include textMedium;
+                        }
+                    }
+                }
+
+                &.is-past {
+                    .milestone-icon .icon {
+                        background-color: #fff !important;
+                    }
+                }
+            }
+        }
+    }
+    .TenderTimeline-individual {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+    // timeline carousel buttons
+    .slick-arrow {
+        &::before {
+            transform: rotate(270deg);
+        }
+        position: absolute;
+        top: 0;
+        margin-top: 0;
+        z-index: 1;
+        width: auto;
+        height: 100%;
+        border: none;
+        display: flex;
+        @include breakpoint(small only) {
+            box-shadow: none;
+            top: calc(100% + 10px);
+            height: fit-content;
+            font-size: 12px;
+        }
+        &.slick-prev {
+            align-items: flex-end;
+            color: white;
+            padding-left: 32px;
+            @include breakpoint(small only) {
+                left: -3px;
+            }
+            &::after {
+                content: "";
+                height: 100%;
+                width: 150px;
+                background: linear-gradient(to left, brand-color(aemo-darkest-blackblue) 20%, transparent);
+                position: absolute;
+                right: 0;
+            }
+            &::before {
+                position: absolute;
+                right: 0;
+                z-index: 1;
+                bottom: 3px;
+            }
+        }
+        &.slick-next {
+            align-items: flex-start;
+            color: white;
+            padding-left: 32px;
+            left: calc(100% - 32px - 16px);
+            right: 0;
+            @include breakpoint(small only) {
+                padding-left: 40px;
+            }
+            &::after {
+                content: "";
+                height: 100%;
+                width: 150px;
+                background: linear-gradient(to right, transparent, brand-color(aemo-darkest-blackblue) 80%);
+                position: absolute;
+                right: 0;
+            }
+            &::before {
+                position: absolute;
+                z-index: 1;
+                top: 3px;
+            }
+        }
+    }
+}
+// CIS Tender listing page
+.CIS.TenderDetailsTile {
+    .TenderTimeline {
+        background: brand-color(CIS-green);
+        .TenderTimeline-inner .milestones-wrapper .milestone-item .milestone-item-inner {
+            .milestone-icon {
+                .icon {
+                    background-color: brand-color(CIS-green);
+                    color: brand-color(CIS-green);
+                }
+            }
+        }
+        .slick-arrow.slick-next::after,
+        .slick-arrow.slick-prev::after {
+            background: linear-gradient(to left, brand-color(CIS-green) 20%, transparent);
+        }
+    }
+
+    .tender-details {
+        background-color: brand-color(CIS-green);
+    }
+}
+// CIS Tender info page
+#wrapper.CIS {
+    // TenderTimeline.tender-details-page
+    .TenderTimeline {
+        background: brand-color(CIS-dark-green);
+        .TenderTimeline-inner .milestones-wrapper .milestone-item .milestone-item-inner {
+            .milestone-icon {
+                .icon {
+                    background-color: brand-color(CIS-dark-green);
+                    color: brand-color(CIS-dark-green);
+                }
+            }
+        }
+        .slick-arrow.slick-next::after,
+        .slick-arrow.slick-prev::after {
+            background: linear-gradient(to left, brand-color(CIS-dark-green) 20%, transparent);
+        }
+    }
+}
+//LOADMORE Templates
+.TenderDetailsTile-template {
+    display: none;
+}
+.milestone-item-template {
+    display: none;
+}
+.product-item-template {
+    display: none;
+}
+.Tooltip-template {
+    display: none;
+}
+//Tooltip
+.Tooltip {
+    margin-left: 5px;
+    position: relative;
+
+    .icon-help {
+        cursor: pointer;
+        vertical-align: middle;
+    }
+    .tooltip-info {
+        font-size: 14px;
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        width: 300px;
+        padding: 16px;
+        background: brand-color(primary);
+        display: flex;
+        align-items: flex-start;
+        bottom: 35px;
+        left: -145px;
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        &.show {
+            opacity: 1;
+            visibility: visible;
+            bottom: 25px;
+            transition: opacity var(--timing) ease, visibility 0s ease, bottom var(--timing) ease;
+            @include breakpoint(small only) {
+                left: auto;
+            }
+            .TenderDetailsTile.CIS & {
+                background: brand-color(CIS-light-green);
+            }
+        }
+        .rte-content .grid-container {
+            font-size: inherit;
+            * {
+                font-size: inherit;
+            }
+            a {
+                .TenderDetailsTile.CIS & {
+                    color: brand-color(CIS-green);
+                }
+            }
+        }
+        .icon-close {
+            margin: 5px 0 0 10px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+    }
+}

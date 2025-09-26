@@ -1,0 +1,72 @@
+
+.ResourceCard {
+    .two-column & {
+        .grid-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+
+// if it's in a 1 column layout, make it 65% wide on large screen
+main,
+.one-column {
+    > .ResourceCard {
+        &.as-item-list {
+            > .grid-container {
+                @include breakpoint(large) {
+                    > .section-title {
+                        width: var(--grid-container-internal-elem-65perc-of-outer);
+                    }
+                    > .grid-x {
+                        width: var(--grid-container-internal-elem-65perc-of-outer);
+                    }                    
+                    > .grid-x.grid-margin-x {
+                        width: calc(var(--grid-container-internal-elem-65perc-of-outer) + var(--grid-margin-gutters)); // this already has negative margins, so we need to allow for that
+                    }        
+                    > .Pagination  {
+                        width: var(--grid-container-internal-elem-65perc-of-outer);
+                    }
+                }
+            }
+        }        
+    }
+}
+
+
+
+
+// For News card / Resource card / Search result
+.ResourceFilter-Container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    @media screen and (min-width: 999px) {
+        flex-direction: row;
+        margin-top: 32px;
+    }
+    .Filters {
+        width: 100%;
+        @media screen and (min-width: 999px) {
+            width: 25%;
+            padding-right: 16px;
+            padding-top: 40px;
+        }
+        @include breakpoint(medium down) {
+            padding-top: 24px; // same as card-list-wrapper margin-top
+        }
+    }
+    .card-list-wrapper {
+        width: 100%;
+        padding: 40px 0;
+        margin-top: 0;
+        @media screen and (min-width: 999px) {
+            width: 75%;
+            padding-left: 16px;
+        }
+        @include breakpoint(large) {
+            padding-left: 40px;
+        }
+    }
+}

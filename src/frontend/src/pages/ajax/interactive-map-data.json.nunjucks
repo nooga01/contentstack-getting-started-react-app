@@ -1,0 +1,443 @@
+{
+    "ok": true,
+    "message": "",
+    "schemes": [
+        {
+            "id": "8ddbff3fa78d464794634c07019b7080",
+            "value": "nsw-eir",
+            "label": "NSW Energy Infrastructure Roadmap"
+        }
+    ],
+    "energyGenerationTypes": [
+        {
+            "id": "9c289f69f3a94d1a97d05cbfc0ce2568",
+            "value": "wind",
+            "label": "Wind"
+        },
+        {
+            "id": "ecefd7cb8fc640cbbcdfdedc24120261",
+            "value": "solar",
+            "label": "Solar"
+        },
+        {
+            "id": "939e2036d62545ad8ce8fc81ac521304",
+            "value": "hydro",
+            "label": "Hydro"
+        },
+        {
+            "id": "47f450a649864edfb57a820af2b5b7ac",
+            "value": "battery",
+            "label": "Battery"
+        },
+        {
+            "id": "80e5479ac70240b1a8f4200b56e019da",
+            "value": "biomass",
+            "label": "Biomass"
+        },
+        {
+            "id": "724793a92a854b8db6bc9838d09f26ef",
+            "value": "electricity",
+            "label": "Electricity"
+        },
+        {
+            "id": "edd963c654b2494d8e00a604fb9b4625",
+            "value": "gas",
+            "label": "Gas"
+        },
+        {
+            "id": "c3d1ff37f85041a68178d0f8fe0e2ca6",
+            "value": "renewables",
+            "label": "Renewables"
+        },
+        {
+            "id": "a81bdd492eb24c799b852d3675c269fc",
+            "value": "demand",
+            "label": "Demand"
+        },
+        {
+            "id": "3fbea563010d476995f9f15aab255e81",
+            "value": "liquid-fuel",
+            "label": "Liquid Fuel"
+        },
+        {
+            "id": "b8142e42934e4c2f9ed8a0793d237f6b",
+            "value": "brown-coal",
+            "label": "Brown Coal"
+        },
+        {
+            "id": "4ad777bcd9334c2fa34b1b5fb2b0f8a6",
+            "value": "black-coal",
+            "label": "Black Coal"
+        }
+    ],
+    "projectStages": [
+        {
+            "id": "54f81fe603344a2c9be1b247bcee75dc",
+            "value": "development",
+            "label": "Development"
+        },
+        {
+            "id": "3f50e4968eee48f6a52e7a3d299cf661",
+            "value": "under construction",
+            "label": "Under construction"
+        },
+        {
+            "id": "5f4fdd7eb0e74caca9185712c9a3923c",
+            "value": "operating",
+            "label": "Operating"
+        }
+    ],
+    "rezItems": [
+        {
+            "id": "38c61433e4b6468485b08d93c32c5de1",
+            "value": "south-west",
+            "label": "South West"
+        },
+        {
+            "id": "0f1763df8ffd44829af2b38329103272",
+            "value": "central-west-orana",
+            "label": "Central-West Orana"
+        },
+        {
+            "id": "afe3287c7cf642cf9b3e5d900e886a3a",
+            "value": "new-england",
+            "label": "New England"
+        },
+        {
+            "id": "acc3d6b666bc4a07b1b27491cc13dddb",
+            "value": "hunter-central-coast",
+            "label": "Hunter-Central Coast"
+        },
+        {
+            "id": "04fd9db71d7247d6be92b88a8bd50891",
+            "value": "N12 Illawarra",
+            "label": "Illawarra"
+        }
+    ],
+    "projects": [
+        {
+            "id": "c68ec073258647139808f27e42e371cc",
+            "title": "Coppabella Wind Farm",
+            "link": "https://www.coppabellawindfarm.com/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "9c289f69f3a94d1a97d05cbfc0ce2568",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "",
+            "info": {
+                "energy": "275 MW (generation)",
+                "location": "Yass",
+                "contractor": "Goldwind Australia "
+            },
+            "position": {
+                "lat": "-34.75823659",
+                "lng": "148.5879129"
+            }
+        },
+        {
+            "id": "1d7f6b2141644ccab992e55bd71c61ff",
+            "title": "Limondale BESS",
+            "link": "https://au.rwe.com/projects/limondale-bess/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "38c61433e4b6468485b08d93c32c5de1",
+            "info": {
+                "energy": "50 MW (generation) 400 MW (storage)",
+                "location": "Balranald ",
+                "contractor": "RWE Renewables Australia"
+            },
+            "position": {
+                "lat": "-34.7704973",
+                "lng": "143.514544"
+            }
+        },
+        {
+            "id": "a48e3a43f06745b192242b1d40c85c1c",
+            "title": "New England Solar Farm",
+            "link": "https://www.acenrenewables.com/project/new-england-solar/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "ecefd7cb8fc640cbbcdfdedc24120261",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "afe3287c7cf642cf9b3e5d900e886a3a",
+            "info": {
+                "energy": "720 MW (generation)",
+                "location": "Uralla",
+                "contractor": "ACEN Australia"
+            },
+            "position": {
+                "lat": "-30.62473456",
+                "lng": "151.6191083"
+            }
+        },
+        {
+            "id": "ad1bf9f07af4494ab7edbfa168d55bc5",
+            "title": "Stubbo Solar Farm",
+            "link": "https://acenrenewables.com.au/project/stubbo-solar/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "ecefd7cb8fc640cbbcdfdedc24120261",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "0f1763df8ffd44829af2b38329103272",
+            "info": {
+                "energy": "400 MW (generation)",
+                "location": "Gulgong",
+                "contractor": "ACEN Australia"
+            },
+            "position": {
+                "lat": "-32.25981551",
+                "lng": "149.5902635"
+            }
+        },
+        {
+            "id": "7a23d66566284b1dbf807968b200eb9a",
+            "title": "Liddell BESS",
+            "link": "",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "",
+            "info": {
+                "energy": "500 MW  (generation) 1,000 MW (storage)",
+                "location": "Muswellbrook",
+                "contractor": "AGL Energy"
+            },
+            "position": {
+                "lat": "-32.38656825",
+                "lng": "150.9503"
+            }
+        },
+        {
+            "id": "012e96bf95cc45e38002f1817c445019",
+            "title": "Orana BESS",
+            "link": "https://akayshaenergy.com/projects/orana-bess",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "0f1763df8ffd44829af2b38329103272",
+            "info": {
+                "energy": "415 MW (generation) 1,660 MW (storage)",
+                "location": "Wellington ",
+                "contractor": "Akaysha Energy"
+            },
+            "position": {
+                "lat": "-32.52935547",
+                "lng": "148.9511572"
+            }
+        },
+        {
+            "id": "45b41fee421344e3804d1adeb112282c",
+            "title": "Smithfield BESS",
+            "link": "https://www.iberdrola.com.au/our-assets/development-assets/smithfield-battery",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "",
+            "info": {
+                "energy": "65 MW (generation) 130 MW (storage)",
+                "location": "Western Sydney",
+                "contractor": "Iberdrola Energy"
+            },
+            "position": {
+                "lat": "-33.83852236",
+                "lng": "150.9190728"
+            }
+        },
+        {
+            "id": "ba444e5f5993488397c8cfee9db0b611",
+            "title": "Virtual Power Plant  ",
+            "link": "https://www.enelx.com/au/en/resources/enel-x-vpp-fcas-leadership",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "a81bdd492eb24c799b852d3675c269fc",
+            "projectStageId": "5f4fdd7eb0e74caca9185712c9a3923c",
+            "rezId": "",
+            "info": {
+                "energy": "95 MW (generation)",
+                "location": "Central Coast",
+                "contractor": "Enel X Australia"
+            },
+            "position": {
+                "lat": "-32.93470288",
+                "lng": "151.765231"
+            }
+        },
+        {
+            "id": "9c3c35306ef34d59b5685e95a7ec3248",
+            "title": "Culcairn Solar Farm",
+            "link": "https://culcairnsolarfarm.com.au/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "ecefd7cb8fc640cbbcdfdedc24120261",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "",
+            "info": {
+                "energy": "350 MW (generation)",
+                "location": "Culcairn",
+                "contractor": "Neoen Australia "
+            },
+            "position": {
+                "lat": "-35.70938319",
+                "lng": "146.981707"
+            }
+        },
+        {
+            "id": "ce775d5bfb0e4e9bac3893ece39f13b9",
+            "title": "Goulburn River BESS",
+            "link": "https://lightsourcebp.com/au/project/goulburn-river-solar/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "",
+            "info": {
+                "energy": "49 MW (generation) 392 MW (storage)",
+                "location": "Merriwa",
+                "contractor": "Lightsource Development Services Australia"
+            },
+            "position": {
+                "lat": "-32.28448274",
+                "lng": "150.0711879"
+            }
+        },
+        {
+            "id": "917b3931d90c45238400d1d6b2d48886",
+            "title": "Richmond Valley BESS",
+            "link": "https://arkenergy.com.au/solar/richmond-valley/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "",
+            "info": {
+                "energy": "275 MW (generation) 2,200 MW (storage)",
+                "location": "Myrtle Creek",
+                "contractor": "Ark Energy Projects"
+            },
+            "position": {
+                "lat": "-29.12117262",
+                "lng": "153.0054021"
+            }
+        },
+        {
+            "id": "1d9f759800cd4df2a0b7806935cdbb3a",
+            "title": "Silver City Energy Storage",
+            "link": "https://hydrostor.ca/projects/silver-city-energy-storage-center/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "",
+            "info": {
+                "energy": "200 MW (generation) 1,600 MW (storage)",
+                "location": "Broken Hill",
+                "contractor": "Hydrostor"
+            },
+            "position": {
+                "lat": "-31.96927493",
+                "lng": "141.6093238"
+            }
+        },
+        {
+            "id": "8bca2561895541a78c758f49c2961b9c",
+            "title": "Uungula Wind Farm",
+            "link": "https://www.squadronenergy.com/our-projects/uungula-wind-farm",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "9c289f69f3a94d1a97d05cbfc0ce2568",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "0f1763df8ffd44829af2b38329103272",
+            "info": {
+                "energy": "400 MW (generation)",
+                "location": "Twelve Mile",
+                "contractor": "Squadron Energy"
+            },
+            "position": {
+                "lat": "-32.49169564",
+                "lng": "149.0941443"
+            }
+        },
+        {
+            "id": "71665ccf533e4471bf959e61c5cd356f",
+            "title": "Flyers Creek Wind Farm",
+            "link": "https://www.infigenenergy.com/our-assets/owned-renewable-energy-assets/flyers-creek-wind-farm",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "9c289f69f3a94d1a97d05cbfc0ce2568",
+            "projectStageId": "5f4fdd7eb0e74caca9185712c9a3923c",
+            "rezId": "",
+            "info": {
+                "energy": "140 MW (generation)",
+                "location": "Orange",
+                "contractor": "Iberdrola"
+            },
+            "position": {
+                "lat": "-33.51722794",
+                "lng": "149.0523207"
+            }
+        },
+        {
+            "id": "643ed9d83b944eacaade99444c8357f6",
+            "title": "Maryvale Solar and Energy Storage System (hybrid)",
+            "link": "https://www.maryvalesolarfarm.com.au/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "ecefd7cb8fc640cbbcdfdedc24120261",
+            "projectStageId": "3f50e4968eee48f6a52e7a3d299cf661",
+            "rezId": "",
+            "info": {
+                "energy": "172 MW (generation) 372 MW (storage)",
+                "location": "Dubbo",
+                "contractor": "Gentari Solar Australia"
+            },
+            "position": {
+                "lat": "-32.46264746",
+                "lng": "148.9098729"
+            }
+        },
+        {
+            "id": "622f67d21aff4d30956a42fe95b5bcb1",
+            "title": "ACEN Phoenix PHES",
+            "link": "https://acenrenewables.com.au/project/phoenix-pumped-hydro/",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "0f1763df8ffd44829af2b38329103272",
+            "info": {
+                "energy": "800 MW (generation) 11,990 MW (storage)",
+                "location": "Mudgee",
+                "contractor": "ACEN Phoenix"
+            },
+            "position": {
+                "lat": "-32.731542",
+                "lng": "149.225381"
+            }
+        },
+        {
+            "id": "2c1ff7000c1e40a8bb0cc2474fd3751b",
+            "title": "Griffith BESS",
+            "link": "",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "",
+            "info": {
+                "energy": "100 MW (generation) 800 MW (storage)",
+                "location": "Griffith",
+                "contractor": "Eku Energy Projects (Australia)"
+            },
+            "position": {
+                "lat": "-34.311684",
+                "lng": "146.101659"
+            }
+        },
+        {
+            "id": "7820bd6d3f5d4adcb37f2034ab4c0f74",
+            "title": "Stoney Creek BESS",
+            "link": "https://enervest.com.au/wp-content/uploads/2025/04/Stoney-Creek-BESS-FS-Project-Overview-edited.pdf",
+            "schemeId": "8ddbff3fa78d464794634c07019b7080",
+            "energyGenerationTypeId": "47f450a649864edfb57a820af2b5b7ac",
+            "projectStageId": "54f81fe603344a2c9be1b247bcee75dc",
+            "rezId": "",
+            "info": {
+                "energy": "125 MW (generation) 1,000 MW (storage)",
+                "location": "Narrabri",
+                "contractor": "Enervest Utility"
+            },
+            "position": {
+                "lat": "-30.31515",
+                "lng": "149.792933"
+            }
+        }
+    ]
+}

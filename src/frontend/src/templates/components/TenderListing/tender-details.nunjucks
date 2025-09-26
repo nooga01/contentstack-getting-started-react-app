@@ -1,0 +1,117 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import './tender-timeline.nunjucks' as Timeline %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+{% set TooltipInfo = '
+    <p>Tooltip info <a href="#">Mozilla supports</a> a wide variety of exciting open web technologies, and we encourage their use. This page offers links to interesting demonstrations of these technologies.</p>
+'%}
+
+{% macro render(tenderDetails) %}
+    {# Add 'CIS' classname to div if this tender detail tile is for CIS #}
+    {# tenderDetails.CIS = 'CIS' || '' #}
+    <div class="TenderDetailsTile {{tenderDetails.CIS}}">
+        <div class="tender-details">
+            <div class="tender-title">
+                <div class="tender-tag-wrapper">
+                    <a class="tender-tag" href="{{tenderDetails.tenderPageUrl}}">
+                        <h4 class="tender-type">
+                            {% if tenderDetails.CIS %}
+                            CIS
+                        {% else %}
+                            NSW Roadmap
+                        {% endif %}
+                        – 
+                        {{tenderDetails.tenderTag}}
+                        </h4>
+                    </a>
+                    <div class="tender-status-tag">
+                        <span class="tender-status-dot {{tenderDetails.statusClass}}"></span>
+                        <span class="tender-status-text">{{tenderDetails.statusText}}</span>
+                    </div>
+                </div>
+                <div class="infrastructure-type">{{tenderDetails.infrastructureType}}</div>
+            </div>
+
+            {% if tenderDetails.tenderBlur %}
+                <div class="tender-blur">
+                    <p>{{tenderDetails.tenderBlur}}</p>
+                </div>
+            {% else %}
+                {{Timeline.render('', tenderDetails.timelineMilestones)}}
+            {% endif %}
+
+        </div>
+
+        {# scheme #}
+        <div class="tender-scheme-jurisdiction">
+            <div class="tender-scheme-jurisdiction-inner">
+                <div class="tender-scheme">
+                    {% if tenderDetails.CIS %}
+                    <div class="scheme-logo" style="background-image: url('/static/img/SchemeLogo/aus-gov-logo.svg')"></div>
+                    {% else %}
+                    <div class="scheme-logo" style="background-image: url('/static/img/SchemeLogo/EnergyCo__Logo.png')"></div>
+                    {% endif %}
+                    <div class="scheme-tag">
+                        <p class="text-medium-bold">
+                            Scheme
+                        </p>
+                        <div class="text-medium">
+                            {% if tenderDetails.CIS %}
+                                Capacity Investment Scheme
+                            {% else %}
+                                NSW Energy Infrastructure Roadmap
+                            {% endif %}
+                            {# Tooltip component#}
+                            <span class="Tooltip">
+                                <span class="icon icon-help"></span>
+                                <div class="tooltip-info">
+                                    {{RichText.render(TooltipInfo)}}
+                                    <button type="button" class="icon icon-close" aria-label="Close tooltip"></button>
+                                </div> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tender-jurisdiction">
+                    <p class="text-medium-bold">
+                        Jurisdiction
+                    </p>
+                    <p class="text-medium">
+                        {{tenderDetails.jurisdiction}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {% if tenderDetails.productList %}
+            <div class="related-products">
+                <div class="product-list-title">
+                    <p>Products available</p>
+                </div>
+                <div class="product-list">
+                    {% for item in tenderDetails.productList %}
+                        <a class="product-item" href="{{item.productLink}}" title="{{item.product}}">
+                            <p class="product-name">{{item.product}}</p>
+                            {% if item.productCategory %}
+                                <p class="product-category show-for-medium">{{item.productCategory}}</p>
+                            {% endif %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if tenderDetails.tenderCTA %}
+            <div class="tender-cta">
+                {% if tenderDetails.status == 'open' %}
+                    {{Button.render(btnText='READ MORE ABOUT THIS TENDER', btnElem='a', btnLink='', btnIcon = 'arrow')}}
+                {% elif tenderDetails.status == 'upcoming' %}
+                    {{Button.render(btnText='Register your interest', btnElem='a', btnLink='')}}
+                {% elif tenderDetails.status == 'closed' %}
+                    {{Button.render(btnText='READ THE CASE STUDY', btnElem='a', btnLink='', btnIcon = 'arrow')}}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+{% endmacro %}

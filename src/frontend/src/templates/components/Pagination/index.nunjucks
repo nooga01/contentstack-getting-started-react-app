@@ -1,0 +1,95 @@
+
+<div class="Pagination" role="navigation" aria-labelledby="Pagination-heading">
+    <div class="grid-container no-padding-if-inside-grid-container">
+
+        <div class="Pagination-Inner">
+            <h4 id="Pagination-heading" class="show-for-sr">Pagination</h4>
+
+            <div class="Pagination-result">Showing 4-6 of 11 results</div>
+
+            {# Desktop #}
+            <div class="Pagination-buttons show-for-medium Desktop">
+                <div class="pagination-container">
+                    <ul class="pagination">
+                        <li class="PagedList-skipToPrevious">
+                            <a href="?page=2" title="Go to previous page" rel="prev">
+                                <span class="icon icon-arrow"></span>
+                                Prev
+                            </a>
+                        </li>
+                        {# <li class="PagedList-skipToPrevious">
+                            <a href="?page=6" rel="prev">
+                                ...
+                            </a>
+                        </li> #}
+                        <li>
+                            <a href="?page=2">2</a>
+                        </li>
+                        <li class="active">
+                            <span>3</span>
+                        </li>
+                        <li>
+                            <a href="?page=4">4</a>
+                        </li>
+                        <li>
+                            <a href="?page=5">5</a>
+                        </li>
+                        <li>
+                            <a href="?page=6">6</a>
+                        </li>
+                        <li class="PagedList-skipToNext">
+                            <a href="?page=7" rel="next">
+                                ...
+                            </a>
+                        </li>
+                        <li class="PagedList-skipToNext">
+                            <a href="?page=4" title="Go to next page" rel="next">
+                                Next
+                                <span class="icon icon-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {# Mobile #}
+            <div class="Pagination-buttons show-for-small-only Mobile">
+                <div class="pagination-container">
+                    <ul class="pagination">
+                        <li class="PagedList-skipToPrevious">
+                            <a href="?page=2" title="Go to previous page" rel="prev">
+                                <span class="icon icon-arrow"></span>
+                                Prev
+                            </a>
+                        </li>
+                        <li class="PagedList-skipToPrevious">
+                            <a href="?page=6" rel="prev">
+                                ...
+                            </a>
+                        </li>
+                        <li>
+                            <a href="?page=2">2</a>
+                        </li>
+                        <li class="active">
+                            <span>3</span>
+                        </li>
+                        <li>
+                            <a href="?page=4">4</a>
+                        </li>
+                        <li class="PagedList-skipToNext">
+                            <a href="?page=7" rel="next">
+                                ...
+                            </a>
+                        </li>
+                        <li class="PagedList-skipToNext">
+                            <a href="?page=4" title="Go to next page" rel="next">
+                                Next
+                                <span class="icon icon-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

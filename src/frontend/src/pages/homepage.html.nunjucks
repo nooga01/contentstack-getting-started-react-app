@@ -1,0 +1,168 @@
+{% import "../templates/components/FeaturePanel/index.nunjucks" as FeaturePanel %}
+
+{% set pageTitle = 'Homepage' %}
+{# {% set bodyClass = 'homepage' %} #}
+{% set bodyClass = 'home-page' %}
+
+{% set featureTiles = {
+    featureTiles: [
+        {
+            title: 'Our PLAN',
+            summary: 'Read our ten year vision for  investment opportunities',
+            linkUrl: '#',
+            btnText: 'READ MORE'
+        },
+        {
+            title: 'Our Tenders',
+            summary: 'Browse open and upcoming tender rounds',
+            linkUrl: '#',
+            btnText: 'VIEW TENDERS'
+        },
+        {
+            title: 'Our ROLE',
+            summary: 'Read about our role in meeting NSW’s future energy needs',
+            linkUrl: '#',
+            btnText: 'READ MORE'
+        }
+    ]
+} %}
+
+{% set productCategory = {
+    categoryTitle: 'Our PRODUCTS',
+    sessionHeading: 'Our innovative financial products can help you break ground on your next renewable energy project',
+    tiles: [
+        {
+            image: {
+                imageSrc: '/static/img/iStock-1284336798.jpg',
+                imageTitle: 'Product 1'
+            },
+            tileTitle: 'Long-Term Energy Service Agreements',
+            summary: 'Long-Term Energy Service Agreements are options contracts which offer the right to access minimum cash flows over a long period of time.',
+            descriptionList: [
+                'Twenty year contract term',
+                'A series of two year options available',
+                'Applies to NSW projects'
+            ],
+            CTA: {
+                btnText: 'FIND OUT MORE',
+                btnLink: '/pages/support-resource.html'
+            },
+            tileLink: '',
+            iconLogo: '/static/img/SchemeLogo/aus-gov-logo.svg'
+        },
+        {
+            image: {
+                imageSrc: '/static/img/iStock-1322780137.jpg',
+                imageTitle: 'Product 2'
+            },
+            tileTitle: 'Renewable Energy Zones Access Rights ',
+            tags: {
+                tagTitle: 'Required for',
+                taglist: [
+                    'Projects connecting to new REZ infrastructure'
+                ]
+            },
+            summary: 'The Access Right is a commitment to limit capacity connected to the REZ Network Infrastructure based on a targeted level of transmission curtailment.',
+            descriptionList: [
+                'Required for new infrastructure',
+                'Can be used with or without the LTESA',
+                'Applies to new projects'
+            ],
+            CTA: {
+                btnText: 'FIND OUT MORE',
+                btnLink: '/pages/product-landing.html'
+            },
+            tileLink: '',
+            iconLogo: '/static/img/SchemeLogo/EnergyCo__Logo.png'
+        }
+    ]
+} %}
+
+{% set resourceSection = {
+    sectionTitle: 'Our PRODUCTS',
+    btnText: 'View all support and resources',
+    btnLink: '/pages/support-resource.html',
+    resouceCardList: [
+    {
+        tag: 'RESOURCE',
+        date: '22 Aug 2022',
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        PDFsize: '1mb',
+        ctaText: 'View the PDF',
+        resourceType: 'pdf card',
+        contentTag: 'PDF',
+        link: '#',
+        SchemeTag: 'new energy infrastructure roadmap'
+    },{
+        tag: 'RESOURCE',
+        date: '22 Mar 2023',
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+        ctaText: 'Find out more',
+        resourceType: 'text card',
+        contentTag: 'Publication',
+        link: '#'
+    },{
+        tag: 'ARTICLE',
+        date: '22 Jun 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        contentTag: 'Publication',
+        link: '#'
+    },{        
+        tag: 'RESOURCE',
+        date: '22 Aug 2022',
+        title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        filesize: '1mb',
+        resourceType: 'doc card',
+        contentTag: 'PDF',
+        link: '#',
+        SchemeTag: 'new energy infrastructure roadmap'
+    },{
+        tag: 'ARTICLE',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        contentTag: 'Publication',
+        link: '#'
+    },{
+        tag: 'ARTICLE',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        contentTag: 'Publication',
+        link: '#'
+    },{
+        tag: 'ARTICLE',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        contentTag: 'Publication',
+        link: '#'
+    }]
+} %}
+
+{% extends "layout.nunjucks" %}
+
+{% block page_banner%}
+    {% include "../templates/components/Banner/homepage-banner.nunjucks" %}
+{% endblock %}
+{% block content %}
+    {% include "../templates/components/ProductCategory/index.nunjucks" %}
+    {% include "../templates/components/ResourceSection/index.nunjucks" %}
+    {{FeaturePanel.render({
+        themeColor: '',
+        featurePanelList: [
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+    {% include "../templates/components/FeatureTab/index.nunjucks" %}
+    
+{% endblock %}

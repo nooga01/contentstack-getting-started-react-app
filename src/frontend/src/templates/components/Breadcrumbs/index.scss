@@ -1,0 +1,65 @@
+.Breadcrumbs {
+    @include show-for("medium");
+
+    ul {
+        @include unlist();
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 40px;
+        line-height: 1;
+
+        li {
+            color: brand-color(breadcrumbs-text-color);
+            display: inline-flex;
+            position: relative;
+            padding-right: 25px;
+            font-size: 16px;
+
+            &:after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                width: 6px;
+                height: 6px;
+                border-bottom: 1px solid #fff; 
+                border-right: 1px solid #fff; 
+                transform: translateY(-50%) rotate(-45deg);
+            }
+            &:last-child {
+                padding-right: 0px;
+                color: brand-color(aemo-dark-grey);
+                &:after {
+                    display: none;
+                }
+            }
+
+            a {
+                color: inherit;
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+            }
+
+            // only show the parent link (2nd last link)
+            @include breakpoint(small only) {
+                display: none;
+                &:nth-last-child(-n + 2) {
+                    display: inline-block;
+                    padding-right: 0px;
+                    padding-left: 15px;
+                    &:after {
+                        right: unset;
+                        left: 0px;
+                        transform: translateY(-50%) rotate(135deg);
+                    }
+                }
+                &:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
+}

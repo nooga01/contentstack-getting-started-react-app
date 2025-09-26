@@ -1,0 +1,37 @@
+{% import "../RichText/index.nunjucks" as RichText %}
+
+{% macro render(data) %}
+    <div class="InfoPanels" data-num-items="{{ data.items | length }}">
+        <div class="grid-container">
+            {% if data.title %}
+                <h2 class="section-title">{{data.title}}</h2>
+            {% endif %}
+            {% if data.summary %}
+                <div class="section-summary">{{ RichText.render(data.summary) }}</div>
+            {% endif %}
+        </div>
+        <div class="InfoPanelsItems grey-bg">
+            <div class="grid-container">
+                {% for item in data.items %}
+                    <div class="InfoPanelItem">
+                        <div class="InfoPanelItem-title">
+                            {% if item.icon %}
+                                <img src="{{ item.icon }}" alt="{{ item.title }}" class="icon"/>
+                            {% endif %}
+                            <span>{{ item.title }}</span>
+                        </div>
+                        <div class="InfoPanelItem-content">
+                            {{ RichText.render(item.content) }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <style type="text/css">
+        .InfoPanels .InfoPanelsItems > .grid-container .InfoPanelItem .InfoPanelItem-content {
+        }
+    </style>
+
+{% endmacro %}

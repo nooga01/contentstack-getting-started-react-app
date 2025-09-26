@@ -1,0 +1,141 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+{% import "../templates/components/InfoPanel/index.nunjucks" as InfoPanel %}
+
+{% extends "layout.nunjucks" %}
+{% set pageTitle = 'Info Panels' %}
+{% set bodyClass = 'one-column-page default-device' %}
+{% set wrapperClass = '' %}
+
+{% block page_banner%}
+    {{HeroBanner.render({
+        bannerClass: 'banner-single-line-text',
+        title: 'Info Panels'
+    })}}
+{% endblock %}
+
+{% block content %}
+
+    {{ RichText.render(
+        '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>
+            <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</strong>
+        </p>
+        <p>
+            <em>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&nbsp;</em>
+        </p>
+       ', 
+       true, true) }}
+
+    {{ InfoPanel.render({
+        title: 'Info Panels (3 items)',
+        summary: '<p>We offer our employees many benefits that can help you in and out of the workplace. Check out the list of benefits available to our staff below:</p>',
+        items: [
+            {
+                title: "Financial Benefits",
+                icon: "/static/img/InfoPanels-Salary-Continuance.png",
+                content: "
+                    <ul>
+                        <li>Short Term Incentives</li>
+                        <li>Salary Continuation Insurance</li>
+                        <li>Superannuation Salary Sacrifice</li>
+                        <li>Novated Lease Salary Sacrifice</li>
+                        <li>Staff Referral Program</li>
+                        <li>Mobile phone allowances</li>
+                    </ul>
+                "
+            },
+            {
+                title: "Wellbeing Benefits",
+                icon: "/static/img/InfoPanels-Flexible-Working.png",
+                content: "
+                    <ul>
+                        <li>Flexible working arrangements</li>
+                        <li>Leave options</li>
+                        <li>WHEREFIT corporate discounts</li>
+                        <li>Gym membership discounts</li>
+                        <li>Private health insurance discounts</li>
+                        <li>Flu vaccinations</li>
+                        <li>High quality workplace facilities</li>
+                        <li>Social clubs</li>
+                        <li>24/7 Employee Assistance Program</li>
+                    </ul>
+                "
+            },
+            {
+                title: "Educational Benefits",
+                icon: "/static/img/InfoPanels-Study-Assistance.png",
+                content: "
+                    <ul>
+                        <li>Professional memberships</li>
+                        <li>E-learning courses</li>
+                        <li>Study assistance</li>
+                        <li>Continuing Professional</li>
+                        <li>Development (CPD) points</li>
+                    </ul>
+                "
+            }            
+        ]
+    }) }}
+
+    {{ InfoPanel.render({
+        title: 'Info Panels (2 items)',
+        summary: '<p>We offer our employees many benefits that can help you in and out of the workplace. Check out the list of benefits available to our staff below:</p>',
+        items: [
+            {
+                title: "Financial Benefits",
+                icon: "/static/img/InfoPanels-Salary-Continuance.png",
+                content: "
+                    <ul>
+                        <li>Short Term Incentives</li>
+                        <li>Salary Continuation Insurance</li>
+                        <li>Superannuation Salary Sacrifice</li>
+                        <li>Novated Lease Salary Sacrifice</li>
+                        <li>Staff Referral Program</li>
+                        <li>Mobile phone allowances</li>
+                    </ul>
+                "
+            },
+            {
+                title: "Wellbeing Benefits",
+                icon: "/static/img/InfoPanels-Flexible-Working.png",
+                content: "
+                    <ul>
+                        <li>Flexible working arrangements</li>
+                        <li>Leave options</li>
+                        <li>WHEREFIT corporate discounts</li>
+                        <li>Gym membership discounts</li>
+                        <li>Private health insurance discounts</li>
+                        <li>Flu vaccinations</li>
+                        <li>High quality workplace facilities</li>
+                        <li>Social clubs</li>
+                        <li>24/7 Employee Assistance Program</li>
+                    </ul>
+                "
+            }           
+        ]
+    }) }}
+
+    {{ InfoPanel.render({
+        title: 'Info Panels (1 item)',
+        summary: '<p>We offer our employees many benefits that can help you in and out of the workplace. Check out the list of benefits available to our staff below:</p>
+        <p>NOTE: Item will be left aligned (as per design). If you want it to also be centered let me know and I can change it)</p>',
+        items: [
+            {
+                title: "Financial Benefits",
+                icon: "/static/img/InfoPanels-Salary-Continuance.png",
+                content: "
+                    <ul>
+                        <li>Short Term Incentives</li>
+                        <li>Salary Continuation Insurance</li>
+                        <li>Superannuation Salary Sacrifice</li>
+                        <li>Novated Lease Salary Sacrifice</li>
+                        <li>Staff Referral Program</li>
+                        <li>Mobile phone allowances</li>
+                    </ul>
+                "
+            }     
+        ]
+    }) }}    
+
+{% endblock %}

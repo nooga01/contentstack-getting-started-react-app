@@ -1,0 +1,49 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+{% import "../templates/components/Button/index.nunjucks" as Button %}
+
+{% set pageTitle = 'Product page' %}
+{% set banner = {
+    bannerClass: 'banner-with-image',
+    title: 'Case study: Tender Round 1 outcomes',
+    summary: 'We received registrations of interest for the Central-West Orana Renewable Energy Zone, representing gigawatts of new energy generation and storage projects.',
+    image: {
+        imageSrc: '../static/img/HeroBanner_RHSimage.jpg',
+        imageAlt: 'Landing page image'
+    }
+} %}
+{% set pageTabs = {
+    pageTabsID: "two-column-page-tab",
+    pageTabTitle1: "Case study",
+    pageTabTitle2: "Related articles",
+    ContentColumnClass: {
+        panel1: "two-column",
+        panel2: "two-column"
+    }
+} %}
+{% set lastUpdatedTime = '1 week ago' %}
+
+{% extends "TabbedLayout_TwoColumn.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+
+{% block above_tabs_content %}
+{% endblock %}
+
+{# Page Tab 1 content -- Two columns  #}
+{# left(main) column #}
+{% block structure_content_main_panel1 %}
+    {{RichText.render(
+        '
+            <h5>About this tender</h5>
+            <p>Access rights to the Zone transmission project will be run as a separate independent tender process. Projects will need to be successful in this process before connecting to the Renewable Energy Zone network and any prior collaboration with EnergyCo does not guarantee development approval and access rights.</p>
+            <p>Access rights to the Zone transmission project will be run as a separate independent tender process. Projects will need to be successful in this process before connecting to the Renewable Energy Zone network and any prior collaboration with EnergyCo does not guarantee development approval and access rights.</p>
+        '
+    )}}
+    {% include "../templates/components/TenderStatusOverviewListing/index.nunjucks" %}
+{% endblock %}
+{# right column #}
+{% block structure_content_right_panel1 %}
+{% endblock %}

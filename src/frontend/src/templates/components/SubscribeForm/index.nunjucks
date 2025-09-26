@@ -1,0 +1,25 @@
+<div class="SubscribeForm content-wrapper">
+    <div class="grid-container">
+        <div class="SubscribeForm-inner">
+            <h1 class="title">Subscribe for the latest tender updates</h1>
+            <div class="benefits-wrap">
+                <div class="benefit-item">
+                    <span class="icon icon-tick"></span>
+                    Tender updates
+                </div>
+                <div class="benefit-item">
+                    <span class="icon icon-tick"></span>
+                    Sector news
+                </div>
+                <div class="benefit-item">
+                    <span class="icon icon-tick"></span>
+                    Product information
+                </div>
+            </div>
+
+            {# Mailchimp mockup #}
+            {% include "./mailchamp.nunjucks" %}
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,186 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import './tender-details.nunjucks' as TenderDetails %}
+{% import './tender-tabs.nunjucks' as TenderTabs %}
+
+{% set tenderDetailsList = [
+    {
+        status: 'open',
+        statusClass: 'open',
+        statusText: 'IN PROGRESS',
+        tenderTag: 'Tender Round 2',
+        infrastructureType: 'Firming Infrastructure',
+        tenderBlur: '',
+        timelineMilestones: [
+            {
+                statusClass: 'upcoming',
+                isPastDate: 'is-past',
+                date: '14 Mar 2023',
+                title: 'Commencement date'
+            },{
+                statusClass: 'open',
+                isPastDate: 'is-past',
+                date: '23 Mar 2023',
+                title: 'Project Bid'
+            },{
+                statusClass: 'open',
+                isPastDate: '',
+                date: '16 Apr 2023',
+                title: 'Financial Value Bid'
+            },{
+                statusClass: 'open',
+                isPastDate: '',
+                date: '17 May 2023',
+                title: 'Award announcement'
+            },{
+                statusClass: 'closed',
+                isPastDate: '',
+                date: '16 Apr 2023',
+                title: 'Financial Value Bid'
+            },{
+                statusClass: 'closed',
+                isPastDate: '',
+                date: '17 May 2023',
+                title: 'Award announcement'
+            },{
+                statusClass: 'closed',
+                isPastDate: '',
+                date: '17 May 2023',
+                title: 'Award announcement'
+            },{
+                statusClass: 'closed',
+                isPastDate: '',
+                date: '17 May 2023',
+                title: 'Award announcement'
+            }
+        ],
+        productsTitle: 'Products included',
+        productList: [
+            {
+                product: 'Generation',
+                productCategory: 'Long-Term Energy Service Agreement'
+            },
+            {
+                product: 'Long-Duration Storage',
+                productCategory: 'Long-Term Energy Service Agreement'
+            },
+            {
+                product: 'Central-West Orana region',
+                productCategory: 'Renewable Energy Zone Access Right'
+            }
+        ],
+        tenderCTA: 'true',
+        CIS: 'CIS',
+        jurisdiction: 'New South Wales'
+    },{
+        status: 'open',
+        statusClass: 'open',
+        statusText: 'open',
+        tenderTag: 'Tender Round 3',
+        infrastructureType: 'Storage, Generation & Access Rights',
+        tenderBlur: '',
+        timelineMilestones: [
+            {
+                statusClass: 'upcoming',
+                isPastDate: 'is-past',
+                date: '14 Mar 2023',
+                title: 'Commencement date'
+            },{
+                statusClass: 'open',
+                isPastDate: '',
+                date: '23 Mar 2023',
+                title: 'Project Bid'
+            },{
+                statusClass: 'open',
+                isPastDate: '',
+                date: '16 Apr 2023',
+                title: 'Financial Value Bid'
+            },{
+                statusClass: 'closed',
+                isPastDate: '',
+                date: '17 May 2023',
+                title: 'Award announcement'
+            }
+        ],
+        productsTitle: 'Products available',
+        productList: [
+            {
+                product: 'Generation',
+                productCategory: 'Long-Term Energy Service Agreement'
+            },
+            {
+                product: 'Long-Duration Storage',
+                productCategory: 'Long-Term Energy Service Agreement'
+            },
+            {
+                product: 'Central-West Orana region',
+                productCategory: 'Renewable Energy Zone Access Right'
+            }
+        ],
+        tenderCTA: 'true',
+        jurisdiction: 'Victoria'
+    },{
+        status: 'closed',
+        statusClass: 'closed',
+        statusText: 'closed',
+        tenderTag: 'Tender Round 1',
+        infrastructureType: 'Generation',
+        tenderBlur: 'Awarded May 2023',
+        productsTitle: 'Products available',
+        productList: [
+            {
+                product: 'Generation',
+                productCategory: 'Long-Term Energy Service Agreement'
+            }
+        ],
+        tenderCTA: 'true',
+        jurisdiction: 'Victoria'
+    },{
+        status: 'upcoming',
+        statusClass: 'upcoming',
+        statusText: 'upcoming',
+        tenderTag: 'Tender Round 4',
+        infrastructureType: 'Long-Duration Storage & Access Rights',
+        tenderBlur: 'More information available in Q4 2024',
+        productsTitle: 'Products available are subject to change',
+        productList: [
+            {
+                product: 'Long-Duration Storage',
+                productCategory: 'Long-Term Energy Service Agreement'
+            },
+            {
+                product: 'South West region',
+                productCategory: 'Renewable Energy Zone Access Right'
+            },
+            {
+                product: 'New England region',
+                productCategory: 'Renewable Energy Zone Access Right'
+            }
+        ],
+        tenderCTA: 'true'
+    }
+] %}
+
+<div class="TenderListing">
+    <div class="grid-container">
+
+            {% include "./tender-tabs.nunjucks" %}
+
+            <div class="TenderListing-outter">
+                {% include "../Filters/index.nunjucks" %}
+
+                <div class="TenderListing-inner">
+                    <div class="tender-count">10 Tenders</div>
+                    <div class="tender-list-wrapper">
+                    {% for tenderDetails in tenderDetailsList %}
+                        {{TenderDetails.render(tenderDetails)}}
+                    {% endfor %}
+                    </div>
+                    <div class="btn-loadmore">
+                        {{Button.render(btnText='LOAD MORE', btnClass = 'primary-dark', btnElem='a', btnLink='?page=1&status=&Jurisdiction=&InfrastructureType=&Scheme=', btnIcon = 'plus')}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+{% set CopyTileList = [
+    {
+        title: 'Australian Energy Market Operator',
+        desciption: '
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sollicitudin pulvinar odio, vitae interdum mauris bibendum in.</p>
+        '
+    },{
+        title: 'The Regular (Australian Energy Regulator)',
+        desciption: '
+            <p>Nunc scelerisque fermentum finibus. Fusce elit mauris, tincidunt ut neque eget, lacinia porttitor mauris.</p>
+        '
+    },{
+        title: 'Renewable Energy Sector Board',
+        desciption: '
+            <p>Integer dignissim erat gravida urna porttitor venenatis vitae at neque. Maecenas fermentum mi nec diam congue, nec pretium augue viverra.</p>
+        '
+    },{
+        title: 'Electricity Infrastructure Jobs Advocate',
+        desciption: '
+            <p>Cras porta, lacus a cursus ullamcorper, metus neque aliquet dolor, at auctor lorem nisi eu urna. Nullam tortor quam, pharetra eget aliquet vitae, aliquam in urna.</p>
+        '
+    },{
+        title: 'Infrastructure Planner (EnergyCo NSW)',
+        desciption: '
+            <p>Cras porta, lacus a cursus ullamcorper, metus neque aliquet dolor, at auctor lorem nisi eu urna. Nullam tortor quam, pharetra eget aliquet vitae, aliquam in urna.</p>
+        '
+    },{
+        title: 'Financial Trustee Scheme Financial Vehicle',
+        desciption: '
+            <p>Cras porta, lacus a cursus ullamcorper, metus neque aliquet dolor, at auctor lorem nisi eu urna. Nullam tortor quam, pharetra eget aliquet vitae, aliquam in urna.</p>
+        '
+    }
+]%}
+
+{% macro renderTwoCols(CopyTileList) %}
+{% for item in CopyTileList %}
+    <div class="CopyTile cell small-12 medium-6">
+        <div class="title">{{item.title}}</div>
+        <div class="desciption-wrapper">
+            {{RichText.render(item.desciption)}}
+        </div>
+    </div>
+{% endfor %}
+{% endmacro %}
+
+{% macro renderThreeCols(CopyTileList) %}
+{% for item in CopyTileList %}
+    <div class="CopyTile cell small-12 medium-6 large-4">
+        <div class="title">{{item.title}}</div>
+        <div class="desciption-wrapper">
+            {{RichText.render(item.desciption)}}
+        </div>
+    </div>
+{% endfor %}
+{% endmacro %}
+
+<div class="CopyTileListing content-wrapper">
+    <div class="grid-container no-padding-if-inside-grid-container">
+        <div class="section-title">
+            Our partners
+        </div>
+
+        <div class="grid-x grid-margin-x grid-margin-y">
+            
+            {% if isInTwoColsPage %}
+                {# If in two columns page #}
+                {{renderTwoCols(CopyTileList)}}                
+            {% else %}
+                {# If in one column page #}
+                {{renderThreeCols(CopyTileList)}}
+            {% endif %}
+        </div>
+    </div>
+</div>

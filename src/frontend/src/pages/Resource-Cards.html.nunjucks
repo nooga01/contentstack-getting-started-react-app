@@ -1,0 +1,184 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/ResourceCard/index.nunjucks" as ResourceCards %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+
+{% extends "layout.nunjucks" %}
+{% set pageTitle = 'Tender info' %}
+{% set bodyClass = "one-column-page" %}
+
+{% block page_banner%}
+    {{ HeroBanner.render (
+        {
+            bannerClass: 'banner-single-line-text',
+            title: 'Resource Cards'
+        }
+    )}}
+{% endblock %}
+{% block content %}
+
+
+    {{ResourceCards.render(
+        [
+            {
+                contentTag: 'Video',
+                date: '22 Mar 2023',
+                title: 'Superman Trailer 2025 (Youtube)',
+                resourceType: 'video card',
+                link: 'https://www.youtube.com/watch?v=Ox8ZLF6cGM0',
+                videoChannel: "youtube",
+                videoId: "Ox8ZLF6cGM0",
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {
+                contentTag: 'Video',
+                date: '22 Mar 2023',
+                title: 'Pearl Jam Unplugged (Vimeo)',
+                resourceType: 'video card',
+                link: 'https://vimeo.com/107992868',
+                videoChannel: "vimeo",
+                videoId: "107992868",
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {
+                contentTag: 'PDF',
+                date: '22 Aug 2022',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                PDFsize: '1mb',
+                ctaText: 'View the PDF',
+                resourceType: 'pdf card',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {
+                contentTag: 'RESOURCE',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                ctaText: 'Find out more',
+                resourceType: 'text card',
+                link: '#',
+                SchemeTag: 'Capacity Investment Scheme',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {
+                contentTag: 'DOC',
+                date: '22 Jun 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                filesize: '23kb',
+                ctaText: 'Download doc',
+                resourceType: 'doc card',
+                link: 'file_path',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {
+                contentTag: 'Article',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                resourceType: 'image card',
+                imageSrc: 'iStock-638842998.jpg',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }, {    
+                contentTag: 'Article',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                resourceType: 'image card',
+                imageSrc: 'iStock-638842998.jpg',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: ""
+            }
+        ]
+        , "Resource Cards (Cards Layout)")
+    }}
+
+    {{ RichText.render(
+        'Hello'
+    , true, true)}}
+
+    {{ResourceCards.render(
+        [
+            {
+                contentTag: 'Video',
+                date: '22 Mar 2023',
+                title: 'Superman Trailer 2025 (Youtube)',
+                resourceType: 'video card',
+                link: 'https://www.youtube.com/watch?v=Ox8ZLF6cGM0',
+                videoChannel: "youtube",
+                videoId: "Ox8ZLF6cGM0",
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {
+                contentTag: 'Video',
+                date: '22 Mar 2023',
+                title: 'Pearl Jam Unplugged (Vimeo)',
+                resourceType: 'video card',
+                link: 'https://vimeo.com/107992868',
+                videoChannel: "vimeo",
+                videoId: "107992868",
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {
+                contentTag: 'PDF',
+                date: '22 Aug 2022',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                PDFsize: '1mb',
+                ctaText: 'View the PDF',
+                resourceType: 'pdf card',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {
+                contentTag: 'RESOURCE',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                ctaText: 'Find out more',
+                resourceType: 'text card',
+                link: '#',
+                SchemeTag: 'Capacity Investment Scheme',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {
+                contentTag: 'DOC',
+                date: '22 Jun 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                filesize: '23kb',
+                ctaText: 'Download doc',
+                resourceType: 'doc card',
+                link: 'file_path',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {
+                contentTag: 'Article',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                resourceType: 'image card',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }, {    
+                contentTag: 'Article',
+                date: '22 Mar 2023',
+                title: 'Firming Infrastructure Investment Objectives Report December 2022',
+                resourceType: 'image card',
+                link: '#',
+                SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP',
+                desc: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                class: "as-list-item"
+            }
+        ]
+        , "Resource Cards (Listed Layout)"
+        , true)
+    }}
+{% endblock %}

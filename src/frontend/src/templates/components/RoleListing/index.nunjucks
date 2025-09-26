@@ -1,0 +1,14 @@
+{% macro render(item) %}
+    <a class="RoleListingCard cell" href="{{item.link}}" target="_blank" rel="noopener noreferrer">
+        <div class="card-content">
+            <div class="content-title">
+                {{item.title}}
+            </div>
+            <div class="content-description">
+                {% if item.location %}<span>{{ item.location }}</span>{% endif%}
+                {% if item.employmentType %}<span>{{ item.employmentType }}</span>{% endif%}
+                {% if item.date %}<span>Posted on {{ item.date }}</span>{% endif%}
+            </div>     
+        </div>
+    </a>
+{% endmacro %}

@@ -1,0 +1,27 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{% macro renderItem(tileItem) %}
+    <a class="FeatureTile cell small-12 large-4" href="{{tileItem.linkUrl}}" title="{{tileItem.summary}}" data-scheme="{{tileItem.scheme}}">
+        {% if tileItem.title %}
+            <p class="title">{{tileItem.title}}</p>
+        {% endif %}
+        <p class="summary">{{tileItem.summary}}</p>
+        {{Button.render(btnText = tileItem.btnText, btnClass = 'text-primary', btnElem = 'button', tabindex = '-1')}}
+    </a>
+{% endmacro%}
+
+{% macro render(featureTiles) %}
+    <div class="FeatureTiles">
+        <div class="grid-container">
+            {% if featureTiles.sessionTitle %}
+                <h4 class="section-title">{{featureTiles.sessionTitle}}</h4>
+            {% endif %}
+
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {% for tileItem in featureTiles.featureTiles %}
+                    {{renderItem(tileItem)}}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}

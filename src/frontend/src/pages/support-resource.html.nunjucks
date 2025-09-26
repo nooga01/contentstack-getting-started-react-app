@@ -1,0 +1,129 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/FeatureTile/index.nunjucks" as FeatureTile %}
+{% import "../templates/components/ResourceCard/index.nunjucks" as ResourceCards %}
+
+{% set pageTitle = 'Tender info' %}
+{% set banner = {
+    bannerClass: 'banner-single-line-text',
+    title: 'Support and resources'
+} %}
+{% set featureTiles = {
+    sessionTitle: 'Browse our key topics',
+    featureTiles: [
+        {
+            summary: 'Why we need to change our energy systems ',
+            linkUrl: '#',
+            btnText: 'READ MORE'
+        }, {
+            summary: 'Get familiar with the tender process (CIS)',
+            linkUrl: '#',
+            btnText: 'READ MORE',
+            scheme: 'CIS'
+        }, {
+            summary: 'NSW’s energy transition plan explained',
+            linkUrl: '#',
+            btnText: 'READ MORE'
+        }
+    ]
+} %}
+
+{% set resouceCardList = [
+    {
+        contentTag: 'Video',
+        date: '22 Mar 2023',
+        title: 'Superman Trailer 2025 (Youtube)',
+        imageSrc: '',
+        resourceType: 'video card',
+        link: 'https://www.youtube.com/watch?v=Ox8ZLF6cGM0',
+        videoChannel: "youtube",
+        videoId: "Ox8ZLF6cGM0",
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'Video',
+        date: '22 Mar 2023',
+        title: 'Pearl Jam Unplugged (Vimeo)',
+        imageSrc: '',
+        resourceType: 'video card',
+        link: 'https://vimeo.com/107992868',
+        videoChannel: "vimeo",
+        videoId: "107992868",
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'PDF',
+        date: '22 Aug 2022',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        PDFsize: '1mb',
+        ctaText: 'View the PDF',
+        resourceType: 'pdf card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'RESOURCE',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        ctaText: 'Find out more',
+        resourceType: 'text card',
+        link: '#',
+        SchemeTag: 'Capacity Investment Scheme'
+    }, {
+        contentTag: 'DOC',
+        date: '22 Jun 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        filesize: '23kb',
+        ctaText: 'Download doc',
+        resourceType: 'doc card',
+        link: 'file_path',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {    
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }
+] %}
+
+{% extends "layout.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+{% block content %}
+    {{FeatureTile.render(featureTiles)}}
+
+    {# resource section template #}
+    <div class="resource-cards-section content-wrapper">
+        <div class="grid-container">
+            <h2 class="section-title larger">Browse all of our resources</h2>
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12">
+                    {% include "../templates/components/TagTab/index.nunjucks" %}
+                </div>
+                <div class="cell small-12">
+                    <select>
+                        <option>Sort by newest</option>
+                        <option>Sort by oldest</option>
+                        <option>A - Z</option>
+                        <option>Z - A</option>
+                    </select>
+                </div>
+                <div class="cell small-12 ResourceFilter-Container">
+                    {% include "../templates/components/Filters/index.nunjucks" %}
+                    {{ResourceCards.render(resouceCardList)}}
+                    {# Resource card list include Pagination component #}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

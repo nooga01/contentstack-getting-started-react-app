@@ -1,0 +1,60 @@
+$font-base-path: "../static/fonts/";
+$icomoon-font-path: "../static/fonts/icons/";
+
+$headerHeight: (
+  "small": 95px,
+  "medium": 95px,
+  "large": 95px,
+  "xlarge": 119px,
+);
+
+$stickyHeaderHeight: (
+  "small": 65px,
+  "medium": 72px,
+  "large": 78px,
+);
+
+$corpHeaderHeight: (
+  "small": 0px,
+  "medium": 0px,
+  "large": 54px,
+  "xlarge": 54px,
+);
+
+$sidePanel-Widths: (
+    "small": 100%,
+    "medium": 428px,
+    "large": 428px,
+);
+
+
+$sidePanel-ContentPadding: 16px;
+
+$footer-margin-top: 50px;
+
+$spacing: (
+  "xxsmall": 8px,
+  "xsmall": 16px,
+  "small2": 24px,
+  "small": 32px,
+  "medium": 40px,
+  "large": 64px,
+  "xlarge": 88px,
+  "xxlarge": 96px,
+  "xxxlarge": 112px,
+);
+
+$dropShadow: 1px 1px 10px brand-color(primary); //brand-color(aemo-border-hover);
+$dropShadowGrey: 1px 1px 10px brand-color(aemo-dark-grey); //product tile, news card;
+$dropShadowCIS: 1px 1px 10px rgba(brand-color(CIS-dark-green),0.25); //feature tile
+
+$hoverTransition: var(--timing) ease-in-out;
+
+$leftBorderLine_DarkBlue: 2px solid brand-color(aemo-dark-blue);
+$leftBorderLine_DarkGrey: 2px solid brand-color(aemo-darkest-grey);
+
+$tabTagStatusColor: (
+  open: #A2F1BD,
+  upcoming: #FFD67B,
+  closed: #FFA393,
+);

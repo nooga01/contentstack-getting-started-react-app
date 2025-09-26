@@ -1,0 +1,41 @@
+.search-result-section {
+    .SearchResult {
+        @include breakpoint(medium down) {
+            .cell:not(:first-child) {
+                margin-top: map-get($map: $spacing, $key: medium);
+            }
+        }
+    }
+
+    .search-bar {
+        display: flex;
+        position: relative;
+        .search-input {
+            border: 0;
+            border-bottom: 1px solid brand-color(aemo-dark-blue);
+            padding-left: 0;
+            padding-right: 120px;
+        }
+        .button.text-primary {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin-bottom: 19px;
+        }
+    }
+
+    .sorting-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include breakpoint(medium down) {
+            margin-bottom: 50px;
+        }
+
+        select {
+            border: 0;
+            width: auto;
+            background-position-x: calc(100% + 32px);
+        }
+    }
+}

@@ -1,0 +1,107 @@
+/*
+There are also mixins inside the following files:
+
+- \scss\_grid.scss
+*/
+
+// a list without standard list styling
+@mixin unlist {
+  margin: 0;
+  padding: 0;
+  > li {
+    list-style: none;
+    &:before {
+      display: none; // will hide the BULLET (which is set in _typography.scss)
+    }
+  }
+}
+
+
+@function brand-color($name, $fallback: null) {
+    // don't need to check $brand-colors as it's been merged into $foundation-palette
+    // check foundation colors
+    @if map-has-key($foundation-palette, $name) {
+        @return map-get($foundation-palette, $name);
+    }
+    @if map-has-key($foundation-palette, $fallback) {
+        @return map-get($foundation-palette, $fallback);
+    }     
+    @error "The key '#{$name}' is not in the map '$brand-colors' or '$foundation-palette'";
+    @return null;
+}
+
+@mixin ifbrand($b) {
+    @if $b == $brand {
+        @content;
+    }
+}
+@mixin ifnotbrand($b) {
+    @if $b != $brand {
+        @content;
+    }
+}
+@mixin ifdisabled() {
+    &.disabled,
+    &[disabled] {
+        @content;
+    }
+}
+@mixin ifnotdisabled() {
+    &:not(.disabled):not([disabled]) {
+        @content;
+    }
+}
+@mixin ifnotselectedoractive() {
+    &:not(.selected):not(.active) {
+        @content;
+    }
+}
+
+@mixin font_NeuzeitGroW03Bold {
+    font-family: "NeuzeitGroteskBold", Verdana, Geneva, Tahoma, sans-serif;
+}
+@mixin font_NeuzeitSBookRegular {
+    font-family: "NeuzeitSLTStdBook", Verdana, Geneva, Tahoma, sans-serif;
+}
+@mixin linkHoverEffect($underlineColor: brand-color(aemo-border-hover)) {
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 1.5px;
+        background-color: $underlineColor;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--timing) ease-in-out;
+    }
+    &:hover {
+        &:after {
+            opacity: 1;
+            visibility: visible;
+            transition: var(--timing) ease-in-out;
+        }
+    }
+}
+@mixin cardHoverEffect {
+    box-shadow: $dropShadow;
+    transition: $hoverTransition;
+}
+@mixin cardHoverEffect_grey {
+    box-shadow: $dropShadowGrey;
+    transition: $hoverTransition;
+}
+
+@mixin mapPropertyForEachBreakpoint($cssPropsMaps, $bps: $breakpoint-classes) {
+    @each $bp in $bps {
+        @include breakpoint($bp) {
+            @each $cssProp, $map in $cssPropsMaps {
+                @if map-has-key($map, $bp) {
+                    #{$cssProp}: map-get($map, $bp);
+                }
+            }
+        }
+    }
+}

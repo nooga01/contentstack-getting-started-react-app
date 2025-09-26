@@ -1,0 +1,24 @@
+<div class="footer">
+    <div class="footer-content">
+
+        <div class="footer-link">
+        <h1>Links</h1>
+        <nav class="footer-nav">
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/about-us">About us</a>
+            <a href="/contact-us">Contact</a>
+        </nav>
+        </div>
+
+        <div class="footer-info">
+        <img src="https://images.contentstack.io/v3/assets/blt18fcc602e3a0f02c/bltb02d2f3ebdda3dc7/680748202b1be999ac155d25/Footer_Logo.png" alt="Footer">
+
+        <p>At PlateStack, we’ve got great food and a better experience.</p>
+        <h3>Hours</h3>
+            <p style="opacity: 0.8;">Tue - Sun ( 16:00 - 22:00 )</p>
+            <p style="opacity: 0.8;">Closed on Monday</p>
+        </div>
+    </div>
+    <h2>Copyright © PlateStack 2025. All rights reserved.</h2>
+</div>

@@ -1,0 +1,86 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../ContentWithImage/index.nunjucks' as ContentWithImage %}
+
+{# {% macro render(tabsContent) %} #}
+<div class="TabsContent-container">
+
+        <ul class="tabs" data-tabs id="feature-tabs" aria-label="Feature Tabs">
+            <li class="tabs-title is-active">
+                <button class="tabs-btn" data-tabs-target="panel1" aria-controls="panel1">We procure</button>
+            </li>
+            <li class="tabs-title">
+                <button class="tabs-btn" data-tabs-target="panel2" aria-controls="panel2">We plan</button>
+            </li>
+            <li class="tabs-title">
+                <button class="tabs-btn" data-tabs-target="panel3" aria-controls="panel3">We partner</button>
+            </li>
+            <li class="tabs-title">
+                <button class="tabs-btn" data-tabs-target="panel4" aria-controls="panel4">We partner</button>
+            </li>
+        </ul>
+
+        <div class="tabs-content" data-tabs-content="feature-tabs">
+            <div role="tabpanel" class="tabs-panel is-active" data-tabs-panel="panel1">
+                {{
+                    ContentWithImage.render({
+                        imgPosition: '', 
+                        categoryTitle: 'WHAT ARE ACCESS RIGHTS',
+                        contentTitle: 'Renewable Energy Zones will group new wind and solar power generation in certain locations where it can be more efficiently stored and transmitted across.',
+                        descriptionRichText: '<p>Five zones have so far been identified and will keep NSW electricity reliable as coal-fired power stations retire, delivering large amounts of new energy to power our regions and cities.</p>',
+                        CTA: {
+                            btnText: 'READ MORE on energyco',
+                            btnLink: ''
+                        },
+                        imageSrc: '/static/img/what-to-do-1.jpg'
+                    })
+                }}
+            </div>
+            <div role="tabpanel" class="tabs-panel" data-tabs-panel="panel2">
+                {{
+                    ContentWithImage.render({
+                        imgPosition: 'left-image', 
+                        categoryTitle: 'Our role on the roadmap',
+                        descriptionRichText: '
+                            <ul class="feature-bullet-list">
+                                <li>We have a strict mandate to only recommend those projects which can demonstrate value to their host communities</li>
+                                <li>Our ground-breaking processes have been specifically designed to harness the best capabilities of the market</li>
+                                <li>The ten-year tender schedule provides renewable energy developers and investors with the certainty they need</li>
+                            </ul>',
+                        imageSrc: '/static/img/what-to-do-2.jpg'
+                    })
+                }}
+            </div>
+            <div role="tabpanel" class="tabs-panel" data-tabs-panel="panel3">
+                {{
+                    ContentWithImage.render({
+                        imgPosition: '', 
+                        categoryTitle: 'WHAT ARE ACCESS RIGHTS',
+                        contentTitle: 'Renewable Energy Zones will group new wind and solar power generation in certain locations where it can be more efficiently stored and transmitted across.',
+                        descriptionRichText: '<p>Five zones have so far been identified and will keep NSW electricity reliable as coal-fired power stations retire, delivering large amounts of new energy to power our regions and cities.</p>',
+                        CTA: {
+                            btnText: 'READ MORE on energyco',
+                            btnLink: ''
+                        },
+                        imageSrc: '/static/img/what-to-do-1.jpg'
+                    })
+                }}
+            </div>
+            <div role="tabpanel" class="tabs-panel" data-tabs-panel="panel4">
+                {{
+                    ContentWithImage.render({
+                        imgPosition: 'left-image', 
+                        categoryTitle: 'Our role on the roadmap',
+                        descriptionRichText: '
+                            <ul>
+                                <li>We have a strict mandate to only recommend those projects which can demonstrate value to their host communities</li>
+                                <li>Our ground-breaking processes have been specifically designed to harness the best capabilities of the market</li>
+                                <li>The ten-year tender schedule provides renewable energy developers and investors with the certainty they need</li>
+                            </ul>',
+                        imageSrc: '/static/img/what-to-do-2.jpg'
+                    })
+                }}
+            </div>
+        </div>
+
+</div>
+{# {% endmacro %} #}

@@ -1,0 +1,9 @@
+<div class="BackToTop sticky">
+    <div class="BackToTop-Container">
+        <div class="grid-container">
+            <div class="BackToTop-Inner">
+                <a href="#" class="button white">Back to top</a>
+            </div>
+        </div>
+    </div>
+</div>

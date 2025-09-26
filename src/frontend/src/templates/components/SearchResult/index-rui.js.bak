@@ -1,0 +1,106 @@
+$(document).ready(function(){
+    // Search result page
+    const $SearchBtn = $(".search-result-section .search-bar .button");
+    const $searchInput = $(".search-result-section .search-bar .search-input");
+    const $searchSortSelect = $(".search-result-section .sorting-wrapper select");
+    const $searchPaginationBtns = $(".search-result-section .Pagination-buttons ul li a");
+    let SEARCH_RESULT_URL = "/search";
+    // const CURRENT_SEARCH_RESULT_hashUrl = "#mainsearch_e=1&mainsearch_q=test"; // window.location.hash;
+    const CURRENT_SEARCH_RESULT_hashUrl = window.location.hash;
+    const SEARCH_PARAMS_KEYS = {
+        PAGE: "mainsearch_e",
+        INPUT: "mainsearch_q",
+        SORT: "mainsearch_o",
+    };
+    const SEARCH_PARAMS_FROM_URL = CURRENT_SEARCH_RESULT_hashUrl ? getParamsObjFromURL(CURRENT_SEARCH_RESULT_hashUrl) : {};
+    const hashUrl_inputVal = SEARCH_PARAMS_FROM_URL[SEARCH_PARAMS_KEYS.INPUT];
+
+    // If querystring has input's value, then apply this value to the search input of Search Result page
+    if (SEARCH_PARAMS_FROM_URL[SEARCH_PARAMS_KEYS.INPUT]) {
+        $searchInput.val(SEARCH_PARAMS_FROM_URL[SEARCH_PARAMS_KEYS.INPUT]);
+    }
+    // When pressing Enter, will redirect to "/search#mainsearch_e=1&mainsearch_q=[USER INPUT]"
+    $searchInput.keyup(function (e) {
+        e.preventDefault();
+        if (e.key == "Enter" || e.keyCode == 13) {
+            const inputVal = $searchInput.val() ? $searchInput.val() : "";
+            const isSameVal = hashUrl_inputVal === inputVal;
+            if (isSameVal) {
+                window.location.href = SEARCH_RESULT_URL + CURRENT_SEARCH_RESULT_hashUrl;
+            } else {
+                let updatedUrl = CURRENT_SEARCH_RESULT_hashUrl.replace(inputVal, "");
+                window.location.href = SEARCH_RESULT_URL + updatedUrl + inputVal.trim();
+            }
+        }
+    });
+    $SearchBtn.on("click", function () {
+        const inputVal = $searchInput.val() ? $searchInput.val() : "";
+        const isSameVal = hashUrl_inputVal === inputVal;
+        if (isSameVal) {
+            window.location.href = SEARCH_RESULT_URL + CURRENT_SEARCH_RESULT_hashUrl;
+        } else {
+            let updatedUrl = CURRENT_SEARCH_RESULT_hashUrl.replace(inputVal, "");
+            window.location.href = SEARCH_RESULT_URL + updatedUrl + inputVal.trim();
+        }
+    });
+    // When selecting a sorting option, will redirect to "/search#mainsearch_e=1&mainsearch_q=[USER INPUT]&mainsearch_o=[SELECTED SORT OPTION]"
+    $searchSortSelect.on("change", function () {
+        window.location.href = SEARCH_RESULT_URL + CURRENT_SEARCH_RESULT_hashUrl + "&" + SEARCH_PARAMS_KEYS.SORT + "=" + $searchSortSelect.val();
+    });
+    // When pressing a page button, will redirect to "/search#mainsearch_e=[PRESSED PAGE BTN NUM]&mainsearch_q=[USER INPUT]"
+    $searchPaginationBtns.on("click", function () {
+        const clickedPageNum = $(this).get(0).innerText;
+        const inputVal = $searchInput.val() ? $searchInput.val().trim() : "";
+        const href = SEARCH_RESULT_URL + "#" + SEARCH_PARAMS_KEYS.PAGE + "=" + clickedPageNum + "&" + SEARCH_PARAMS_KEYS.INPUT + "=" + inputVal;
+        $(this).attr("href", href);
+    });
+    // $clearSearchBtn.on("click", function () {
+    //     $searchInput.val("");
+    // });
+})
+
+function getParamsObjFromURL(url) {
+  // Remove the leading '/' if present in the URL
+  if (url.startsWith('#')) {
+    url = url.substring(1);
+  }
+
+  // Split the URL by '&' to get individual key-value pairs
+  const pairs = url.split('&');
+
+  // Initialize an empty object
+  const keyValueObject = {};
+
+  // Iterate through the pairs and split them by '=' to create the object
+  for (const pair of pairs) {
+    const [key, value] = pair.split('=');
+    keyValueObject[key] = value;
+  }
+
+  return keyValueObject;
+}
+
+function getParamsArrayFromURL(url) {
+    // Remove the leading '/' if present in the URL
+    if (url.startsWith("/")) {
+        url = url.substring(1);
+    }
+
+    // Split the URL by '&' to get individual key-value pairs
+    const pairs = url.split("&");
+
+    // Initialize an array to store the objects
+    const keyValuePairs = [];
+
+    // Iterate through the pairs and split them by '=' to create objects
+    for (const pair of pairs) {
+        const [key, value] = pair.split("=");
+        keyValuePairs.push({ key, value });
+    }
+
+    return keyValuePairs;
+}
+
+
+
+

@@ -1,0 +1,17 @@
+{% import '../CardItem/index.nunjucks' as CardItem %}
+
+{# News Card List #}
+{% macro render(newsCardList) %}
+    <div class="NewsCard card-list-wrapper">
+        <div class="grid-container no-padding-if-inside-grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y">
+
+                {% for item in newsCardList %}
+                    {{ CardItem.render(item) }}
+                {% endfor %}
+
+            </div>
+            {% include "../Pagination/index.nunjucks" %}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,33 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../RichText/index.nunjucks' as RichText %}
+
+{% macro render(ContentImage) %}
+{# if imgPosition is '', the image is on the right side #}
+{# if imgPosition is 'left-image', the image is on the right side #}
+<div class="ContentWithImage grid-container {{ContentImage.imgPosition}}">
+    <div class="ContentWithImage-content grid-container">
+        {% if ContentImage.categoryTitle %}
+            <div class="category-title">
+                {{ContentImage.categoryTitle}}
+            </div>
+        {% endif %}
+
+        {% if ContentImage.contentTitle %}
+            <div class="content-title">
+                {{ContentImage.contentTitle}}
+            </div>
+        {% endif %}
+
+        {% if ContentImage.descriptionRichText %}
+            <div class="description">
+                {{RichText.render(ContentImage.descriptionRichText)}}
+            </div>
+        {% endif %}
+
+        {% if ContentImage.CTA %}
+            {{Button.render(btnText = ContentImage.CTA.btnText, btnLink=ContentImage.CTA.btnLink, btnIcon = 'arrow', btnElem = 'a')}}
+        {% endif %}
+    </div>
+    <div class="ContentWithImage-image" style="background-image: url({{ContentImage.imageSrc}});"></div>
+</div>
+{% endmacro %}

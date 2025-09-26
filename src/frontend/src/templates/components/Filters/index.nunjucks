@@ -1,0 +1,126 @@
+{% import '../Button/index.nunjucks' as Button %}
+
+{% set Filters = [   
+    {
+        category: 'ResourceType',
+        categoryTitle: 'Resource Type',
+        categoryOptions: [
+            {
+                id: 'ResourceType1',
+                label: 'DOC',
+                value: 'DOC'
+            }, {
+                id: 'ResourceType2',
+                label: 'PDF',
+                value: 'PDF'
+            }, {
+                id: 'ResourceType3',
+                label: 'Video',
+                value: 'video'
+            }
+        ]
+    },
+    {
+        category: 'Jurisdiction',
+        categoryTitle: 'Jurisdiction',
+        categoryOptions: [
+            {
+                id: 'Jurisdiction1',
+                label: 'New South Wales',
+                value: 'NSW'
+            }, {
+                id: 'Jurisdiction2',
+                label: 'South Australia',
+                value: 'SA'
+            }, {
+                id: 'Jurisdiction3',
+                label: 'Victoria',
+                value: 'VIC'
+            }, {
+                id: 'Jurisdiction4',
+                label: 'Northern Territory',
+                value: 'NT'
+            }
+        ]
+    }, {
+        category: 'Product-type',
+        categoryTitle: 'Product type',
+        categoryOptions: [
+            {
+                id: 'Product-type1',
+                label: 'Long-Term Energy Service Agreement',
+                value: 'Long-Term Energy Service Agreement'
+            }, {
+                id: 'Product-type2',
+                label: 'Renewable Energy Zone Access Rights',
+                value: 'Renewable Energy Zone Access Rights'
+            }, {
+                id: 'Product-type3',
+                label: 'Capacity Investment Scheme Agreement',
+                value: 'Capacity Investment Scheme Agreement'
+            }
+        ]
+    }, {
+        category: 'Infrastructure-type',
+        categoryTitle: 'Infrastructure type',
+        categoryOptions: [
+            {
+                id: 'Infrastructure-type1',
+                label: 'Generation',
+                value: 'Generation'
+            }, {
+                id: 'Infrastructure-type2',
+                label: 'Long-Duration Storage',
+                value: 'Long-Duration Storage'
+            }, {
+                id: 'Infrastructure-type3',
+                label: 'Firming Infrastructure',
+                value: 'Firming Infrastructure'
+            }, {
+                id: 'Infrastructure-type4',
+                label: 'Access Rights',
+                value: 'Access Rights'
+            }
+        ]
+    }
+]
+ %}
+
+<div class="Filters">
+    <div class="button-wrapper btn-open-filter">
+        {{Button.render(btnText='FILTER', btnClass = '', btnElem='button', btnIcon = 'filter')}}
+    </div>
+    <div class="Filters-inner">
+        <div class="filter-header">
+            <div class="section-title smaller">
+                Filters
+            </div>
+            <button type="button" class="btn-close-filter" aria-label="Close filter">
+                CLOSE
+                <span class="icon icon-close"></span>
+            </button>
+        </div>
+        <form id="filter-form" action="" method="post">
+            {% for Category in Filters %}
+                <div class="category-wrapper form-field-wrapper form-field-type-Checkbox">
+                    <label class="field-label">
+                        {{Category.categoryTitle}}
+                        <span class="icon icon-chevron"></span></label>
+                    <div class="category-options">
+                        {% for item in Category.categoryOptions %}
+                            <label class="chbx" for="{{item.value}}">
+                                <input type="checkbox" id="{{item.value}}" name="{{item.value}}" value="{{item.value}}">
+                                <span>{{item.label}}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </form>
+        <div class="filter-footer button-wrapper">
+            {{Button.render(btnText='CLEAR ALL', btnClass = 'text-primary', btnElem='button', btnIcon = '')}}
+            {{Button.render(btnText='APPLY FILTERS', btnClass = 'apply-filter', btnElem='button', btnIcon = '')}}
+        </div>
+    </div>
+    <div class="Filters-blocker"></div>
+</div>

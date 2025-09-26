@@ -1,0 +1,50 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../Button/tender-cta.nunjucks' as TenderCTA %}
+
+{% macro renderItem(item) %}
+
+    <a class="ProductTile cell small-12 medium-6 large-4"  href="{{item.link}}">
+        <div class="tileItem-image">
+            <img src="/static/img/ProductTile/{{item.imageSrc}}" alt="{{item.title}}">
+        </div>
+
+        <div class="tileItem-content">
+            <div class="title">
+                {{item.title}}
+                <span class="underline">{{item.title}}</span>
+            </div>
+            <div class="summary">
+                {% for summary in item.summaryList %}
+                    <div class="summary-item">
+                        <span class="icon icon-tick"></span>
+                        <span>{{summary}}</span>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {{Button.render(btnText='Read more', btnElem='button', btnClass='text-primary', tabindex = '-1')}}
+        </div>
+    </a>
+
+{% endmacro %}
+
+{% macro renderList(productTileList) %}
+
+    <div class="ProductTiles content-wrapper grey-bg">
+        <div class="grid-container">
+
+            <div class="section-title">
+                {{productTileList.sessionTitle}}
+            </div>
+
+            <div class="grid-x grid-margin-x grid-margin-y">
+                {% for item in productTileList.list %}
+                    {# product tile #}
+                    {{renderItem(item)}}
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+
+{% endmacro %}

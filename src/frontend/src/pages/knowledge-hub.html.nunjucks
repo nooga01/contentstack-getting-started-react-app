@@ -1,0 +1,145 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/ResourceCard/index.nunjucks" as ResourceCards %}
+
+{% extends "TabbedLayout.nunjucks" %}
+
+{% set pageTitle = 'Knowledge Hub' %}
+{% set bodyClass = 'one-column-page' %}
+{% set banner = {
+    bannerClass: 'banner-single-line-text',
+    title: 'Knowledge Hub'
+} %}
+
+
+{% set pageTabs = {
+    pageTabsID: "page-1",
+    pageTabTitle1: "Multimedia Content",
+    pageTabTitle2: "Support and Resrouces",
+    ContentColumnClass: {
+        panel1: "one-column",
+        panel2: "one-column"
+    }
+} %}
+
+
+{% set resouceCardList = [
+    {
+        contentTag: 'Video',
+        date: '22 Mar 2023',
+        title: 'Superman Trailer 2025 (Youtube)',
+        imageSrc: '',
+        resourceType: 'video card',
+        link: 'https://www.youtube.com/watch?v=Ox8ZLF6cGM0',
+        videoChannel: "youtube",
+        videoId: "Ox8ZLF6cGM0",
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'Video',
+        date: '22 Mar 2023',
+        title: 'Pearl Jam Unplugged (Vimeo)',
+        imageSrc: '',
+        resourceType: 'video card',
+        link: 'https://vimeo.com/107992868',
+        videoChannel: "vimeo",
+        videoId: "107992868",
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'PDF',
+        date: '22 Aug 2022',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        PDFsize: '1mb',
+        ctaText: 'View the PDF',
+        resourceType: 'pdf card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'RESOURCE',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        ctaText: 'Find out more',
+        resourceType: 'text card',
+        link: '#',
+        SchemeTag: 'Capacity Investment Scheme'
+    }, {
+        contentTag: 'DOC',
+        date: '22 Jun 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        filesize: '23kb',
+        ctaText: 'Download doc',
+        resourceType: 'doc card',
+        link: 'file_path',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }, {    
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#',
+        SchemeTag: 'ENERGY INFRASTRUCTURE ROADMAP'
+    }
+] %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+
+{% block tab_content_panel1 %}
+    <div class="resource-cards-section content-wrapper">
+        <div class="grid-container">
+            <h2 class="section-title larger">Multimedia Listing from KB page</h2>
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12">
+                    {% include "../templates/components/TagTab/index.nunjucks" %}
+                </div>
+                <div class="cell small-12">
+                    <select>
+                        <option>Sort by newest</option>
+                        <option>Sort by oldest</option>
+                        <option>A - Z</option>
+                        <option>Z - A</option>
+                    </select>
+                </div>
+                <div class="cell small-12 ResourceFilter-Container">
+                    {% include "../templates/components/Filters/index.nunjucks" %}
+                    {{ResourceCards.render(resouceCardList)}}
+                    {# Resource card list include Pagination component #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block tab_content_panel2 %}
+    <div class="resource-cards-section content-wrapper">
+        <div class="grid-container">
+            <h2 class="section-title larger">Resource Listing from KB page</h2>
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12">
+                    {% include "../templates/components/TagTab/index.nunjucks" %}
+                </div>
+                <div class="cell small-12">
+                    <select>
+                        <option>Sort by newest</option>
+                        <option>Sort by oldest</option>
+                        <option>A - Z</option>
+                        <option>Z - A</option>
+                    </select>
+                </div>
+                <div class="cell small-12 ResourceFilter-Container">
+                    {% include "../templates/components/Filters/index.nunjucks" %}
+                    {{ResourceCards.render(resouceCardList)}}
+                    {# Resource card list include Pagination component #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

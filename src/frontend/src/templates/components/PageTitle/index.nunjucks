@@ -1,0 +1,9 @@
+{% macro render(headline) %}
+    <!-- START : Page Title Component //-->
+    <div class="PageTitle">
+        <div class="grid-container">
+            <h1>{{ headline }}</h1>
+        </div>
+    </div>
+    <!-- END : Page Title //-->
+{% endmacro %}

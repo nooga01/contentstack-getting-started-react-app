@@ -1,0 +1,18 @@
+{% set tagTabs = [
+    { tagTxt: 'Open Tenders', tabVal: 'open', id: '2', statusClass: 'open', totalNum: '3' }, 
+    { tagTxt: 'Upcoming Tenders', tabVal: 'upcoming', id: '3', statusClass: 'upcoming', totalNum: '1' }, 
+    { tagTxt: 'Closed Tenders', tabVal: 'closed', id: '4', statusClass: 'closed', totalNum: '2' }
+]%}
+
+<div class="TagTabs">
+    <div class="tag-tab" tabindex=0>
+        <input type="radio" id="1" name="resource_category" value="all" checked>
+        <label for="1">All Tenders</label>
+    </div>
+    {% for item in tagTabs %}
+    <div class="tag-tab {{item.statusClass}}" tabindex=0>
+        <input type="radio" id="{{item.id}}" name="resource_category" value="{{item.tabVal}}">
+        <label for="{{item.id}}">{{item.tagTxt}}<span data-num={{item.totalNum}}></span></label>
+    </div>
+    {% endfor %}
+</div>

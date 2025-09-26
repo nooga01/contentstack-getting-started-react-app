@@ -1,0 +1,181 @@
+@import "./tender-cta.scss";
+$button-focused: 0 0 0 3px brand-color(aemo-focus); // box-shadow
+$button-focused-cis: 1px 1px 10px 0px brand-color(CIS-highlight-green); // box-shadow
+.button:not(.skip-to-content-link) {
+    height: 56px;
+    color: brand-color(aemo-dark-blue);
+    text-transform: uppercase;
+    @include font_NeuzeitGroW03Bold;
+    font-size: 18px;
+    line-height: 22px;
+    box-shadow: $dropShadow;
+    padding: 6px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    @include breakpoint(medium down) {
+        height: 44px;
+        font-size: 16px;
+        line-height: 20px;
+        padding: 6px 14px;
+    }
+    &:hover {
+        background-color: brand-color(aemo-hover);
+        color: brand-color(aemo-dark-blue);
+    }
+    &:focus {
+        box-shadow: $button-focused;
+        outline: none;
+        color: brand-color(aemo-dark-blue);
+    }
+
+    // button text
+    span:not(.icon) {
+        position: relative;
+        // padding: 2px 0;
+        // line-height:READ MORE on energyco 0.8;
+        // text-underline-offset: 5px;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: brand-color(aemo-border-hover);
+            padding: 0 1.25em;
+
+            #wrapper.CIS &, [data-scheme='CIS'] & {
+                background-color: brand-color(CIS-highlight-green);
+            }
+        }
+        @include breakpoint(medium down) {
+            padding: 1px 0;
+        }
+    }
+    .icon {
+        margin-left: 0.25em;
+        vertical-align: inherit;
+        font-size: 16px;
+    }
+
+    // secondary button
+    &.primary-dark {
+        background-color: brand-color(aemo-dark-blue);
+        color: #fff;
+        &:hover {
+            background-color: brand-color(aemo-darker-blue);
+            color: #fff;
+        }
+        &:focus {
+            box-shadow: $button-focused;
+            outline: none;
+            color: #fff;
+        }
+        .icon {
+            color: #65b8cb;
+        }
+    }
+
+    &.text-primary {
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+        color: brand-color(aemo-dark-blue);
+        box-shadow: none;
+        @include ifnotdisabled() {
+            &:hover {
+                color: brand-color(aemo-darkest-blue);
+                background-color: transparent;
+                span:not(.icon) {
+                    &::after {
+                        background-color: brand-color(aemo-hover);
+                        #wrapper.CIS &, [data-scheme='CIS'] & {
+                            background-color: rgba(brand-color(CIS-highlight-green), 0.5);
+                        }
+                    }
+                }
+
+                #wrapper.CIS &, [data-scheme='CIS'] & {
+                    color: brand-color(CIS-green);
+                }
+            }
+            &:focus {
+                box-shadow: $button-focused;
+                outline: none;
+                #wrapper.CIS &, [data-scheme='CIS'] & {
+                    box-shadow: $button-focused-cis;
+                }
+            }
+        }
+        span:not(.icon) {
+            text-align: left;
+            &::after {
+                #wrapper.CIS &, [data-scheme='CIS'] & {
+                    background-color: brand-color(CIS-highlight-green);
+                }
+            }
+        }
+
+        #wrapper.CIS &, [data-scheme='CIS'] & {
+            color: brand-color(CIS-dark-green);
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+
+    &.text-secondary {
+        height: auto;
+        background-color: transparent;
+        color: brand-color(body);
+        box-shadow: none;
+        @include textMediumBold;
+
+        span:not(.icon) {
+            &::after {
+                bottom: -1px;
+                background-color: brand-color(body);;
+            }
+        }
+        @include ifnotdisabled() {
+            &:hover {
+                color: brand-color(body);;
+                background-color: transparent;
+            }
+            &:focus {
+                box-shadow: $button-focused;
+                outline: none;
+            }
+        }
+
+        #wrapper.CIS & {
+            color: brand-color(body);;
+            background-color: transparent;
+            box-shadow: none;
+        }
+    }
+}
+
+#wrapper.CIS {
+    .button:not(.skip-to-content-link, input#mc-embedded-subscribe, .text-primary, .text-secondary) {
+        background-color: brand-color(CIS-green);
+        color: #fff;
+        box-shadow: 1px 1px 10px 0px brand-color(CIS-highlight-green);
+
+        &:hover {
+            background-color: brand-color(CIS-dark-green);
+            color: #fff;
+        }
+        &:focus {
+            box-shadow: $button-focused-cis;
+            outline: none;
+            color: #fff;
+        }
+
+        span:not(.icon) {
+            &::after {
+                background-color: brand-color(CIS-highlight-green);
+            }
+        }
+    }
+}

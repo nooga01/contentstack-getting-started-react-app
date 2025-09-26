@@ -1,0 +1,79 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+
+{% set pageTitle = 'Article page' %}
+{% set bodyClass = 'two-column-page' %}
+{% set banner = {
+    bannerClass: 'banner-with-image',
+    title: 'Consumer Trustee announces Roadmap Tender 1 Shortlist',
+    summary: 'Consumer Trustee shortlisted 16 high-quality projects representing more than 4.3GW in the inaugural tender',
+    image: {
+        imageSrc: '../static/img/HeroBanner_RHSimage.jpg',
+        imageAlt: 'Landing page image'
+    }
+} %}
+{% set lastUpdatedTime = '10/08/2023' %}
+
+{% extends "TwoColumn.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+
+
+{% block structure_content_main %}
+    {% set isInTwoColsPage = 'yes' %}
+    {% include "../templates/components/CopyTileListing/index.nunjucks" %}
+    {# Title component #}
+    <div class="title-wrapper">
+        <div class="grid-container">
+            <h2>I am a Title H2 without margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper top-margin">
+        <div class="grid-container">
+            <h2>I am a H2 title with TOP margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper bottom-margin">
+        <div class="grid-container">
+            <h2>I am a H2 title with bottom margin</h2>
+        </div>
+    </div>
+
+    {% include "../templates/components/Accordion/index.nunjucks" %}
+
+    {{RichText.render(
+        '
+            <h3>I am a Richtext H3</h3>
+            <p>AEMO Services has shortlisted 16 projects representing more than 4.3GW of generation and long duration storage to proceed to the next stage in the inaugural competitive tender of the NSW Electricity Infrastructure Roadmap. This capacity is enough to power almost 1.6 million homes and will accelerate NSW’s energy transition.</p>
+            <p>In its role as Consumer Trustee, AEMO Services is responsible for conducting the decade- long schedule of competitive tenders that will bring forward investment in renewable energy generation and storage capacity.</p>
+            <h4>I am a Richtext H4</h4>
+            <p>AEMO Services Chair Dr Paul Moy said that the selected projects have been identified as those currently best placed to support the NSW electricity transition and will now proceed to a financial value assessment. This assessment will identify the projects that meet the criteria of being in the long-term financial interests of NSW electricity consumers.</p>
+        '
+    )}}
+
+    {% include "../templates/components/BreakoutQuote/index.nunjucks" %}
+
+    {{RichText.render(
+        '            
+            <p>AEMO Services has shortlisted 16 projects representing more than 4.3GW of generation and long duration storage to proceed to the next stage in the inaugural competitive tender of the NSW Electricity Infrastructure Roadmap. This capacity is enough to power almost 1.6 million homes and will accelerate NSW’s energy transition.</p>
+            <p>In its role as Consumer Trustee, AEMO Services is responsible for conducting the decade- long schedule of competitive tenders that will bring forward investment in renewable energy generation and storage capacity.</p>
+            <p>AEMO Services Chair Dr Paul Moy said that the selected projects have been identified as those currently best placed to support the NSW electricity transition and will now proceed to a financial value assessment. This assessment will identify the projects that meet the criteria of being in the long-term financial interests of NSW electricity consumers.</p>
+        '
+    )}} 
+{% endblock %}
+
+{% block structure_content_right %}
+    {% include "../templates/components/AuthorElement/index.nunjucks" %}
+    {{RichText.render(
+        '
+            <h4>I am a Richtext H4</h4>
+            <p>AEMO Services has shortlisted 16 projects representing more than 4.3GW of generation and long duration storage to proceed to the next stage in the inaugural competitive tender of the NSW Electricity Infrastructure Roadmap. This capacity is enough to power almost 1.6 million homes and will accelerate NSW’s energy transition.</p>
+            <p>In its role as Consumer Trustee, AEMO Services is responsible for conducting the decade- long schedule of competitive tenders that will bring forward investment in renewable energy generation and storage capacity.</p>
+            <p>AEMO Services Chair Dr Paul Moy said that the selected projects have been identified as those currently best placed to support the NSW electricity transition and will now proceed to a financial value assessment. This assessment will identify the projects that meet the criteria of being in the long-term financial interests of NSW electricity consumers.</p>
+        '
+    )}}
+{% endblock %}

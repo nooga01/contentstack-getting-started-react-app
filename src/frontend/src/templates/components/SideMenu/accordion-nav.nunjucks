@@ -1,0 +1,51 @@
+{% macro render(menulist) %}
+
+    <ul>
+        {% for item in menulist %}
+            <li>
+                {# if has submenu #}
+                {% if item.submenuList.length %}
+                <button class="primary-nav-item" aria-label="Toggle {{item.primaryNav}} Sub Menu" type="button">
+                    
+                        <span class="primary-nav-item-title">{{item.primaryNav}}</span>
+
+                        {% if item.submenuList.length %}
+                            <span class="icon icon-chevron"></span>
+                        {% endif %}
+
+                </button>
+                {% else %}
+                {# if dosen't have submenu #}
+                <a class="primary-nav-item" href="{{item.primaryNavLink}}">
+                    <span class="primary-nav-item-title">{{item.primaryNav}}</span>
+                </a>
+                {% endif %}
+
+                {% if item.submenuList.length %}
+                    <div class="SubMenu">
+                        <ul>
+                            {# Primary Nav #}
+                            <li class="primary-nav-link">
+                                <a href="{{item.primaryNavLink}}">{{item.primaryNav}}</a>
+                            </li>
+                            {# Sub Menu list #}
+                            {% for submenu in item.submenuList %}
+                                {% if submenu.isHeading %}
+                                <li>
+                                    <h4>{{submenu.text}}</h4>
+                                </li>
+                                {% else %}
+                                <li>
+                                    <a href="{{submenu.link}}">{{submenu.text}}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </li>
+        {% endfor %}
+
+    </ul>
+
+{% endmacro %}

@@ -1,0 +1,91 @@
+.FeatureInfoCards {
+    padding-top: map-get($spacing, "medium"); // 40px
+    padding-bottom: map-get($spacing, medium); // medium 40px
+    @include breakpoint(large) {
+        padding-top: map-get($spacing, large);
+    }
+
+    &[data-theme="light-grey"] {
+        background: brand-color(aemo-light-grey);
+        .FeatureInfoCard {
+            background-color: #fff;
+        }
+    }
+}
+
+.FeatureInfoCard {
+    background-color: brand-color(light-grey);
+    transition: $hoverTransition;
+    display: flex;
+    flex-direction: column;
+
+    &:hover,
+    &:focus {
+        color: brand-color(body);
+        @include cardHoverEffect_grey;
+    }
+
+    .card-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 170px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        @include breakpoint(large) {
+            height: 290px;
+        }
+    }
+
+    &[data-video-id] {
+        .card-image {
+            height: 0px;
+            padding-bottom: calc(9 / 16 * 100%); // 56.25% for 16:9 aspect ratio
+        }
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 22px;
+        flex-grow: 1;
+
+        .content-tag {
+            @include font_NeuzeitGroW03Bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: -8px;
+        }
+
+        .content-title {
+            @include headingLarge;
+            color: brand-color(primary-dark);
+            margin: 0px;
+        }
+        .content-description {
+            ul,
+            ol {
+                margin-left: 24px;
+                li::marker {
+                    color: currentColor;
+                }
+            }
+        }
+
+        > .button {
+            margin-top: auto;
+        }
+    }
+
+    #wrapper.CIS &,
+    &[data-scheme="CIS"] {
+        .card-content {
+            .content-title {
+                color: brand-color(CIS-dark-green);
+            }
+        }
+    }
+}

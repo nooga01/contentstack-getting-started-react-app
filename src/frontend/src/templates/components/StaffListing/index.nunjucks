@@ -1,0 +1,48 @@
+{% import '../RichText/index.nunjucks' as RichText %}
+{% import '../Button/index.nunjucks' as Button %}
+
+<div class="StaffListing">
+    <div class="grid-container">
+
+        {% for group in StaffList %}
+            <div class="StaffListing-teamGroup content-wrapper">
+                <div class="section-title">
+                    {{group.groupTitle}}
+                </div>
+                <div class="grid-x grid-margin-x grid-margin-y">
+                    {% for staff in group.staffList %}
+                        {# staff tile #}
+                        <div class="StaffTile cell small-12 large-4">
+                            <div class="staff-image">
+                                <img src="/static/img/StaffListing/{{staff.staffImage}}" alt="{{staff.staffTitle}}">
+                            </div>
+                            <div class="staff-title">
+                                {{staff.staffTitle}}
+                            </div>
+                            <div class="staff-role">
+                                {{staff.staffRole}}
+                            </div>
+                            <div class="staff-biography collapsed">
+                                {{RichText.render(staff.staffBiography)}}
+                            </div>
+
+                            <div class="btn-wrapper">
+                                {% if staff.btnLink %}
+                                {# This link button is optional for opening internal or external link #}
+                                <a href="{{ staff.btnLink }}" class="button text-primary" title="{{ staff.btnText }}" target="_blank">
+                                    <span>{{ staff.btnText }}</span>
+                                    <span class="icon icon-arrow"></span>
+                                </a>
+                                {% else %}
+                                {# This button only for opening or closing the description / pls keep this element to be BUTTON for js #}
+                                {{Button.render(btnText='Read more', btnElem='button', btnClass='text-primary')}}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>

@@ -1,0 +1,88 @@
+.ProductTiles {
+    &.grey-bg {
+        background-color: brand-color(light-grey);
+    }
+    .section-title {
+        margin-bottom: 40px;
+        @include breakpoint(medium) {
+            margin-bottom: 56px;
+        }
+    }
+    .ProductTile {
+        background-color: #fff;
+        // border-left: $leftBorderLine_DarkGrey;
+        transition: $hoverTransition;
+        &:hover,
+        &:focus {
+            box-shadow: $dropShadowGrey;
+            color: inherit;
+        }
+
+        .tileItem-image {
+            width: 100%;
+            height: 88px;
+            @include breakpoint(medium) {
+                height: 132px;
+            }
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        .tileItem-content {
+            padding: map-get($spacing, small);
+            min-height: 214px;
+            display: flex;
+            flex-direction: column;
+            @include breakpoint(medium) {
+                min-height: 296px;
+            }
+            .title {
+                @include headingMedium;
+                @include breakpoint(medium) {
+                    @include headingLarge;
+                }
+                color: brand-color(aemo-dark-blue);
+                position: relative;
+                z-index: 1;
+                margin-bottom: 24px;
+                .underline {
+                    color: brand-color(primary);
+                    line-height: inherit;
+                    position: absolute;
+                    text-decoration: underline;
+                    left: 0;
+                    top: 0;
+                    z-index: -1;
+                    font-size: inherit;
+                }
+            }
+            .summary {
+                margin-bottom: map-get($map: $spacing, $key: small);
+                .summary-item {
+                    display: flex;
+                    align-items: flex-start;
+                    @include breakpoint(medium) {
+                        font-size: 18px;
+                    }
+                    &:not(:last-child) {
+                        margin-bottom: map-get($map: $spacing, $key: xxsmall);
+                    }
+                    .icon {
+                        color: brand-color(aemo-dark-blue);
+                        font-size: 10px;
+                        margin-right: 10px;
+                        height: 26px;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+            }
+            .button {
+                margin-top: auto;
+                width: fit-content;
+            }
+        }
+    }
+}

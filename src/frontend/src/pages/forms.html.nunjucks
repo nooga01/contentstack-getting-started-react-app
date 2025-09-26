@@ -1,0 +1,200 @@
+{% set pageTitle = 'Frontend Example Page' %}
+{% import '../templates/components/PageTitle/index.nunjucks' as PageTitle %}
+{% import '../templates/components/RichText/index.nunjucks' as RichText %}
+{% import '../templates/components/Button/index.nunjucks' as Button %}
+
+{% extends "layout.nunjucks" %}
+{% block content %}
+
+    <div class="content-wrapper">
+        <div class="grid-container">
+            <h3>Normal Forms</h3>
+            <div class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-6 large-6">
+                    <div class="form-field-wrapper placeholder" data-placeholder="my placeholder">
+                        <input type="text"/>
+                    </div>
+                    <p>
+                        <input type="text" placeholder="Text Input (disabled)" disabled="disabled"/>
+                    </p>
+                    <p>
+                        <input type="password" placeholder="Password Input"/>
+                    </p>
+                    <p>
+                        <select>
+                            <option value=""></option>
+                            <option value="Item one">Item One</option>
+                            <option value="Item Two">Item Two</option>
+                            <option value="Item Three">Item Three</option>
+                        </select>
+                    </p>
+                    <p>
+                        <select disabled="disabled">
+                            <option value=""></option>
+                            <option value="Item one">Item One</option>
+                            <option value="Item Two">Item Two</option>
+                            <option value="Item Three">Item Three</option>
+                        </select>
+                    </p>
+                </div>
+                <div class="cell small-12 medium-6 large-6">
+                    <p>
+                        <textarea rows="4" maxlength="512"></textarea>
+                    </p>
+                    <!-- CHECKBOX -->
+                    <div class="form-field-wrapper form-field-type-Checkbox">
+                        <label class="chbx">
+                            <input type="checkbox" name="checkbox1" value="true"/>
+                            <span>Checkbox</span>
+                        </label>
+                        <span
+                        class="field-validation-valid"
+                        data-valmsg-for="fxb.ef3e3ee2-9623-4771-96ef-130f9a122c4f.Fields[a98afadf-10f1-4ebd-8b6d-00ddc6d19621].Value"
+                        data-valmsg-replace="true"
+                    ></span>
+                    </div>
+                    <!-- CHECKBOX DISABLED-->
+                    <div class="form-field-wrapper form-field-type-Checkbox">
+                        <label class="chbx">
+                            <input type="checkbox" name="checkbox1" value="true" disabled/>
+                            <span>Checkbox</span>
+                        </label>
+                        <span
+                        class="field-validation-valid"
+                        data-valmsg-for="fxb.ef3e3ee2-9623-4771-96ef-130f9a122c4f.Fields[a98afadf-10f1-4ebd-8b6d-00ddc6d19621].Value"
+                        data-valmsg-replace="true"
+                    ></span>
+                    </div>
+                    <!-- RADIO BUTTON -->
+                    <div class="form-field-wrapper form-field-type-Checkbox">
+                        <label class="rb">
+                            <input type="radio" name="radiobutton1" value="1"/>
+                            <span>Radio Button 1</span>
+                        </label>
+                        <label class="rb">
+                            <input type="radio" name="radiobutton1" value="2" disabled/>
+                            <span>Radio Button 2</span>
+                        </label>
+                        <span
+                        class="field-validation-valid"
+                        data-valmsg-for="fxb.ef3e3ee2-9623-4771-96ef-130f9a122c4f.Fields[a98afadf-10f1-4ebd-8b6d-00ddc6d19621].Value"
+                        data-valmsg-replace="true"
+                    ></span>
+                    </div>
+                    <p>
+                        <input type="submit" class="button" value="Submit Form"/>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Exsiting Sitecore form component #}
+    <form action="/contact-us" class="custom-form" data-sc-fxb="6841021c-39df-4cb5-85ec-11bd85086406" enctype="multipart/form-data" id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_6841021c-39df-4cb5-85ec-11bd85086406" method="post" novalidate="novalidate"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_FormSessionId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.FormSessionId" type="hidden" value="afb57963-ca15-4c7e-bd5b-14612e211554"><input name="__RequestVerificationToken" type="hidden" value="qpNwpE6OxG59trSQDbbPIhsfe1oTO9M0p8ch0SAUE4crOmLlq5U0vtQjusOixEH_abE6zwUWRjWEjrtt5wcqthUJyrH3VtF_udlSz8gU9_41"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_FormItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.FormItemId" type="hidden" value="6841021c-39df-4cb5-85ec-11bd85086406"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_PageItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.PageItemId" type="hidden" value="50c3ff94-5c31-40f6-ab0d-9e6ca94c8ba3">
+        <div data-sc-field-key="9F33C6C9E67D4653827985D85D2B7943" class="">
+            <h2 data-sc-field-key="448BB2A9F2FE408E82AA5E8712EBDD7C" class="section-title">I need support with something else</h2>
+        </div>
+        <div data-sc-field-key="0C5EFB3203BF4B368DAB701E312F5C2E" class="">
+            <div data-sc-field-key="533CBB7BF61B4D2F9365891AC3AC4250" class="input-container mandatory form-field-wrapper">
+                <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_73b2ba22-d35d-4031-be71-83478d32c306" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="73b2ba22-d35d-4031-be71-83478d32c306"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_73b2ba22-d35d-4031-be71-83478d32c306__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[73b2ba22-d35d-4031-be71-83478d32c306].ItemId" type="hidden" value="73b2ba22-d35d-4031-be71-83478d32c306">
+                <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_73b2ba22-d35d-4031-be71-83478d32c306__Value" class="">What is your enquiry regarding</label>
+                <select id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_73b2ba22-d35d-4031-be71-83478d32c306__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[73b2ba22-d35d-4031-be71-83478d32c306].Value" class="" data-sc-tracking="False" data-sc-field-name="dplEnquiry" data-sc-field-key="07C2B08EE2BF4FC5939B5D473F75C605">
+                    <option label=" "></option>
+                    <option value="Shashi.Rajapaksha@aemo.com.au">Please select an option</option>
+                    <option value="shashi.rajapaksha@aemo.com.au">Tenders</option>
+                    <option value="media@aemo.com.au">Media</option>
+                    <option value="careers@aemo.com.au">Careers</option>
+                    <option value="enquiry@aemo.com.au">General Enquiry</option>
+                </select>
+                <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[73b2ba22-d35d-4031-be71-83478d32c306].Value" data-valmsg-replace="true"></span>
+            </div>
+            <div data-sc-field-key="550833E008374F21AB36DC93269534F6" class="">
+                <p>&nbsp;</p>
+                <h2 class="section-title">Your details</h2>
+            </div>
+            <div data-sc-field-key="138E870C282E4A29A7D8C617200AA71F" class="form--two-columns">
+                <div data-sc-field-key="8DE30D08AFDD46E9AFDA9001987E90F5" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_8c2db13e-9f80-4775-9c01-c4277c50766b" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="8c2db13e-9f80-4775-9c01-c4277c50766b"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_8c2db13e-9f80-4775-9c01-c4277c50766b__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[8c2db13e-9f80-4775-9c01-c4277c50766b].ItemId" type="hidden" value="8c2db13e-9f80-4775-9c01-c4277c50766b">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_8c2db13e-9f80-4775-9c01-c4277c50766b__Value" class="">First Name</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_8c2db13e-9f80-4775-9c01-c4277c50766b__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[8c2db13e-9f80-4775-9c01-c4277c50766b].Value" class="" type="text" value="" maxlength="255" placeholder="" data-sc-tracking="False" data-sc-field-name="txtFirstName" data-sc-field-key="92C686CD946F402CB9D7567980DCF538">
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[8c2db13e-9f80-4775-9c01-c4277c50766b].Value" data-valmsg-replace="true"></span>
+                </div>
+                <div data-sc-field-key="03CFF983A4A648E59C76BE9E162EC67F" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_335be648-5b0e-4fff-b014-158fda48f910" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="335be648-5b0e-4fff-b014-158fda48f910"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_335be648-5b0e-4fff-b014-158fda48f910__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[335be648-5b0e-4fff-b014-158fda48f910].ItemId" type="hidden" value="335be648-5b0e-4fff-b014-158fda48f910">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_335be648-5b0e-4fff-b014-158fda48f910__Value" class="">Last Name</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_335be648-5b0e-4fff-b014-158fda48f910__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[335be648-5b0e-4fff-b014-158fda48f910].Value" class="" type="text" value="" maxlength="255" placeholder="" data-sc-tracking="False" data-sc-field-name="txtLastName" data-sc-field-key="84AF375624D1425EAB30190FB348ECF2">
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[335be648-5b0e-4fff-b014-158fda48f910].Value" data-valmsg-replace="true"></span>
+                </div>
+                <div data-sc-field-key="3F5DED9758424B8D9C7D1CC3E800ACF6" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_ee1f0219-2c53-4db2-8fdc-1aff80c09d67" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="ee1f0219-2c53-4db2-8fdc-1aff80c09d67"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_ee1f0219-2c53-4db2-8fdc-1aff80c09d67__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[ee1f0219-2c53-4db2-8fdc-1aff80c09d67].ItemId" type="hidden" value="ee1f0219-2c53-4db2-8fdc-1aff80c09d67">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_ee1f0219-2c53-4db2-8fdc-1aff80c09d67__Value" class="">Email</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_ee1f0219-2c53-4db2-8fdc-1aff80c09d67__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[ee1f0219-2c53-4db2-8fdc-1aff80c09d67].Value" class="" type="email" value="" maxlength="255" placeholder="" data-sc-tracking="False" data-sc-field-name="txtEmail" data-sc-field-key="53291062104842C3B805960F9A8B1C98" data-val-regex="Email contains an invalid email address." data-val-regex-pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,17}$" data-val="true">
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[ee1f0219-2c53-4db2-8fdc-1aff80c09d67].Value" data-valmsg-replace="true"></span>
+                </div>
+                <div data-sc-field-key="35962227BC6446EFA1931ACF6AB92A29" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_6f4495b4-1896-4eaf-ac7f-3af697e3dbc6" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="6f4495b4-1896-4eaf-ac7f-3af697e3dbc6"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_6f4495b4-1896-4eaf-ac7f-3af697e3dbc6__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[6f4495b4-1896-4eaf-ac7f-3af697e3dbc6].ItemId" type="hidden" value="6f4495b4-1896-4eaf-ac7f-3af697e3dbc6">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_6f4495b4-1896-4eaf-ac7f-3af697e3dbc6__Value" class="">Phone Number</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_6f4495b4-1896-4eaf-ac7f-3af697e3dbc6__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[6f4495b4-1896-4eaf-ac7f-3af697e3dbc6].Value" class="" type="tel" value="" maxlength="255" placeholder="" data-sc-tracking="False" data-sc-field-name="txtPhone" data-sc-field-key="760B16FD77FA4BE9A90E74CAE978AF36">
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[6f4495b4-1896-4eaf-ac7f-3af697e3dbc6].Value" data-valmsg-replace="true"></span>
+                </div>
+                <div data-sc-field-key="D90D26A68F974916844B0003FED29199" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28].ItemId" type="hidden" value="7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28__Value" class="">Company</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28].Value" class="" type="text" value="" maxlength="255" placeholder="" data-sc-tracking="False" data-sc-field-name="txtCompany" data-sc-field-key="E78B3D881054455AA841EC820F2EEAD8">
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[7c8b7999-9e7d-4c11-9ab5-7a5a11c4af28].Value" data-valmsg-replace="true"></span>
+                </div>
+                <div data-sc-field-key="B3E0FF4E7FCB432C90EB68A9AC074CD7" class="input-container mandatory form-field-wrapper">
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b].ItemId" type="hidden" value="80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b__Value" class="">Industry</label>
+                    <select id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b].Value" class="" data-sc-tracking="False" data-sc-field-name="dplIndustry" data-sc-field-key="566AE25055B34BE2BD943BA605ECF4EC">
+                        <option label=" "></option>
+                        <option value="Computing">Computing</option>
+                        <option value="Wood working">Wood working</option>
+                        <option value="Medical">Medical</option>
+                    </select>
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[80b76c09-fc3e-4b7c-8f7c-bc429e4ff78b].Value" data-valmsg-replace="true"></span>
+                </div>
+
+            </div>
+            <div data-sc-field-key="0F6BA7CCD84C4D248550710D89B0DB1C" class="">
+                <p>&nbsp;</p>
+                <h2 class="section-title">Your enquiry</h2>
+            </div>
+            <div data-sc-field-key="D09BF90552E94A91B58779433421531C" class="form-field-wrapper form-field-type-MultipleLineText">
+                <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_d31ea1ad-aabb-4b81-a3bb-9cdf69415775" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="d31ea1ad-aabb-4b81-a3bb-9cdf69415775"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_d31ea1ad-aabb-4b81-a3bb-9cdf69415775__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[d31ea1ad-aabb-4b81-a3bb-9cdf69415775].ItemId" type="hidden" value="d31ea1ad-aabb-4b81-a3bb-9cdf69415775">
+                <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_d31ea1ad-aabb-4b81-a3bb-9cdf69415775__Value" class="">Details of your enquiry</label>
+                <textarea id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_d31ea1ad-aabb-4b81-a3bb-9cdf69415775__Value" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[d31ea1ad-aabb-4b81-a3bb-9cdf69415775].Value" class="" rows="4" maxlength="512" placeholder="" data-sc-tracking="False" data-sc-field-name="txtEnquiryDetails" data-sc-field-key="00E166FDD693488C811DD26F9822C2B1"></textarea>
+                <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[d31ea1ad-aabb-4b81-a3bb-9cdf69415775].Value" data-valmsg-replace="true"></span>
+            </div>
+            <div data-sc-field-key="75CBA4DB31B54944AA29C443117F4713" class="">
+                <p>&nbsp;</p>
+                <h6 data-sc-field-key="9DE55A2EF0C0407491E14C9D20F3912B" class="">Attachments</h6>
+                <p data-sc-field-key="52EF150D56524AC292D79C50CE2BC24D" class="">You can attach up to 5MB to help with enquiry</p><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_Index_5ac16c88-fab1-44f3-bd72-e3e4bd377aaa" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields.Index" type="hidden" value="5ac16c88-fab1-44f3-bd72-e3e4bd377aaa"><input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_5ac16c88-fab1-44f3-bd72-e3e4bd377aaa__ItemId" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[5ac16c88-fab1-44f3-bd72-e3e4bd377aaa].ItemId" type="hidden" value="5ac16c88-fab1-44f3-bd72-e3e4bd377aaa">
+
+                <div class="custom-file-upload">
+                    <label for="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_5ac16c88-fab1-44f3-bd72-e3e4bd377aaa__File" class="">Upload and attach a file</label>
+                    <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_Fields_5ac16c88-fab1-44f3-bd72-e3e4bd377aaa__File" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[5ac16c88-fab1-44f3-bd72-e3e4bd377aaa].File" class="custom-file-upload-label" type="file" data-sc-tracking="False" data-sc-field-name="fluAttachment" data-val-filesize="File size may not exceed 5000000 bytes." data-val-filesize-maxfilesize="5000000" data-val="true">
+
+                    <span class="field-validation-valid" data-valmsg-for="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.Fields[5ac16c88-fab1-44f3-bd72-e3e4bd377aaa].File" data-valmsg-replace="true"></span>
+
+                </div>
+            </div>
+            <div data-sc-field-key="B5213B3E7AA54D2CB8C090524FA716CA" class=""></div>
+
+            <input value="Submit" type="submit" class="form-submit cta-basic-primary" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.801f874c-b6ca-4749-b308-3c5fc01ccd2d" data-sc-field-key="910EE9378C274A19A523DF62D10EB467">
+            <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_NavigationButtons" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.NavigationButtons" type="hidden" value="801f874c-b6ca-4749-b308-3c5fc01ccd2d">
+            <input id="fxb_3d70ef77-f56b-4417-87c3-9c0a9960c8d3_801f874c-b6ca-4749-b308-3c5fc01ccd2d" name="fxb.3d70ef77-f56b-4417-87c3-9c0a9960c8d3.801f874c-b6ca-4749-b308-3c5fc01ccd2d" type="hidden" value="0">
+        </div>
+        <script type="text/javascript">
+            (function ($) {
+                var $formEl = $("form[data-sc-fxb='6841021c-39df-4cb5-85ec-11bd85086406']");
+                if ($formEl.length && typeof $formEl.init_fxbConditions === 'function') {
+                    var options = {};
+                    $formEl.init_fxbConditions(options);
+                }
+            })(jQuery)
+        </script>
+    </form>
+
+    {# {% include '../templates/components/ContactForm/index.nunjucks' %} #}
+{% endblock %}

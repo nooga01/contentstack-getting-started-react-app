@@ -1,0 +1,12 @@
+
+{% macro render(sContent, topMargin, bottomMargin, fullWidth) %}
+    <!-- START : Rich Text Component //-->
+    <div class="rte-content {{ 'top-margin' if topMargin }} {{ 'bottom-margin' if bottomMargin }} {{ 'full-width' if fullWidth }}">
+        <div class="grid-container no-padding-if-inside-grid-container">
+            <div class="rte-content-inner">
+                {{ sContent | safe }}
+            </div>
+        </div>
+    </div> 
+    <!-- END : Rich Text Component //-->
+{% endmacro %}

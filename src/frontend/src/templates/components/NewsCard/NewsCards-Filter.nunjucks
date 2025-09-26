@@ -1,0 +1,30 @@
+{% import "./index.nunjucks" as NewsCard %}
+
+<div class="NewsCard-Filter">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x grid-margin-y">
+
+            {% if Filter %}
+            <div class="cell small-12 large-4">
+                <div class="Filters content-wrapper">
+                    Filter component
+                </div>
+            </div>
+
+            <div class="cell small-12 large-8">
+                {{NewsCard.render(newsCardList)}}
+                {% include "../Pagination/index.nunjucks" %}
+            </div>
+
+            {% else %}
+
+            <div class="cell small-12">
+                {{NewsCard.render(newsCardList)}}
+                {% include "../Pagination/index.nunjucks" %}
+            </div>
+            
+            {% endif %}
+        
+        </div>
+    </div>
+</div>

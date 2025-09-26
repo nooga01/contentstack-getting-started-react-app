@@ -1,0 +1,246 @@
+// NOTE: A log of variables in here are marked as "!default".
+// This is because the "brand-variables.scss" file is included BEFORE this one, 
+// and thus, this file would over-write any variables in that file.
+// Having "!default" on them in here means the ones in "brand-variables.scss" will take priority
+// (used for $header-font-family etc)
+
+
+$brand-colors: false !default; // so it'll always exist, but can be overwritten in other files (so the map-merge will be called)
+
+$white: #fff; // foundation variable is #fefefe;
+$black: #000; // foundation variable is #0a0a0a;
+
+// This file is used to override FOUNDATION Settings
+// All of these colors/variables ARE SHARED across all sites generated.
+// Any brand specific overrides should be placed in the appropriate brand-variables file.
+// MUST have the following base colors: primary, secondary, success, warning, alert
+
+$foundation-palette: (
+    // default "foundation" colors (change if needed, but do not remove)
+    primary: #9CD9E7,
+    secondary: #005D84, // aemo-dark-blue 80
+    success: #72DC96, // aemo-dark-green
+    warning: #FFB81C, // aemo-dark-yellow
+    alert: #E56A54, // aemo-dark-red
+    // custom global colors   
+    primary-dark: #005D84, // aemo-dark-blue 80
+    body: #383E4A, // aemo-text-grey
+    grey: #606169, // aemo-darkest-grey
+    light-grey: #F8F8FA,
+    breadcrumbs-bg: #002B49, //#ddd,
+    breadcrumbs-text-color: #fff, //#4d4d4d,
+    anchor-link: #005D84, //#1779ba,
+    anchor-link-hover: #005D84, //#767676, 
+    CIS-green: #093A42,
+    CIS-highlight-green: #72DC96,
+    CIS-dark-green: #062E34,
+    CIS-light-green: #EFF5F0,
+
+    // Primary Colors
+    aemo-surface: #E3F5F9,
+    aemo-border: #9CD9E7, // input border
+    aemo-border-hover: #65B8CB, // hover/focus border
+    aemo-hover: #C3E7EF,
+    aemo-pressed: #E3F5F9,
+    aemo-focus: #9CD2DF,
+
+    // Secondary Colors
+    aemo-light-purple: #F9EAF9,
+    aemo-dark-purple: #923CE9,
+    aemo-light-teal: #E5F9F2,
+    aemo-dark-teal: #00A7BE,
+    aemo-light-red: #FCE8E5,
+    aemo-dark-red: #E56A54,
+    aemo-light-yellow: #FCF0C6,
+    aemo-dark-yellow: #FFB81C,
+    aemo-light-green: #DDFCE1,
+    aemo-dark-green: #72DC96,
+    
+    // Neutral Colors
+    aemo-light-grey: #F8F8F8,
+    aemo-mid-grey: #E9EAF0,
+    aemo-dark-grey: #AEAFBB,
+    aemo-darkest-grey: #606169,
+    aemo-text-grey: #383E4A,
+    aemo-dark-blue: #005D84, // 80
+    aemo-darker-blue: #004E6E, // 90
+    aemo-darkest-blue: #002B49, // 100
+    aemo-light-blue: #97C5D9, // 50
+    aemo-lighter-blue: #C0DDEA, // 40
+    aemo-lightest-blue: #F8FCFE,
+    aemo-darkest-blackblue: #00223A,
+);
+
+// specify exactly what buttons to create (otherwise it creates ALL of the ones in $foundation-palette
+// don't use actual color names, or SASS complains
+$button-palette: (
+    primary: #9CD9E7, // main light blue
+    primary-dark: #005D84, // aemo-dark-blue
+);
+
+// set the different button text sizes ("default" is set to 0.9rem by default, so here we're making sure it's 1rem)
+$button-sizes: (
+    tiny: 0.6rem,
+    small: 1em, //0.75rem,
+    default: 1.125em, //1em,
+    large: 1.25rem,
+);
+
+$responsive-embed-margin-bottom: 0px;
+
+// * Breakpoints & Grid
+$breakpoints: (
+    small: 0,
+    medium: 640px,
+    large: 1200px, // 1024px,
+    xlarge: 1440px, // 1200
+    xxlarge: 1920px, // 1440
+);
+$breakpoint-classes: (small medium large xlarge xxlarge);
+
+$responsive-collapse-breakpoints: true;
+ 
+$grid-margin-gutters: (
+    small: 8px * 2,
+    medium: 12px * 2,
+    large: 16px * 2,
+    xlarge: 16px * 2,
+    xxlarge: 16px * 2,
+);
+// ! These values MUST ALWAYS be EQUAL TO or BIGGER than the gutters above (or you get Horizontal scrolling)
+$grid-container-padding: (
+    small: 16px * 2,
+    medium: 24px * 2,
+    large: 48px * 2,
+    xlarge: 64px * 2,
+    xxlarge: 64px * 2,
+);
+
+$grid-container-max-width: 1920px;
+$global-width: $grid-container-max-width;
+$global-radius: 0px;
+$anchor-color: brand-color(aemo-text-grey);
+$anchor-color-hover: brand-color(primary);
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
+
+$blockquote-color: brand-color(aemo-text-grey);
+$blockquote-padding: 0px 0px 0px 32px;
+$blockquote-border: 1px solid brand-color(primary);
+
+$button-background-hover: brand-color(aemo-hover);
+$button-hollow-border-width: 2px;
+$button-margin: 0px; // 0 0 $global-margin 0;
+$button-padding: 1em 1em;
+
+$body-background: #fff !default;    // !default so they can be overwritten by brand (as brand scss is included first)
+$body-font-color: brand-color(body);
+$body-font-family: "NeuzeitSLTStdBook", Helvetica, Arial, sans-serif !default;    // !default so they can be overwritten by brand (as brand scss is included first)
+$paragraph-lineheight: 1.5 !default;  // !default so they can be overwritten by brand (as brand scss is included first)
+$header-font-family: "NeuzeitGroteskBold", Helvetica, Arial, sans-serif !default;  // !default so they can be overwritten by brand (as brand scss is included first)
+$header-font-weight: normal !default;  // !default so they can be overwritten by brand (as brand scss is included first)
+$header-lineheight: 1.2 !default;  // !default so they can be overwritten by brand (as brand scss is included first)
+$header-margin-bottom: 1rem;
+$header-styles: (
+    "small": (
+        "h1": (
+            "font-size": 36,
+        ),
+        "h2": (
+            "font-size": 28,
+        ),
+        "h3": (
+            "font-size": 24,
+        ),
+        "h4": (
+            "font-size": 20,
+        ),
+        "h5": (
+            "font-size": 20,
+        ),
+        "h6": (
+            "font-size": 18,
+        ),
+    ),
+    "medium": ( // 640
+        "h1": (
+            "font-size": 44, // ?
+        ),
+        "h2": (
+            "font-size": 36, // ?
+        ),
+        "h3": (
+            "font-size": 28,
+        ),
+        "h4": (
+            "font-size": 28,
+        ),
+        "h5": (
+            "font-size": 28,
+        ),
+        "h6": (
+            "font-size": 20,
+        ),
+    ),
+    "large": ( // 1200
+        "h1": (
+            "font-size": 80,
+        ),
+        "h2": (
+            "font-size": 62,
+        ),
+        "h3": (
+            "font-size": 40,
+        ),
+        "h4": (
+            "font-size": 36,
+        ),
+        "h5": (
+            "font-size": 28,
+        ),
+        "h6": (
+            "font-size": 20,
+        ),
+    ),
+    "xlarge": ( // 1440
+        "h1": (
+            "font-size": 92,
+        ),
+        "h2": (
+            "font-size": 62,
+        ),
+        "h3": (
+            "font-size": 40, 
+        ),
+        "h4": (
+            "font-size": 36,
+        ),
+        "h5": (
+            "font-size": 28,
+        ),
+        "h6": (
+            "font-size": 20,
+        ),
+    ),
+);
+
+// FORMS
+$select-radius: $global-radius;
+$input-color: brand-color(body); // body color
+$input-placeholder-color: brand-color(body); // rgba(brand-color(body), 0.4);
+$input-background-disabled: brand-color(light-grey);
+$input-border: 1px solid brand-color(aemo-border);
+$input-border-focus: 1px solid brand-color(aemo-border-hover);
+$input-padding: 1.1875rem 1rem; // must be in rem
+$input-shadow: none; // inset 0 1px 2px rgba($black, 0.1);
+$input-shadow-focus: none; // 0 0 5px brand-color(primary);
+$input-cursor-disabled: not-allowed;
+$form-label-color: $body-font-color;
+$button-transition: background-color var(--timing) ease-in-out, color var(--timing) ease-in-out, border-color var(--timing) ease-in-out;
+
+// TABLE
+$table-border: 0px solid brand-color(aemo-mid-grey);
+$table-head-background: brand-color(aemo-mid-grey);
+$table-padding: 0.78rem 0.89rem;
+$table-row-hover: brand-color(aemo-light-grey);
+$table-is-striped: false;

@@ -1,0 +1,55 @@
+.modal-video {
+    background-color: rgba(brand-color(body),0.8);
+    z-index: layer(video-modal);
+    isolation: isolate;
+    cursor: unset;
+
+    .modal-video-body {
+        padding: 20px;
+        max-width: 1240px;  // 1200px total available space
+
+        .modal-video-inner {
+            padding: 30px 0px 0px;  // 30px at top for Close X (20px) and 10px gap
+
+            .modal-video-close-btn {
+                top: -10px;
+                right: 0px;
+                transform: translateY(-100%);
+                display: flex;
+                gap: 10px;
+                color: #fff;
+                font-size: 20px;
+                width: unset;
+                height: unset;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover, &:focus-visible {
+                    color: brand-color(primary);
+                }
+
+                // reset existing style from CDN css
+                &:before, &:after {
+                    position: unset;
+                    height: unset;
+                    width: unset;
+                    top: unset;
+                    left: unset;
+                    margin: unset;
+                    background: unset;
+                    border-radius: unset;
+                    transform: unset;
+                }
+
+                &:before {
+                    content: "Close";
+                    margin-top: 1px;    // alignment is slightly off without this
+                }
+                &:after {
+                    font-family: $icomoon-font-family;
+                    content: $icon-close-solid;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+.FeaturedVideos {
+    background: #1f4c67;
+    color: #fff;
+    padding: 40px 0px;
+
+    .section-title {
+        color: inherit !important;
+    }
+
+    #wrapper.CIS & {
+        background: brand-color(CIS-dark-green);
+    }
+
+    .FeaturedVideos-Grid {
+        .FeaturedVideo-card {
+            text-align: center;
+            .FeaturedVideo-embed {
+            }
+
+            .FeaturedVideo-Details {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                padding: 30px;
+
+                .FeaturedVideo-summary {
+                    a {
+                        color: inherit !important;
+                    }
+                }
+                .FeaturedVideo-author {
+                    font-size: 14px;
+                }
+                .FeaturedVideo-title {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

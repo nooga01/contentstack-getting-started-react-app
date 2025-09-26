@@ -1,0 +1,253 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/FeaturePanel/index.nunjucks" as FeaturePanel %}
+{% import "../templates/components/ContentWithImage/index.nunjucks" as ContentWithImage %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+{% import "../templates/components/ResourceCard/index.nunjucks" as ResourceCards %}
+
+{% set pageTitle = 'Narrative page' %}
+{% set bodyClass = 'one-column-page' %}
+{% set wrapperClass = 'CIS'%}
+{% set banner = {
+    bannerClass: 'banner-no-image',
+    title: 'Our plan to meet NSW energy consumers needs'
+} %}
+{% set pageTabs = {
+    pageTabsID: "page-1",
+    pageTabTitle1: "tab 1",
+    pageTabTitle2: "tab 2",
+    ContentColumnClass: {
+        panel1: "one-column",
+        panel2: "one-column"
+    }
+} %}
+{% set resouceCardList = [
+    {
+        contentTag: 'Resource',
+        date: '22 Aug 2022',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        PDFsize: '1mb',
+        ctaText: 'View the PDF',
+        resourceType: 'pdf card',
+        link: '#'
+    }, {
+        contentTag: 'Resource',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        ctaText: 'Find out more',
+        resourceType: 'text card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Jun 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: '',
+        resourceType: 'image card',
+        link: '#'
+    }, {
+        contentTag: 'Article',
+        date: '22 Mar 2023',
+        title: 'Firming Infrastructure Investment Objectives Report December 2022',
+        imageSrc: 'iStock-638842998.jpg',
+        resourceType: 'image card',
+        link: '#'
+    }
+] %}
+
+{% extends "TabbedLayout.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+
+{% block above_tabs_content %}
+    {{FeaturePanel.render({
+        themeColor: 'dark',
+        featurePanelList: [
+            'Above Tabs Content Renewable Energy Zones Access Schemes are the',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market first of their kind in the National Electricity Market',
+            'Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+{% endblock %}
+
+{# Page Tab 1 content #}
+{% block tab_content_panel1 %}
+    {# Title component #}
+    <div class="title-wrapper top-margin">
+        <div class="grid-container">
+            <h2>I am a H2 title with TOP margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper">
+        <div class="grid-container">
+            <h2>I am a Title H2 without margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper bottom-margin">
+        <div class="grid-container">
+            <h2>I am a H2 title with BOTTOM margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper top-margin bottom-margin">
+        <div class="grid-container">
+            <h2>I am a H2 title with TOP & BOTTOM margin</h2>
+        </div>
+    </div>
+
+    <div class="title-wrapper top-margin bottom-margin">
+        <div class="grid-container">
+            <a href="#">
+                <h2>I am a H2 title link with TOP & BOTTOM margin</h2>
+            </a>
+        </div>
+    </div>
+    
+    {{
+        ContentWithImage.render({
+            imgPosition: '', 
+            categoryTitle: 'WHAT ARE ACCESS RIGHTS',
+            contentTitle: 'Renewable Energy Zones will group new wind and solar power generation in certain locations where it can be more efficiently stored and transmitted across.',
+            descriptionRichText: '<p>Five zones have so far been identified and will keep NSW electricity reliable as coal-fired power stations retire, delivering large amounts of new energy to power our regions and cities.</p>',
+            CTA: {
+                btnText: 'READ MORE on energyco',
+                btnLink: ''
+            },
+            imageSrc: '/static/img/what-to-do-1.jpg'
+        })
+    }}
+
+    {{
+        RichText.render(
+            '
+                <p class="text-large-bold uppercase">Guaranteed OPPORTUNITIES</p>
+                <h4>This is a h4</h4>
+                <p>Cover starts on the date of the building contract, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier. <a href="#anchor">Anchor Link</a></p>
+                <p>Cover starts on the date of the building contract, or the date of the building permit, whichever is earlier. <a href="#anchor">Anchor Link</a>, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier</p>
+                <p>Cover starts on the date of the building contract, or the date of the building permit, whichever is earlier. <a href="#anchor">Anchor Link</a></p>
+                <div class="table-scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            <th >Table Header</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>Content Goes Here</td>
+                            <td style="width:400px;">This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+                            <td >Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            </tr>
+                            <tr>
+                            <td>Content Goes Here</td>
+                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            </tr>
+                            <tr>
+                            <td>Content Goes Here</td>
+                            <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            <td>Content Goes Here</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <ul class="feature-bullet-list">
+                    <li>We have a strict mandate to only recommend those projects which can demonstrate value to their host communities</li>
+                    <li>Our ground-breaking processes have been specifically designed to harness the best capabilities of the market</li>
+                    <li>The ten-year tender schedule provides renewable energy developers and investors with the certainty they need</li>
+                </ul>
+                <ul>
+                    <li>Unordered list item 1</li>
+                    <li>Unordered list item 2</li>
+                </ul>
+                <ol>
+                    <li>ordered list item 1</li>
+                    <li>ordered list item 2</li>
+                </ol>
+            '
+        )
+    }}
+
+    {{
+        FeaturePanel.render({
+            themeColor: '',
+            featurePanelList: [
+                'Tab 1 Renewable Energy Zones Access Schemes are',
+                'Tab 1 Renewable Energy Zones Access Schemes are the first of their ',
+                'Tab 1 Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+                'Tab 1 Renewable Energy Zones Access',
+                'Tab 1 Renewable Energy Zones Access Schemes are the first of their kind in the'
+            ]
+        })
+    }}
+
+    {{
+        ContentWithImage.render({
+            imgPosition: '', 
+            categoryTitle: 'WHAT ARE ACCESS RIGHTS',
+            contentTitle: 'Renewable Energy Zones will group new wind and solar power generation in certain locations where it can be more efficiently stored and transmitted across.',
+            descriptionRichText: '<p>Five zones have so far been identified and will keep NSW electricity reliable as coal-fired power stations retire, delivering large amounts of new energy to power our regions and cities.</p>',
+            CTA: {
+                btnText: 'READ MORE on energyco',
+                btnLink: ''
+            },
+            imageSrc: '/static/img/what-to-do-1.jpg'
+        })
+    }}
+{% endblock %}
+{# Page Tab 2 content #}
+{% block tab_content_panel2 %}
+    {{FeaturePanel.render({
+        themeColor: 'dark',
+        featurePanelList: [
+            'Tab 2 Panel 1 5Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 1 6Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 1 6Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 1 6Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 1 7Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+    {{ResourceCards.render(resouceCardList)}}
+    {{FeaturePanel.render({
+        themeColor: '',
+        featurePanelList: [
+            'Tab 2 Panel 2 2Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 2 3Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 2 4Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 2 Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Tab 2 Panel 2 Renewable Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+{% endblock %}

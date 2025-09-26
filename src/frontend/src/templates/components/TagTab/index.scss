@@ -1,0 +1,93 @@
+.TagTabs {
+    margin-top: map-get($map: $spacing, $key: medium);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    @include breakpoint(medium down) {
+        overflow-x: auto;
+        margin-right: -24px;
+        padding-bottom: 8px;
+        flex-wrap: nowrap;
+    }
+    @include breakpoint(small down) {
+        margin-right: -16px;
+    }
+
+    input[type="radio"] {
+        // visibility: hidden;
+        display: none;
+        // appearance: none;
+        margin: 0;
+    }
+    label {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1;
+        height: 56px;
+        padding: 12px 20px;
+        border-radius: 50px;
+        border: 1px solid brand-color(aemo-dark-grey);
+        display: inline-flex;
+        align-items: center;
+        transition: $hoverTransition;
+        &:hover {
+            border-color: brand-color(aemo-dark-blue);
+            background: brand-color(aemo-dark-blue);
+            color: white;
+            transition: $hoverTransition;
+        }
+    }
+    input:checked + label {
+        border: 1px solid brand-color(aemo-dark-blue);
+        background-color: brand-color(aemo-dark-blue);
+        color: white;
+    }
+
+    .TenderListing & {
+        .tag-tab {
+            label > span {
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                margin-left: 10px;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                display: inline-flex;
+                color: brand-color(body);
+                &::after {
+                    content: attr(data-num);
+                    position: absolute;
+                    top: 30%;
+                }
+                &:hover {
+                    color: brand-color(body);
+                }
+            }
+            &.open {
+                label {
+                    > span {
+                        background-color: map-get($map: $tabTagStatusColor, $key: open);
+                    }
+                }
+            }
+            &.closed {
+                label {
+                    > span {
+                        background-color: map-get($map: $tabTagStatusColor, $key: closed);
+                    }
+                }
+            }
+            &.upcoming {
+                label {
+                    > span {
+                        background-color: map-get($map: $tabTagStatusColor, $key: upcoming);
+                    }
+                }
+            }
+        }
+    }
+}

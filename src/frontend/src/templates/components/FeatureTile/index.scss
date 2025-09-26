@@ -1,0 +1,170 @@
+.FeatureTiles {
+    padding-top: map-get($spacing, "medium"); // 40px
+    padding-bottom: map-get($spacing, medium); // medium 40px
+    @include breakpoint(large) {
+        padding-top: map-get($spacing, large);
+    }
+    .section-title {
+        color: brand-color(aemo-dark-blue);
+        @include breakpoint(medium) {
+            margin-bottom: map-get($spacing, medium); //40px
+        }
+    }
+    .FeatureTile {
+        --itemBackgroundColor: #{brand-color(aemo-surface)};
+        --itemColor: #{brand-color(aemo-dark-blue)};
+        --dropShadow: #{$dropShadow};
+
+        &[data-scheme="CIS"] {
+            --itemBackgroundColor: #{brand-color(CIS-light-green)};
+            --itemColor: #{brand-color(CIS-dark-green)};
+            --dropShadow: #{$dropShadowCIS};
+        }
+
+        background-color: var(--itemBackgroundColor);
+        color: var(--itemColor);
+        padding: map-get($spacing, "small2"); //24px
+        min-height: 172px;
+        @include breakpoint(medium) {
+            min-height: 254px;
+            padding: map-get($spacing, "small"); //32px
+        }
+        transition: $hoverTransition;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .title {
+            @extend .category-title;
+            // color: inherit;
+            margin-bottom: 8px;
+        }
+        .summary {
+            font-size: 20px; // Heading-S
+            line-height: 26px;
+            @include font_NeuzeitGroW03Bold;
+            @include breakpoint(medium) {
+                font-size: 24px;
+                line-height: 30px;
+            }
+            @include breakpoint(large) {
+                font-size: 28px; // Heading-M
+                line-height: 34px;
+            }
+            // color: inherit;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .button {
+            padding: 0;
+            margin-top: auto;
+            color: inherit;
+        }
+
+        &:hover,
+        &:focus {
+            box-shadow: var(--dropShadow);
+            transition: $hoverTransition;
+        }
+    }
+
+    body.home-page .HeroBanner & {
+        padding: map-get($spacing, "large") 0 map-get($spacing, "small");
+        @include breakpoint(large) {
+            padding: map-get($spacing, "large") 0;
+        }
+        background: linear-gradient(transparent, brand-color(primary) 50%);
+        .FeatureTile {
+            --itemBackgroundColor: #fff;
+            --itemColor: #{brand-color(body)};
+            --dropShadow: 1px 1px 10px brand-color(aemo-border-hover);
+
+            border-left: 2px solid brand-color(aemo-dark-blue);
+            .summary {
+                @extend .content-title;
+                @extend .smaller;
+            }
+        }
+    }
+
+    .tenderlist-page &,
+    .banner-no-image & {
+        padding: map-get($spacing, "large") 0;
+        @include breakpoint(small only) {
+            overflow-x: scroll;
+        }
+        @include breakpoint(medium) {
+            padding: map-get($spacing, "xxlarge") 0 calc(96px - 64px);
+        }
+        .FeatureTiles-inner {
+            max-width: 1440px;
+            display: flex;
+            @include breakpoint(small only) {
+                width: fit-content;
+            }
+            @include breakpoint(medium) {
+                justify-content: space-between;
+            }
+        }
+        .FeatureTile {
+            --itemBackgroundColor: transparent;
+            --itemColor: #fff;
+            --dropShadow: none;
+
+            padding: 0 32px 2px 24px;
+            position: relative;
+            min-height: 144px;
+            @include breakpoint(small only) {
+                width: 282px;
+            }
+            .button {
+                .icon {
+                    color: brand-color(primary);
+                    @include breakpoint(medium down) {
+                        font-size: 16px;
+                    }
+                }
+                span:not(.icon) {
+                    color: #fff;
+                    @include breakpoint(medium down) {
+                        font-size: 16px;
+                    }
+                }
+                &:hover,
+                &:focus {
+                    span:not(.icon) {
+                        color: #fff;
+                        &:after {
+                            background-color: brand-color(aemo-hover);
+                        }
+                    }
+                }
+            }
+            .title {
+                margin-bottom: map-get($spacing, "xxsmall");
+                @include breakpoint(medium down) {
+                    @include textMediumBoldUpper;
+                }
+            }
+            .summary {
+                font-size: 20px;
+                line-height: 28px;
+                @include font_NeuzeitSBookRegular;
+                @include breakpoint(large) {
+                    font-size: 24px;
+                }
+            }
+
+            &:after {
+                position: absolute;
+                left: 0;
+                top: 3px;
+                content: "";
+                height: 100%;
+                border-left: 1px solid brand-color(primary);
+            }
+        }
+    }
+}

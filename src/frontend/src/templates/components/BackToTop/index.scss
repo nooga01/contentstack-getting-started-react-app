@@ -1,0 +1,66 @@
+.BackToTop {
+    margin-top: $footer-margin-top;
+
+    // if it's butted up against the footer, set the footer margin to 0, as this has the margin-top on it
+    + footer {
+        margin-top: 0px;
+    }
+
+    &.sticky {
+        .BackToTop-Container {
+            position: fixed;
+            width: 100%;
+        }
+    }
+    &:not(.sticky) {
+        .BackToTop-Container {
+            bottom: 0px !important;
+        }
+    }
+    .BackToTop-Container {
+        z-index: layer(back-to-top);
+        position: relative;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--timing) ease-in-out, visibility 0s linear var(--timing);
+
+        &.shown {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity var(--timing) ease-in-out, visibility 0s linear;
+        }
+
+        .BackToTop-Inner {
+            position: relative;
+
+            a {
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                height: 36px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+                border-color: brand-color(light-grey);
+                position: absolute;
+                top: -18px;
+                right: 0px;
+
+                &:after {
+                    content: "";
+                    width: 6px;
+                    height: 6px;
+                    border-bottom: 1px solid currentColor;
+                    border-right: 1px solid currentColor;
+                    transform: rotate(-135deg);
+                    margin-left: 9px;
+                    margin-top: 4px;
+                }
+
+                &:hover,
+                &:focus {
+                    border-color: brand-color(primary);
+                }
+            }
+        }
+    }
+}

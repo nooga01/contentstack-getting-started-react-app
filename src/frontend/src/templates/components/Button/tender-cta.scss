@@ -1,0 +1,60 @@
+.TenderCTA,
+.tender-status-tag {
+    border-radius: 24px;
+    height: 40px;
+    padding: 8.25px 16px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    @include textLargeBoldUpper;
+
+    .tender-cta-text {
+        line-height: 0.8;
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: brand-color(primary);
+        }
+    }
+}
+.tender-status-dot {
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    display: inline-block;
+    &.open {
+        background-color: brand-color(aemo-dark-green);
+    }
+    &.closed {
+        background-color: brand-color(aemo-dark-red);
+    }
+    &.upcoming {
+        background-color: brand-color(aemo-dark-yellow);
+    }
+}
+// header footer tender cta
+.TenderCTA {
+    color: brand-color(aemo-dark-blue);
+    background-color: #fff;
+    transition: $hoverTransition;
+    &:hover {
+        // background-color: brand-color(aemo-hover);
+        box-shadow: $dropShadow;
+        transition: $hoverTransition;
+        color: brand-color(aemo-dark-blue);
+    }
+    &:focus {
+        border: 2px solid brand-color(aemo-focus);
+    }
+}
+// tender listing status tag
+.tender-status-tag {
+    color: #fff;
+    border: 1px solid #fff;
+}

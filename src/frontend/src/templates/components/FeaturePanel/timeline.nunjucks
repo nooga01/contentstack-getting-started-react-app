@@ -1,0 +1,26 @@
+{% macro render(class, timelineMilestones) %}
+    {# class is '' by default, set 'tender-details-page' for usage in Tender info page hero banner #}
+    <div class="TenderTimeline {{class}}">
+        <div class="grid-container no-padding-if-inside-grid-container">
+            <div class="TenderTimeline-inner TenderTimeline-individual">
+				<div class="TimelineSummary">This Is a Timeline Summary</div>
+                <div class="milestones-wrapper">
+                    {% for item in timelineMilestones %}
+                        <div class="milestone-item {{item.statusClass}} {{item.isPastDate}}">
+                            <div class="milestone-item-inner">
+                                <div class="milestone-icon">
+                                    <span class="icon icon-tick"></span>
+                                </div>
+                                <div class="milestone-info">
+                                    <div class="date">{{item.date}}</div>
+                                    <div class="title">{{item.title}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endmacro %}

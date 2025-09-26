@@ -1,0 +1,224 @@
+
+ul {
+    li {
+        &::marker {
+            color: brand-color(primary);
+            #wrapper.CIS & {
+                color: brand-color(CIS-highlight-green);
+            }
+        }
+    }
+    &.feature-bullet-list {
+        li {
+            margin-bottom: 16px;
+            list-style-type: none;
+            position: relative;
+            &::before {
+                content: "";
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                left: -32px;
+                top: calc((100% - 16px - 8px) / 2); //3px;
+                // background-image: url(../static/img/icons/feature-bullet-list-dot.svg);
+                background: brand-color(primary);
+                border-radius: 8px;
+
+                #wrapper.CIS & {
+                    background: brand-color(CIS-highlight-green);
+                }
+            }
+            body.home-page & {
+                &::before {
+                    background-image: url(../static/icons/feature-bullet-list-dot-white.svg); // TODO: change to another color, as this is same as bg color
+                }
+            }
+        }
+    }
+}
+ul,
+ol {
+    margin-bottom: 1em;
+    margin-left: 32px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @extend .heading-space;
+    color: brand-color(aemo-dark-blue);
+    #wrapper.CIS & {
+        color: brand-color(CIS-green);
+    }
+}
+// a {
+//     #wrapper.CIS & {
+//         color: brand-color(CIS-green);
+//     }
+// }
+
+// Font mixin
+@mixin textSmall {
+    @include font_NeuzeitSBookRegular;
+    font-size: 14px;
+    line-height: 20px;
+}
+@mixin textMedium {
+    @include font_NeuzeitSBookRegular;
+    font-size: 16px;
+    line-height: 23px;
+    @include breakpoint(xlarge) {
+        line-height: 24px;
+    }
+}
+@mixin textMediumBold {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 16px;
+    line-height: 20px;
+}
+@mixin textMediumBoldUpper {
+    @include textMediumBold;
+    text-transform: uppercase;
+    @include breakpoint(xlarge) {
+        line-height: 24px;
+    }
+}
+@mixin textLarge {
+    @include font_NeuzeitSBookRegular;
+    font-size: 18px;
+    line-height: 26px;
+}
+@mixin textLargeBold {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 18px;
+    line-height: 22px;
+    @include breakpoint(xlarge) {
+        line-height: 26px;
+    }
+}
+@mixin textLargeBoldUpper {
+    @include textLargeBold;
+    text-transform: uppercase;
+}
+
+.text-small {
+    @include textSmall;
+}
+.text-medium {
+    @include textMedium;
+}
+.text-medium-bold {
+    @include textMediumBold;
+    &.uppercase {
+        text-transform: uppercase;
+        @include breakpoint(xlarge) {
+            line-height: 24px;
+        }
+    }
+}
+.text-large {
+    @include textLarge;
+}
+.text-large-bold {
+    @include textLargeBold;
+    &.uppercase {
+        text-transform: uppercase;
+    }
+}
+
+@mixin headingSmall($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 20px;
+    line-height: 26px;
+    @include breakpoint(xlarge) {
+        line-height: 28px;
+    }
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+        line-height: 28px;
+    }
+}
+@mixin headingMedium($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 25px;
+    line-height: 30px;
+    @include breakpoint(xlarge) {
+        line-height: 38px;
+    }
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+        line-height: 34px;
+        @include breakpoint(xlarge) {
+            line-height: 38px;
+        }
+    }
+}
+@mixin headingLarge($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 28px;
+    line-height: 34px;
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+        line-height: 37px;
+    }
+}
+@mixin headingXLarge($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 36px;
+    line-height: 44px;
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+        line-height: 46px;
+    }
+}
+@mixin headingXXLarge($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 40px;
+    line-height: 48px;
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+    }
+}
+@mixin headingBannerLarge($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 62px; // h3
+    line-height: 68px;
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+    }
+}
+@mixin headingBannerLargest($fontWeight: null) {
+    @include font_NeuzeitGroW03Bold;
+    font-size: 92px; // h1
+    line-height: 99px;
+    @if $fontWeight == "regular" {
+        @include font_NeuzeitSBookRegular;
+    }
+}
+
+.heading-S {
+    @include headingSmall();
+}
+.heading-S-regular {
+    @include headingSmall("regular"); // 20px
+}
+.heading-M {
+    @include headingMedium();
+}
+.heading-M-regular {
+    @include headingMedium("regular"); // 24px
+}
+.heading-L {
+    @include headingLarge();
+}
+.heading-L-regular {
+    @include headingLarge("regular"); // 28px
+}
+.heading-XL {
+    @include headingXLarge();
+}
+.heading-XL-regular {
+    @include headingXLarge("regular"); // 36px
+}

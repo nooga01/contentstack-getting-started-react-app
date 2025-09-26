@@ -1,0 +1,23 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% import '../CardItem/index.nunjucks' as CardItem %}
+
+{# {% macro render(cardList) %} #}
+    <div class="ResourceSection content-wrapper">
+        <div class="grid-container">
+            <div class="section-title-wrap">
+                <div class="section-title larger">Support and resources</div>
+                {{Button.render(btnText = resourceSection.btnText, btnLink = resourceSection.btnLink, btnElem = 'a')}}
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="ResourceSection-inner">
+                <div class="ResourceSection-slide">
+                    {% for item in resourceSection.resouceCardList %}
+                        {# Resource Card #}
+                        {{CardItem.render(item)}}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{# {% endmacro %} #}

@@ -1,0 +1,23 @@
+{% macro render(btnText = 'Button Text', btnClass = '', btnLink = '#', btnIcon = '', btnElem = 'a', disabled = '', tabindex = '') %}
+    {% if (btnElem === 'button') %}
+
+        <button type="button" class="button {{ btnClass }} {% if btnIcon %}has-icon{% endif %}" title="{{ btnText }}" {{disabled}} tabindex="{{tabindex}}">
+            <span>{{ btnText }}</span>
+            {% if btnIcon %}
+                <span class="icon icon-{{ btnIcon }}"></span>{% endif %}
+        </button>
+
+    {% elif(btnElem === 'input') %}
+        {# Input button cannot have :after, so the customised underline is not applied. Label can be used to show this effect if needed. #}
+        <input class="button {{ btnClass }}" type="submit" value="{{ btnText }}" title="{{ btnText }}" {{disabled}}/>
+
+    {% elif(btnElem === 'a') %}
+
+        <a href="{{ btnLink }}" class="button {{ btnClass }}" title="{{ btnText }}" {{disabled}} tabindex="{{tabindex}}">
+            <span>{{ btnText }}</span>
+            {% if btnIcon %}
+                <span class="icon icon-{{ btnIcon }}"></span>{% endif %}
+        </a>
+
+    {% endif %}
+{% endmacro %}

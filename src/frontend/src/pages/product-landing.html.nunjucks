@@ -1,0 +1,117 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/ContentWithImage/index.nunjucks" as ContentWithImage %}
+{% import "../templates/components/productTile/index.nunjucks" as productTile %}
+{% import "../templates/components/FeaturePanel/index.nunjucks" as FeaturePanel %}
+
+{% set pageTitle = 'Product page' %}
+{% set wrapperClass = 'CIS' %}
+{% set bannerClass = 'banner-with-image' %}
+{% set banner = {
+    bannerClass: 'banner-with-image',
+    title: 'Renewable Energy Zone Access Rights',
+    list: [
+        'Required for new infrastructure projects',
+        'Five zones across New South Wales',
+        'Conducted in collaboration with EnergyCo'
+    ],
+    image: {
+        imageSrc: '../static/img/HeroBanner_RHSimage.jpg',
+        imageAlt: 'Landing page image'
+    }
+} %}
+{% set productTileList = {
+    sessionTitle: 'Browse Renewable Energy Zone Access Schemes',
+    list: [
+        {
+            link: '',
+            imageSrc: 'product-tile-1.png',
+            title: 'Central-West Orana',
+            summaryList : [
+                '3 gigawatts of new network capacity ',
+                'Transmission for wind and solar farms'
+            ]
+        },
+        {
+            link: '',
+            imageSrc: 'product-tile-2.png',
+            title: 'Illawara',
+            summaryList : [
+                '17 gigawatts of new network capacity',
+                'Transmission for wind and solar farms'
+            ]
+        },
+        {
+            link: '',
+            imageSrc: 'product-tile-3.png',
+            title: 'South West',
+            summaryList : [
+                '8 gigawatts of new network capacity',
+                'Transmission for wind and solar farms'
+            ]
+        },
+        {
+            link: '',
+            imageSrc: 'product-tile-1.png',
+            title: 'New England',
+            summaryList : [
+                '3 gigawatts of new network capacity ',
+                'Transmission for wind and solar farms'
+            ]
+        },
+        {
+            link: '',
+            imageSrc: 'product-tile-3.png',
+            title: 'Hunter Central Coast',
+            summaryList : [
+                '17 gigawatts of new network capacity ',
+                'Transmission for wind and solar farms'
+            ]
+        }
+    ]
+} %}
+
+{% extends "layout.nunjucks" %}
+
+{% block page_banner%}
+    {{HeroBanner.render(banner)}}
+{% endblock %}
+{% block content %}
+    {{FeaturePanel.render({
+        themeColor: '',
+        featurePanelList: [
+            'Renewable1 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable2 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable3 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable4 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable5 Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+    
+    {{
+        ContentWithImage.render({
+            imgPosition: 'left-image', 
+            categoryTitle: 'WHAT ARE ACCESS RIGHTS',
+            contentTitle: 'Renewable Energy Zones will group new wind and solar power generation in certain locations where it can be more efficiently stored and transmitted across.',
+            descriptionRichText: '<p>Five zones have so far been identified and will keep NSW electricity reliable as coal-fired power stations retire, delivering large amounts of new energy to power our regions and cities.</p>',
+            CTA: {
+                btnText: 'READ MORE on energyco',
+                btnLink: ''
+            },
+            imageSrc: '/static/img/productpage-img.jpg'
+        })
+    }}
+
+    {{ productTile.renderList(productTileList) }}
+
+    {{FeaturePanel.render({
+        themeColor: 'dark',
+        featurePanelList: [
+            'Renewable21 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable22 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable23 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable24 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable25 Energy Zones Access Schemes are the first of their kind in the National Electricity Market',
+            'Renewable26 Energy Zones Access Schemes are the first of their kind in the National Electricity Market'
+        ]
+    })}}
+{% endblock %}

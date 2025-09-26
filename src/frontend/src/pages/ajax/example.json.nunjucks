@@ -1,0 +1,79 @@
+{% macro renderItem(section, title, date, imgDesktop, imgMobile, href) %}
+    {
+        "title" : "{{title}}",
+        "section" : "{{section}}",
+        "date" : "{{date}}",
+        "img_desktop" : "{{imgDesktop}}",
+        "img_mobile" : "{{imgMobile}}",
+        "href" : "{{href}}"
+    }
+{% endmacro %}
+{
+    "errorCode" : 0,
+    "message" : "",
+    "isMore" : true,
+    "items" : [
+        {{ 
+            renderItem(
+                section = "Section A",
+                title = "1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "04 January 2019",
+                imgDesktop = "../img/article-listing-5.png",
+                imgMobile = "../img/article-listing-5.png",
+                href = "somelink1.html"
+            ) 
+        }},
+        {{ 
+            renderItem(
+                section = "Section A",
+                title = "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "10 January 2019",
+                imgDesktop = "../img/article-listing-1.png",
+                imgMobile = "../img/article-listing-1.png",
+                href = "somelink2.html"
+            ) 
+        }},
+        {{ 
+            renderItem(
+                section = "Section C",
+                title = "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "14 January 2019",
+                imgDesktop = "../img/article-listing-3.png",
+                imgMobile = "../img/article-listing-3.png",
+                href = "somelink3.html"
+            ) 
+        }},                
+        {{ 
+            renderItem(
+                section = "Section D",
+                title = "4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "24 January 2019",
+                imgDesktop = "../img/article-listing-2.png",
+                imgMobile = "../img/article-listing-2.png",
+                href = "somelink4.html"
+            ) 
+        }},
+        {{ 
+            renderItem(
+                section = "Section B",
+                title = "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "01 March 2019",
+                imgDesktop = "../img/article-listing-4.png",
+                imgMobile = "../img/article-listing-4.png",
+                href = "somelink5.html"
+            ) 
+        }},
+        {{ 
+            renderItem(
+                section = "Section A",
+                title = "6Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                date = "23 April 2019",
+                imgDesktop = "../img/article-listing-6.png",
+                imgMobile = "../img/article-listing-6.png",
+                href = "somelink6.html"
+            ) 
+        }}                        
+    ]
+}
+
+
