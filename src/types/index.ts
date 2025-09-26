@@ -98,14 +98,11 @@ export type TPageWithHeroBannerData = {
     title: string;
     description: string;
     hero_banner: THeroBanner[];
-    sections?: {
-      card_collection?: {
-        card_items?: {
-          title: string;
-          description: string;
-        }[];
-      };
-    };
+    sections: {
+      card_collection: {
+        card_items: TCardItem[];
+      }
+    }[];
 };
 
 export type THeroBanner = {
@@ -132,4 +129,17 @@ export type THeroBanner = {
 
 export type THeroBannerProps = {
   uid: string;
+};
+
+export type TCardCollection = {
+};
+
+export type TCardItem = {
+   title: string;
+   description: string;
+};
+
+
+export type TCardCollectionProps = {
+  card_items: TCardItem[];
 };

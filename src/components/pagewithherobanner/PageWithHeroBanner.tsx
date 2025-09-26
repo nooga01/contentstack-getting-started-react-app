@@ -4,37 +4,49 @@ import { RootState } from "../../store";
 import { Button } from "@contentstack/venus-components";
 import { useNavigate } from "react-router-dom";
 import HeroBanner from "../herobanner/HeroBanner";
+import CardCollection from "../cardcollection/CardCollection";
 
 const PageWithHeroBanner: React.FC = () => {
   const page = useSelector(
     (state: RootState) => state.main.pageWithHeroBannerData
   );
   
-  console.log("page", page);
-  console.log("uid", page.hero_banner[0]?.uid);
+  //console.log("page", page);
+  //console.log("uid", page.hero_banner[0]?.uid);
 
   const navigate = useNavigate();
 
+  console.log("page", page.sections[0].card_collection);
+  const { card_items } = page.sections[0].card_collection;
+  console.log(card_items[0]);
+  
+
   return (
-    <div className="home-page">
-      <div className="hero-section">
-        <div className="hero-content">
+    <div>
+      { page.hero_banner[0]?.uid && (
+        <HeroBanner
+          uid={ page.hero_banner[0]?.uid }
+        />
+      )}
 
-          { page.hero_banner[0]?.uid && (
-            <HeroBanner
-              uid={ page.hero_banner[0]?.uid }
-            />
-          )}
+      <div className="grid-padding-x">
 
-          { page.title && (
+        { page.title && (
+          <div className="cell">
             <h1>{ page.title }</h1>
-          )}
+          </div>
+        )}
 
-          { page.description && (
+        { page.description && (
+          <div className="cell">
             <p>{ page.description }</p>
-          )}
+          </div>
+        )}
 
-        </div>
+        <CardCollection
+          card_items={ card_items }
+        />
+
       </div>
     </div>
   );

@@ -140,16 +140,18 @@ const initialState: AppState = {
           is_banner_image_full_width: true,
         },
       ],
-      sections: {
-        card_collection: {
-          card_items: [
-            {
-              title: "",
-              description: "",
-            }
-          ]
+      sections: [
+        {
+          card_collection: {
+            card_items: [
+              {
+                title: "",
+                description: "",
+              }
+            ]
+          }
         }
-      }
+      ]
   },
   heroBannerData: [
     {

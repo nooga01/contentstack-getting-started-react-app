@@ -10,8 +10,8 @@ const HeroBanner: React.FC<THeroBannerProps> = ({ uid }) => {
       state.main.heroBannerData.find((item) => item.uid == uid)
   );
 
-  console.log("heroBannerData", heroBannerData);
-  console.log("uid", uid);
+  //console.log("heroBannerData", heroBannerData);
+  //console.log("uid", uid);
 
   return (
       <a href="#0" className="banner" aria-label="Shop now">
