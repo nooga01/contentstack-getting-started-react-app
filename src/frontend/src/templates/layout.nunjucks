@@ -14,6 +14,7 @@
         <title>PlateStack</title>
         <link rel="stylesheet" href="../static/styles/main.css">
         <link rel="stylesheet" href="../static/styles/App.css">
+		<link rel="stylesheet" href="/css/styles.css"/>
         <style>
             @import url(https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap);
         </style>
@@ -25,6 +26,9 @@
                 {% include "components/Header/index.nunjucks" %}
                 <div class="body">
                 <!-- body -->
+				
+				{% block content %}{% endblock %}
+				
                 </div>
                 {% include "components/Footer/index.nunjucks" %}
             </div>

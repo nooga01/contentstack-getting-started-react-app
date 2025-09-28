@@ -1,0 +1,32 @@
+{% import '../Button/index.nunjucks' as Button %}
+{% macro render(cardcollection) %}
+
+    <div class="FeatureInfoCards">
+        <div class="grid-container">
+            <h2 class="section-title">How to - Guides and Data</h2>
+            <div class="grid-x grid-margin-x grid-margin-y">
+			{% for item in cardcollection.carditems %}
+				<a class="FeatureInfoCard cell {{item.class or 'medium-6'}}" href="{{item.linkUrl}}">
+					{% if item.imageSrc %}
+						<div class="card-image" style="background-image: url({{item.imageSrc}})"></div>
+					{% endif %}        
+					<div class="card-content">
+						<div class="content-title">
+							{{item.title}}
+						</div>
+						{% if item.descriptionRichText %}
+							<div class="content-description">
+								{{item.descriptionRichText | safe}}
+							</div>     
+						{% endif %}
+						{% if item.btnText %}
+							{{Button.render(btnText = item.btnText, btnClass = 'text-primary', btnElem = 'button', tabindex = '-1')}}
+						{% endif %}
+					</div>
+				</a>
+			{% endfor %}					
+				
+			</div>
+		</div>
+	</div>
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+    <div class="page-wrapper one-column">
+		{% block structure_content %}{% endblock %}
+    </div>
+{% endblock %}

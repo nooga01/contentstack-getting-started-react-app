@@ -1,0 +1,67 @@
+{% import "../templates/components/Banner/index.nunjucks" as HeroBanner %}
+{% import "../templates/components/RichText/index.nunjucks" as RichText %}
+{% import "../templates/components/CardCollection/index.nunjucks" as CardCollection %}
+{% extends "OneColumn.nunjucks" %}
+
+{% block structure_content %}
+
+    {{HeroBanner.render({
+        bannerClass: 'banner-with-image',
+        title: 'This is a test page hero banner title',
+        summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ",
+        image:{
+            imageSrc: "/static/img/iStock-1284336798.jpg",
+            imageAlt: "Electricity Line"
+        },
+		cta: {
+            btnText: 'Read More',
+            btnLink: '#'
+        }		
+    })}}
+
+	{{RichText.render(
+        '
+		<h1>This is an H1</h1>
+		<h2>This is an H2</h2>
+		<h3>This is an H3</h3>
+		<p>Cover starts on the date of the building contract, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier, or the date of the building permit, whichever is earlier.</p>
+		'
+    )}}
+	
+    {{CardCollection.render({
+        title: 'Card Collection',
+        summary: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat ",
+		carditems:[
+			{
+				title: 'Nulla ullamcorper nunc dictum',
+				descriptionRichText: '<p>Phasellus nunc ex, hendrerit at turpis eu, laoreet accumsan turpis. Pellentesque consequat, augue non pellentesque iaculis, dolor nisl viverra lectus, a dignissim ipsum arcu et elit. Mauris consequat ipsum at enim ultricies maximus. Pellentesque lacinia non lectus in varius. Aliquam vitae odio sed eros porttitor cursus fermentum ut diam. Etiam neque felis, cursus vitae tincidunt quis, dictum viverra libero.</p>',
+				imageSrc: '/static/img/what-to-do-1.jpg',
+				linkUrl: 'https://www.google.com',                    
+				btnText: 'Learn more'
+			},
+			{
+				title: 'Cras congue dapibus facilisis',
+				descriptionRichText: '<p>Vestibulum vestibulum diam vel risus venenatis, condimentum hendrerit nisi venenatis. Cras congue dapibus facilisis. Sed at finibus lorem. Vestibulum pharetra leo non ante porttitor efficitur. Donec dui dui, convallis eu leo eget, dapibus iaculis est. Nulla ut nibh magna.</p>',
+				imageSrc: '/static/img/productpage-img.jpg',
+				linkUrl: 'https://www.google.com',       
+				btnText: 'View more'
+			},
+			{
+				title: 'Suspendisse sed libero a ligula rhoncus cursus',
+				descriptionRichText: '<p>Duis in placerat justo. Aliquam gravida ligula ac arcu dictum lobortis. Quisque ac erat laoreet, ornare odio non, accumsan nibh. Morbi sit amet metus nec tortor placerat feugiat varius ut purus. Aliquam non tempus arcu. Integer consequat ante quis justo venenatis malesuada. Nullam dolor purus, euismod ac nulla id, suscipit vestibulum justo.</p>',
+				imageSrc: '/static/img/what-to-do-1.jpg',
+				linkUrl: 'https://www.google.com',       
+				btnText: 'Read more'
+			},
+			{
+				title: 'Vivamus quis venenatis purus eget',
+				descriptionRichText: '<p>Vestibulum tincidunt fermentum ornare. Suspendisse sed libero a ligula rhoncus cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>',
+				imageSrc: '/static/img/productpage-img.jpg',
+				linkUrl: 'https://www.google.com',       
+				btnText: 'View more'
+			}			
+		]
+    })}}
+
+
+{% endblock %}

@@ -1,28 +1,21 @@
 {% import '../Button/index.nunjucks' as Button %}
-{% import '../FeatureTile/tenderList-featureTile.nunjucks' as FeatureTiles %}
-{% import '../Button/tender-cta.nunjucks' as TenderCTA %}
 
 {% macro render(banner) %}
     <div class="HeroBanner {{banner.bannerClass}}">
         <div class="HeroBanner-wrapper">
             <div class="HeroBanner-content">
-                
-                {% include "../Breadcrumbs/index.nunjucks" %}
 
                 <div class="Headings">
                     <div class="grid-container">
                         <div class="Headings-inner">
                             <div class="inner-wrapper">
-                                {# tender cta #}
-                                {% if banner.subTitle %}
-                                    {{TenderCTA.render(banner.tenderCTA.btnText, banner.tenderCTA.statusClass, banner.tenderCTA.btnLink)}}
-                                {% endif %}
 
                                 <h1 class="title">{{banner.title}}</h1>
 
                                 {% if banner.subTitle %}
                                     <p class="subtitle">{{banner.subTitle}}</p>
                                 {% endif %}
+								
                             </div>
 
                             {% if banner.summary %}
@@ -31,26 +24,11 @@
                             </div>
                             {% endif %}
 
-                            {% if banner.list %}
-                            <div class="inner-wrapper">
-                                <ul>
-                                    {% for item in banner.list %}
-                                        <li>
-                                            <span class="icon icon-tick"></span>
-                                            {{item}}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            {% endif %}
+							{{Button.render(btnText = banner.cta.btnText, btnClass = 'text-primary', btnLink = banner.cta.btnLink, btnIcon = 'arrow', btnElem = 'a', tabindex = '-1')}}
+
                         </div>
                     </div>
                 </div>
-                
-                {# feature tiles #}
-                {% if banner.featureTiles %}
-                    {{ FeatureTiles.render(banner.featureTiles) }}
-                {% endif %}
             </div>
             
             {% if banner.image %}
