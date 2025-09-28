@@ -17,8 +17,7 @@ const PageWithHeroBanner: React.FC = () => {
   const navigate = useNavigate();
 
   //console.log("page", page.sections[0].card_collection);
-  const { card_items } = page.sections[0].card_collection;
-  //console.log(card_items[0]);
+  const { card_collection } = page.sections[0];
   
   return (
     <div>
@@ -43,7 +42,7 @@ const PageWithHeroBanner: React.FC = () => {
         )}
 
         <CardCollection
-          card_items={ card_items }
+          card_collection={ card_collection }
         />
 
       </div>

@@ -5,9 +5,9 @@ import { RootState } from "../../store";
 import { TLink } from "../../types";
 import { TCardCollectionProps } from "../../types/cardcollection";
 
-const CardCollection: React.FC<TCardCollectionProps> = ({ card_items }) => {
+const CardCollection: React.FC<TCardCollectionProps> = ({ card_collection }) => {
 
-console.log(card_items);
+console.log(card_collection);
     
   return (
     <div className="CardCollection">
@@ -15,7 +15,7 @@ console.log(card_items);
             <h2 className="section-title">How to - Guides and Data</h2>
             <div className="grid-x grid-margin-x grid-margin-y">
 
-                {card_items.map((item) => (
+                {card_collection.card_items.map((item) => (
 
 				    <a className="CardItem cell medium-6" href={ item.link.href }>
 

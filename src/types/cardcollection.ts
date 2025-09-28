@@ -1,4 +1,5 @@
 export type TCardCollection = {
+    card_items: TCardItem[];
 };
 
 export type TCardItem = {
@@ -14,5 +15,5 @@ export type TCardItem = {
 };
 
 export type TCardCollectionProps = {
-  card_items: TCardItem[];
+  card_collection: TCardCollection;
 };
