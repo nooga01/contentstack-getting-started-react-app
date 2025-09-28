@@ -16,11 +16,10 @@ const PageWithHeroBanner: React.FC = () => {
 
   const navigate = useNavigate();
 
-  console.log("page", page.sections[0].card_collection);
+  //console.log("page", page.sections[0].card_collection);
   const { card_items } = page.sections[0].card_collection;
-  console.log(card_items[0]);
+  //console.log(card_items[0]);
   
-
   return (
     <div>
       { page.hero_banner[0]?.uid && (

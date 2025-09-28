@@ -14,30 +14,47 @@ const HeroBanner: React.FC<THeroBannerProps> = ({ uid }) => {
   //console.log("uid", uid);
 
   return (
-      <a href="#0" className="banner" aria-label="Shop now">
-        <div className="banner__grid">
-          <div aria-hidden="true">
-            <figure className="banner__figure" style={{ backgroundImage: heroBannerData?.banner_image.url ? `url(${heroBannerData?.banner_image.url})` : '' }}></figure>
-          </div>
+    <div className="HeroBanner banner-with-image">
+        <div className="HeroBanner-wrapper">
+            <div className="HeroBanner-content">
 
-          <div className="banner__text">
-            { heroBannerData?.title && (
-               <h2 style={{ color: heroBannerData?.text_color?.hex ? heroBannerData?.text_color?.hex : "#000000" }}>{ heroBannerData?.title }</h2>
-            )}
+                <div className="Headings">
+                    <div className="grid-container">
+                        <div className="Headings-inner">
+                            <div className="inner-wrapper">
 
-            { heroBannerData?.banner_description && (
-              <p style={{ color: heroBannerData?.text_color?.hex ? heroBannerData?.text_color?.hex : "#e2e2e2" }}>{heroBannerData?.banner_description}</p>
-            )}
+                                { heroBannerData?.title && (
+                                  <h1 className="title">{ heroBannerData?.title }</h1>
+                                )}                              
+								
+                            </div>
 
-            { heroBannerData?.call_to_action?.title && (
-              <p className="banner__link-wrapper">
-                <span className="banner__link"><i>{ heroBannerData?.call_to_action.title }</i></span>
-              </p>
-            )}
-          </div>
+                            { heroBannerData?.banner_description && (
+                              <div className="inner-wrapper summary">
+                                  <p>{ heroBannerData?.banner_description }</p>
+                              </div>
+                            )}
+
+                            { heroBannerData?.call_to_action?.title && (
+                              <a href={ heroBannerData?.call_to_action.href } className="button text-primary" title={ heroBannerData?.call_to_action.title }>
+                                <span>{ heroBannerData?.call_to_action.title }</span>
+                                <span className="icon icon-arrow"></span>
+                              </a>
+                            )}                                          
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            { heroBannerData?.banner_image.url && (
+              <div className="HeroBanner-image">
+                  <img src={ heroBannerData?.banner_image.url } alt="" />
+              </div>
+            )} 
+ 
         </div>
-      </a>
-   );   
-  };
+    </div>
+)};
 
 export default HeroBanner;  

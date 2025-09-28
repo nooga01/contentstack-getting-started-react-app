@@ -147,6 +147,13 @@ const initialState: AppState = {
               {
                 title: "",
                 description: "",
+                image: {
+                  url: "",
+                },
+                link: {
+                  href: "",
+                  title: "",
+                }
               }
             ]
           }

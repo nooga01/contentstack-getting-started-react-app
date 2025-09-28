@@ -6,19 +6,47 @@ import { TLink } from "../../types";
 import { TCardCollectionProps } from "../../types";
 
 const CardCollection: React.FC<TCardCollectionProps> = ({ card_items }) => {
+
+console.log(card_items);
+    
   return (
-    <div className="grid-container">
-        <div className="grid-x grid-margin-x small-up-2 medium-up-3">
-            {card_items.map((item) => (
-                <div className="cell">
-                    <div className="card">
-                        <div className="card-section">
-                            <h4>{ item.title }</h4>
-                            <p>{ item.description }</p>
+    <div className="CardCollection">
+        <div className="grid-container">
+            <h2 className="section-title">How to - Guides and Data</h2>
+            <div className="grid-x grid-margin-x grid-margin-y">
+
+                {card_items.map((item) => (
+
+				    <a className="CardItem cell medium-6" href={ item.link.href }>
+
+                        { item.image?.url && (
+                            <div className="card-image" style={{ backgroundImage: `url(${item.image?.url})` }}></div>
+                        )}
+
+                        <div className="card-content">
+
+                            { item.title && (
+                                <div className="content-title">
+                                    { item.title }
+                                </div>
+                            )}
+
+                            { item.title && (
+                                <div className="content-description">
+                                    { item.description }
+                                </div>
+                            )}
+
+                            { item.link.title && (
+                                <button type="button" className="button text-primary " title={ item.link.title } >
+                                    <span>{ item.link.title }</span>
+                                </button>
+                            )}
                         </div>
-                    </div>
-                </div>
-            ))}
+    				</a>
+                ))}
+
+            </div>
         </div>
     </div>
    );   

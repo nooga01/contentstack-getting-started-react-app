@@ -30,7 +30,7 @@ ul {
             }
             body.home-page & {
                 &::before {
-                    background-image: url(../static/icons/feature-bullet-list-dot-white.svg); // TODO: change to another color, as this is same as bg color
+                    background-image: url(../static/img/icons/feature-bullet-list-dot-white.svg); // TODO: change to another color, as this is same as bg color
                 }
             }
         }
