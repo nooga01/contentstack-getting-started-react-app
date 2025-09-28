@@ -144,6 +144,7 @@ const initialState: AppState = {
       sections: [
         {
           card_collection: {
+            title: "",
             card_items: [
               {
                 title: "",

@@ -1,5 +1,5 @@
 import { THeroBanner } from "./herobanner";
-import { TCardItem } from "./cardcollection";
+import { TCardCollection } from "./cardcollection";
 
 export type THeaderData = {
   website_title: string;
@@ -102,11 +102,6 @@ export type TPageWithHeroBannerData = {
     description: string;
     hero_banner: THeroBanner[];
     sections: {
-      card_collection: {
-        card_items: TCardItem[];
-      }
+      card_collection: TCardCollection;
     }[];
 };
-
-
-

@@ -12,7 +12,11 @@ console.log(card_collection);
   return (
     <div className="CardCollection">
         <div className="grid-container">
-            <h2 className="section-title">How to - Guides and Data</h2>
+
+            { card_collection.title && (
+                <h2 className="section-title">{ card_collection.title }</h2>
+            )}
+
             <div className="grid-x grid-margin-x grid-margin-y">
 
                 {card_collection.card_items.map((item) => (

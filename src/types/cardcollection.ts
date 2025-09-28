@@ -1,4 +1,5 @@
 export type TCardCollection = {
+    title: string;
     card_items: TCardItem[];
 };
 
