@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../store";
 import { TLink } from "../../types";
-import { TCardCollectionProps } from "../../types";
+import { TCardCollectionProps } from "../../types/cardcollection";
 
 const CardCollection: React.FC<TCardCollectionProps> = ({ card_items }) => {
 

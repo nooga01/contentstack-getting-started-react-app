@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../store";
 import { TLink } from "../../types";
-import { THeroBannerProps } from "../../types";
+import { THeroBannerProps } from "../../types/herobanner";
 
 const HeroBanner: React.FC<THeroBannerProps> = ({ uid }) => {
   const heroBannerData = useSelector((state: RootState) =>

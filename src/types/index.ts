@@ -1,3 +1,6 @@
+import { THeroBanner } from "./herobanner";
+import { TCardItem } from "./cardcollection";
+
 export type THeaderData = {
   website_title: string;
   logo: {
@@ -105,47 +108,5 @@ export type TPageWithHeroBannerData = {
     }[];
 };
 
-export type THeroBanner = {
-  uid: string;
-  title: string;
-  background_color: {
-    hex: string;
-  };
-  text_color: {
-    hex: string,
-  }  
-  banner_description: string;  
-  banner_image: {
-    url: string;
-  };
-  banner_image_alignment: string;
-  call_to_action: {
-    title: string;
-    href: string;
-  };  
-  content_title_alignment: string;
-  is_banner_image_full_width: boolean;
-};
 
-export type THeroBannerProps = {
-  uid: string;
-};
 
-export type TCardCollection = {
-};
-
-export type TCardItem = {
-   title: string;
-   description: string;
-   image: {
-     url: string;
-   };
-   link: {
-     href: string;
-     title: string;
-   }
-};
-
-export type TCardCollectionProps = {
-  card_items: TCardItem[];
-};

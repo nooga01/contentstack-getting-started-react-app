@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 // COMMENT: Add TMenu in below import statement
-import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData, TPageData, TPageWithHeroBannerData, THeroBanner } from "../types";
+import { TFooterData, THeaderData, THomePageData, TMenu, TAboutusPageData, TPageData, TPageWithHeroBannerData } from "../types";
+import { THeroBanner } from "../types/herobanner";
 
 interface AppState {
   headerData: THeaderData;
