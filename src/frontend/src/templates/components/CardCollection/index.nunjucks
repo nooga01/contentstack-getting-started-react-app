@@ -1,12 +1,12 @@
 {% import '../Button/index.nunjucks' as Button %}
 {% macro render(cardcollection) %}
 
-    <div class="FeatureInfoCards">
+    <div class="CardCollection">
         <div class="grid-container">
             <h2 class="section-title">How to - Guides and Data</h2>
             <div class="grid-x grid-margin-x grid-margin-y">
 			{% for item in cardcollection.carditems %}
-				<a class="FeatureInfoCard cell {{item.class or 'medium-6'}}" href="{{item.linkUrl}}">
+				<a class="CardItem cell {{item.class or 'medium-6'}}" href="{{item.linkUrl}}">
 					{% if item.imageSrc %}
 						<div class="card-image" style="background-image: url({{item.imageSrc}})"></div>
 					{% endif %}        

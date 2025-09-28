@@ -1,4 +1,4 @@
-.FeatureInfoCards {
+.CardCollection {
     padding-top: map-get($spacing, "medium"); // 40px
     padding-bottom: map-get($spacing, medium); // medium 40px
     @include breakpoint(large) {
@@ -7,13 +7,13 @@
 
     &[data-theme="light-grey"] {
         background: brand-color(aemo-light-grey);
-        .FeatureInfoCard {
+        .CardItem {
             background-color: #fff;
         }
     }
 }
 
-.FeatureInfoCard {
+.CardItem {
     background-color: brand-color(light-grey);
     transition: $hoverTransition;
     display: flex;
@@ -35,13 +35,6 @@
         flex-grow: 0;
         @include breakpoint(large) {
             height: 290px;
-        }
-    }
-
-    &[data-video-id] {
-        .card-image {
-            height: 0px;
-            padding-bottom: calc(9 / 16 * 100%); // 56.25% for 16:9 aspect ratio
         }
     }
 
@@ -77,15 +70,6 @@
 
         > .button {
             margin-top: auto;
-        }
-    }
-
-    #wrapper.CIS &,
-    &[data-scheme="CIS"] {
-        .card-content {
-            .content-title {
-                color: brand-color(CIS-dark-green);
-            }
         }
     }
 }
